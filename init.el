@@ -806,3 +806,5 @@ static char *gnus-pointer[] = {
 
 (server-start)
 
+(if (file-exists-p "~/.emacs.d/local-init.el")
+    (load-file "~/.emacs.d/local-init.el"))
