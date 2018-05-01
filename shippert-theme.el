@@ -16,6 +16,7 @@
  '(font-lock-function-name-face ((t (:foreground "blue4" :bold t :italic t))))
  '(font-lock-variable-name-face ((t (:foreground "blue3" ))))
  '(font-lock-reference-name-face ((t (:foreground "blue3" ))))
+ '(font-lock-builtin-face ((t (:foreground "purple" ))))
  '(scroll-bar ((t (:background "lightblue" ))))
  '(menu ((t (:foreground "black" :background "lightblue" ))))
 )

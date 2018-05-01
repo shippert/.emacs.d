@@ -1,43 +1,11 @@
-(if (not (string-match emacs-version "21.4.1"))
-    (set-default-font "Liberation Mono-12"))
+;; Emacs-lisp to font-lock and then print (and exit from) a buffer.
+;; Called from command line like this:
+;;   emacs -Q --file=$nu -l ~/.emacs.d/eprint.el
+;; See ~/bin/emacs_print for my shell script that does this inside
+;; xvfb, so no window shows up.
 
-; Set up for Sparc (now), customized for my comfort, and this is just
-(define-key global-map "\C-l" 'forward-char)
-(define-key global-map "\C-f" 'recenter)
-(define-key ctl-x-map "\C-r" 'replace-string)
-;;(define-key ctl-x-map "r" 'rmail)
-(define-key ctl-x-map "\C-q" 'query-replace)
-;; ESC sequence is \C-[
-(define-key esc-map "g" 'goto-line)
-(define-key esc-map "$" 'ispell-word)
-(define-key esc-map "w" 'ispell-complete-word)
-(define-key esc-map "\t" 'self-insert-command)
-(define-key ctl-x-map "y" 'yow)
-(define-key ctl-x-map "c" 'compile)
-(define-key ctl-x-map "p" 'tprint-buffer) ; in tprint.el
-(define-key ctl-x-map "f" 'flame)
-;;(define-key ctl-x-map "r" 'gnus)
-(define-key ctl-x-map "m" 'message-mail)
-(define-key ctl-x-4-map "f" 'font-lock-fontify-buffer)
-(define-key ctl-x-map "l" 'add-change-log-entry)
-(global-unset-key "\C-]")
-(define-key ctl-x-4-map "x" 'exchange-point-and-mark)
-(define-key ctl-x-4-map "h" 'split-window-horizontally)
-(define-key ctl-x-4-map "a" 'auto-fill-mode)
-(define-key ctl-x-4-map "k" 'copy-region-as-kill)
-(define-key ctl-x-4-map "d" 'delete-rectangle)
-(define-key ctl-x-map "vq" 'vc-toggle-read-only)
-; The "R2" key on a sun keypad is PrSc
-; This isn't as cool as I'd like, because it doesn't 2-up
-(define-key global-map [f12] 'ps-print-buffer-with-faces)
-(define-key global-map [print] 'ps-print-buffer-with-faces)
-
-; Get the keypad right on wombat
-(define-key global-map [f35] 'scroll-up)
-(define-key global-map [f29] 'scroll-down)
-
-(if (string-match emacs-version "21.4.1")
-    (standard-display-european t))
+;; Derived from my (reduced) init file, to get the font-locking
+;; similar, with hopefully all the extraneous garbage removed.
 
 (turn-on-auto-fill)
 
@@ -52,71 +20,10 @@
   (list "blue3" "firebrick" "dark green" "OrangeRed" "dark khaki"
 	 "dark violet" "SteelBlue4")) 
 
-; ;;; set my faces
-(setq font-lock-maximum-decoration t)
-(setq ps-line-number t)
-
-;
-(setq-default case-fold-search nil)
-(setq require-final-newline 'foo)
-(setq rmail-file-name "~/mail/RMAIL")
-(setq rmail-last-rmail-file "~/mail/XMAIL")
-(setq rmail-default-rmail-file "~/mail/XMAIL")
-(setq rmail-secondary-file-directory "~/mail")
-(setq rmail-in-reply-to-use-message-id nil)
-;(setq rmail-dont-reply-to-names
-;      "info-\\|tr_shippert\\|d3a230\\|timothy.shippert\\>")
-(setq rmail-dont-reply-to-names
-      "info-\\|\"?Shippert\\(, Tim\\(othy\\)?\\( R\"?\\)?\\)?\\|tr_shippert\\|tim\\(othy\\)?.shippert\\|Tim\\(othy\\)? Shippert\\|d3a230")
-;
-
-;(setq compile-command "/svr/apps/gnu_utils/bin/make")
-
-(setq browse-url-netscape-program "/usr/bin/mozilla")
 
 ;; set my faces
 ;; New face here for green - so I can keep underlining.
 (make-face 'emphasize)
-
-;; For emacs version 23+, we can use themes to change colors and stuff
-;; Version 24 themes will skip confirmation with a following true, but
-;; 23 does not.
-(cond ((>= emacs-major-version 24) (load-theme 'gruber-darker t))
-      ((= emacs-major-version 23) (load-theme 'gruber-darker))
-      (t 
-       ;; Prior to themes, do it the hard way
-	(progn
-	  (setq font-lock-comment-face 'italic)
-	  (setq font-lock-keyword-face 'bold)
-	  (setq font-lock-string-face 'emphasize)
-	  (setq font-lock-type-face 'bold-italic)
-	  (setq font-lock-function-name-face 'bold-italic)
-	  
-	  (set-face-foreground 'emphasize "green4")
-	  (set-face-foreground 'italic "blue3")
-	  (set-face-foreground 'bold "red3")
-	  (set-face-foreground 'underline "firebrick")
-	  (set-face-foreground 'bold-italic "blue4")
-	  (make-face-bold 'bold-italic nil t)
-	  
-	  ;; only need this here, because italic shows up bold on squid
-	  (make-face-unbold 'italic nil t)
-	  
-	  (setq font-lock-face-attributes  
-		(list '(font-lock-comment-face "blue3")
-		      '(font-lock-string-face "green4")
-		      '(font-lock-keyword-face "darkgoldenrod" nil t)
-		      '(font-lock-function-name-face "red3" nil t) 
-		      '(font-lock-variable-name-face "blue3" nil t) 
-		      '(font-lock-type-face "orangered") 
-		      '(font-lock-reference-face "blue3" nil t))))))
-      
-; Awful way to do this, and slime sucks anyway.  Keeping it here for reference.
-;(if (>= emacs-major-version 24)
-;    ;;
-;    (load-library (expand-file-name "~/emacs/slime-theme.el")))
-
-(global-font-lock-mode t)
 
 (setq load-path
  (append (list (expand-file-name "~/emacs")
@@ -124,25 +31,6 @@
 	       )
 	 load-path))
 
-; to test the latest gnus
-;(setq load-path (cons (expand-file-name "/usr/local/src/gnus-5.10.6/lisp") load-path))
-;(require 'gnus-load)
-;(setq load-path (cons (expand-file-name "/usr/local/src/emacs-21.3/lisp/gnus") load-path))
-
-; This stuff apparantly won't work with my podunk emacs...
-;(setq load-path (cons "/usr/local/src/custom-1.9962"
-;		      (cons "/usr/local/src/gnus-5.6.24/lisp"
-;			    load-path)))
-;(setq load-path (cons "/usr/local/src/gnus-5.8.3/lisp" load-path))
-
-;(setq Info-default-directory-list 
-;        (cons "/usr/local/src/gnus-5.6.24/texi" Info-default-directory-list))
-
-;(setq Info-default-directory-list 
-;        (cons "/usr/local/src/gnus-5.8.3/texi" Info-default-directory-list))
-
-(if window-system
-    (require 'igor-mode))
 
 (require 'generic)
 
@@ -166,59 +54,12 @@
   (list "vip.*\\.txt")
   (list 'font-lock-mode 'auto-fill-mode))
 
-
-; Print setup
-(setq tprint-command "tpr")
-(setq tprint-switches " ")
-(setq tprint-printer (getenv "PRINTER"))
-
-; Rmail print setup
-(setq mprint-command "tpr")
-(setq mprint-switches "-F")
-(setq mprint-printer (getenv "PRINTER"))
-
-; Rmail print setup
-(setq rmail-print-command
-      "cpr")
-(setq rmail-print-switches
-      "-l -F")
-(setq rmail-print-printer tprint-printer)
-
-; RMAIL output defaults
-(setq rmail-output-file-alist
-      '(
-	("cart@met.das.bnl.gov" . "SITEOPS")
-	("opslog@met.das.bnl.gov" . "SITEOPS")
-	("mdslog@" . "SITEOPS")
-	("opslog@" . "SITEOPS")))
-
 ;; NOTES mode autoload - load notes.el
 (autoload 'notes-mode	   "notes" "Notes mode" t)
 (autoload 'dod-mode	   "dod" "DOD mode" t)
 
-; Rmail faces - I don't like this, but I need to make quoted stuff
-; use the comment face, not the reference face.
-(defvar rmail-font-lock-keywords 
-  (eval-when-compile 
-    (let* ((cite-prefix "A-Za-z") (cite-suffix (concat cite-prefix "0-9_.@-")))
-      (list
-       '("^\\(From\\|Sender\\):" . font-lock-function-name-face)
-       '("^Reply-To:.*$" . font-lock-function-name-face)
-       '("^Subject:.*$" . font-lock-reference-face)
-       '("^Subject:" . font-lock-comment-face)
-       '("^\\(To\\|Apparently-To\\|Cc\\):" . font-lock-keyword-face)
-       (cons (concat "^[ \t]*"
-		     "\\([" cite-prefix "]+[" cite-suffix "]*\\)?"
-		     "[>|}].*")
-	     'font-lock-comment-face)
-       '("^\\(X-[A-Za-z0-9-]+\\|In-reply-to\\|Date\\):.*$"
-	 . font-lock-string-face))))
-  "Additional expressions to highlight in Rmail mode.")
-
 ; Misc setup
 ;;(setq mail-archive-blind-file "~/mail/archive")
-(setq mail-archive-blind-file nil)
-(setq rmail-in-reply-to-use-message-id nil)
 (setq comment-column -5)
 (setq lpr-command "lp")
 (setq lpr-switches '("-2l" "-ln1"))
@@ -308,116 +149,6 @@
 		      (setq comment-column 0)
 		      )))
 
-(add-hook 'rmail-summary-mode-hook
-	  (function
-	   (lambda ()
-	     (turn-on-font-lock)
-	     (local-set-key "D"
-			    'rmail-summary-delete-forward-nokidding)
-	     )))
-
-(add-hook 'rmail-mode-hook                   ;;; Stupid stupid stupid
-      (function
-       (lambda ()
-	 (local-set-key "e" 'rmail-edit-current-message)
-	 (local-set-key "x" 'rmail-expunge)
-	 (local-set-key "P" 'mprint-buffer)
-	 (local-set-key "\C-xp" 'mprint-buffer)
-	 (turn-on-font-lock)
-	 (setq rmail-highlighted-headers "^From:" )
-	 (setq rmail-ignored-headers
-	       (concat
-		rmail-ignored-headers
-;		"\\|^Mime-Version:\\|^Content-Type:\\|^X-Sender:"))
-		"\\|^X-Sender:"))
-	 )))
-
-;; goofy rmime.el stuff
-;(if (or (equal "vt200" (getenv "TERM" ))
-;	(equal "vt220" (getenv "TERM" )))
-;    nil
-;  (add-hook 'rmail-show-message-hook 'rmime-format)
-;  (add-hook 'rmail-edit-mode-hook 'rmime-cancel)
-;(setq rmail-output-file-alist '(("" rmime-cancel)))
-;  (autoload 'rmime-format "rmime" "" nil))
-
-; Try tm for mime stuff for now - see below.
-
-(setq mail-mode-hook
-      '(lambda nil
-         (progn
-;          (local-set-key "\eq" 'fill-quoted-paragraph)
-           (local-set-key "\C-c\C-y" 'mail-yank-tim)
-           (local-set-key "\C-xa" 'mail-realias)
-	   (setq mail-default-reply-to "timothy.shippert@pnl.gov")
-           (setq mail-yank-prefix ">")
-           (setq mail-header-separator
-                 "-------")
-	   (setq mime-editor/split-message nil) ; this is important for tm!
-           (setq mail-yank-ignored-headers
-                 (concat mail-yank-ignored-headers
-                         "\\|^X-Sender:"))
-	   (turn-on-font-lock)
-	   ;; reset mail-citation-hook so we can do RMAIL and GNUS
-	   ;; mail.  What a pain.
-	   (setq mail-citation-hook
-		 '(lambda nil
-		    (progn
-		      (mail-fixup-citation))))
-           )))
-
-(add-hook 'message-mode-hook
-	  (function
-	   (lambda ()
-	     (setq mail-header-separator "-------")
-	     ;; we have to actually _reset_ mail-citation-hook,
-	     ;; because message-yank-original calls it, and we want
-	     ;; GNUS to do that wacky citation stuff.  If we reset it
-	     ;; down here in the hook, then it still works for RMAIL.
-	     (local-set-key "\C-xa" 'mail-realias)
-	     (setq mail-citation-hook nil) 
-	     (setq message-yank-prefix ">")
-	     (setq message-cite-function
-		   'message-cite-original-without-signature)
-	     (set-face-foreground 'message-cited-text-face
-				  "firebrick")
-	     (set-face-foreground 'message-header-to-face "red4")
-	     (set-face-foreground 'message-header-name-face "green4")
-	     ;; I don't like how it auto-fills with a tab when I start
-	     ;; a paragraph with a tab. Especially since it doesn't
-	     ;; seem to work with other regexps.
-	     (make-local-variable 'adaptive-fill-mode)
-	     (setq adaptive-fill-mode nil)
-	     (setq normal-auto-fill-function 'do-auto-fill) ;; for
-	     ;; gnus 5.10.6?
-	     ;; But, I do like adaptive-fill-mode on some things, like
-	     ;; message-newline-and-reformat.  C'est la vie.
-	     (setq message-default-headers "Reply-To: tim.shippert@pnl.gov")
-	     (local-set-key "\M-\r"
-			    'message-newline-and-adaptive-reformat)
-	     (local-set-key "\C-c\C-x\t" 'mime-editor/insert-file) 
-	     (setq mime-editor/split-message nil) ; this is important for tm!
-	     (setq message-signature nil)
-	     )))
-
-(defun generic-send-hook ();;;mail-send-hook
-  (progn
-    (interactive)
-    (if (y-or-n-p "Insert ~/.signature file?")
-	(mail-signature nil))
-    (if mail-archive-blind-file
-	(progn
-	  (mail-position-on-field "Subject")
-	  (insert "\nFCC: " mail-archive-blind-file)))))
-
-(add-hook 'message-send-hook 'generic-send-hook)
-(add-hook 'mail-send-hook 'generic-send-hook)
-	  
-(add-hook 'gnus-summary-mode-hook
-	  '(lambda nil
-	     (progn
-	       (local-set-key [print] 'gnus-summary-print-article)
-	       (setq mm-default-directory "~/MIME/"))))
 
 (add-hook 'idl-mode-hook
 	  (function 
@@ -457,11 +188,6 @@
 				     (expand-file-name ".abbrev_file"))
 				    (abbrev-mode 1))))
 
-(setq server-switch-hook
-      '(lambda nil
-	 (progn
-	   (local-set-key "\C-c\C-c" 'server-edit))))
-
 (if (equal "vt220" (getenv "TERM" ))
     nil
   (add-hook 'dired-mode-hook 'turn-on-font-lock)
@@ -469,7 +195,6 @@
   (add-hook 'c-mode-hook 'turn-on-font-lock)
   (add-hook 'fortran-mode-hook 'turn-on-font-lock)
   )
-
 
 ;; A generic mode for info files.  Let's see how it goes
 (require 'generic)
@@ -696,7 +421,7 @@ and don't delete any header fields."
   '(update-diff-colors))
 
 ;(load "custom")
-(require 'tramp)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -711,7 +436,7 @@ and don't delete any header fields."
    ["#2e3436" "#a40000" "#4e9a06" "#c4a000" "#204a87" "#5c3566" "#729fcf" "#eeeeec"])
  '(custom-safe-themes
    (quote
-    ("cbcd1b97157de3c73e3e4db61a20110e2d2f03dec6582afaefdbbb4601708521" "8094177f57315be0278de74e1cbbc0cceaa823288cd479dc7b7de11e1b5b855a" "4a3f7f40fda830409fe0fe93c3379ade3ec33b1e6fd0a607c55d34ef6cc95763" "d6eedfc0013149f2f2ad8d44192e179af41c099131b4d24d7485ad5ee64ce392" "3683af725c9a22b9ff70427dbe410e23df12be43c4622bf29be6693748877923" "e556ba5ef0496a1b601854ad88e79877a7983e0091495df68a77821267528db8" "5e3fc08bcadce4c6785fc49be686a4a82a356db569f55d411258984e952f194a" "ab04c00a7e48ad784b52f34aa6bfa1e80d0c3fcacc50e1189af3651013eb0d58" "dc16ca33b83579d105555fc31a990e4c1a4047627ec6b53da9eb78f8b9312ebf" "f82941a294a4268b66f9cf71f65934434a5f2c8db6645efc91bb62a176d5aca0" "7153b82e50b6f7452b4519097f880d968a6eaf6f6ef38cc45a144958e553fbc6" "a0feb1322de9e26a4d209d1cfa236deaf64662bb604fa513cca6a057ddf0ef64" "04dd0236a367865e591927a3810f178e8d33c372ad5bfef48b5ce90d4b476481" "7356632cebc6a11a87bc5fcffaa49bae528026a78637acd03cae57c091afd9b9" "b946bb7354f8f468fb16218fa347034998b4812b758b8494d28ea686d977f1de" "eca7176eedb7b8a5b9e2a6500c7b2bc6b1e290dc5e405bc5f38e9a0b41122692" "c335adbb7d7cb79bc34de77a16e12d28e6b927115b992bccc109fb752a365c72" "1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" "16e45b6dee0b6d1bf2d5dd8ccd1c5c69fbaa32432931ff84da6536f40eb8eac7" "20f8f3e47d55f73310e2376369e0e5ec7fd518b1a07821b97200c3833b0575d5" "c210c9e7116e4f899abd2f4409824a8ce0f9afcb284ba6c6b89a077eba1f57d6" "56ebbbe5158c1c4e2874aef0366874a4b9a28a705b52844ddd538c2a6dada9fb" "49a3c59e4b1ca3d1b2e4e19fbc41fa93e7f8613ff3d92010d90027125f1fe6da" default)))
+    ("8094177f57315be0278de74e1cbbc0cceaa823288cd479dc7b7de11e1b5b855a" "4a3f7f40fda830409fe0fe93c3379ade3ec33b1e6fd0a607c55d34ef6cc95763" "d6eedfc0013149f2f2ad8d44192e179af41c099131b4d24d7485ad5ee64ce392" "3683af725c9a22b9ff70427dbe410e23df12be43c4622bf29be6693748877923" "e556ba5ef0496a1b601854ad88e79877a7983e0091495df68a77821267528db8" "5e3fc08bcadce4c6785fc49be686a4a82a356db569f55d411258984e952f194a" "ab04c00a7e48ad784b52f34aa6bfa1e80d0c3fcacc50e1189af3651013eb0d58" "dc16ca33b83579d105555fc31a990e4c1a4047627ec6b53da9eb78f8b9312ebf" "f82941a294a4268b66f9cf71f65934434a5f2c8db6645efc91bb62a176d5aca0" "7153b82e50b6f7452b4519097f880d968a6eaf6f6ef38cc45a144958e553fbc6" "a0feb1322de9e26a4d209d1cfa236deaf64662bb604fa513cca6a057ddf0ef64" "04dd0236a367865e591927a3810f178e8d33c372ad5bfef48b5ce90d4b476481" "7356632cebc6a11a87bc5fcffaa49bae528026a78637acd03cae57c091afd9b9" "b946bb7354f8f468fb16218fa347034998b4812b758b8494d28ea686d977f1de" "eca7176eedb7b8a5b9e2a6500c7b2bc6b1e290dc5e405bc5f38e9a0b41122692" "c335adbb7d7cb79bc34de77a16e12d28e6b927115b992bccc109fb752a365c72" "1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" "16e45b6dee0b6d1bf2d5dd8ccd1c5c69fbaa32432931ff84da6536f40eb8eac7" "20f8f3e47d55f73310e2376369e0e5ec7fd518b1a07821b97200c3833b0575d5" "c210c9e7116e4f899abd2f4409824a8ce0f9afcb284ba6c6b89a077eba1f57d6" "56ebbbe5158c1c4e2874aef0366874a4b9a28a705b52844ddd538c2a6dada9fb" "49a3c59e4b1ca3d1b2e4e19fbc41fa93e7f8613ff3d92010d90027125f1fe6da" default)))
  '(diary-entry-marker (quote font-lock-variable-name-face))
  '(display-time-mode t)
  '(electric-indent-mode nil)
@@ -737,7 +462,6 @@ static char *note[] = {
 \"######....\",
 \"#######..#\" };")))
  '(fci-rule-color "#f6f0e1")
- '(file-name-shadow-mode nil)
  '(frame-brackground-mode (quote dark))
  '(gnus-logo-colors (quote ("#0d7b72" "#adadad")))
  '(gnus-mode-line-image-cache
@@ -807,7 +531,40 @@ static char *gnus-pointer[] = {
   
 (setq minibuffer-max-depth nil)
 
-(server-start)
+(font-lock-fontify-buffer)
 
-(if (file-exists-p "~/.emacs.d/local-init.el")
-    (load-file "~/.emacs.d/local-init.el"))
+(load-theme 'shippert 't)
+
+; Fix some faces that don't work right while printing. This should
+; modify the faces in place.  I discovered this when I thought I
+; couldn't print the background - this lets you modify the faces if
+; you need different ones for printing than for in the buffer.
+;(ps-extend-face '(list-face "blue" "yellow" bold))
+;(ps-extend-face '(red-face "red" "yellow" box) 'MERGE)
+;(ps-extend-face '(red-face "red" "yellow" bold) 'MERGE)
+;(ps-extend-face '(zoinks-face "green" "black" bold) 'MERGE)
+;(ps-extend-face '(zoinks-face "green" "black" box) 'MERGE)
+;(ps-extend-face '(loud-face "orange" "black" bold))
+
+; Turn on background for the emphasized fonts.  So simple, but so hard
+; to find.
+(setq ps-use-face-background 't)
+
+(setq font-lock-maximum-decoration t)
+
+(global-font-lock-mode t)
+; ;;; set my faces
+(font-lock-mode 1)
+
+;; Print the line number
+(setq ps-line-number 't)
+
+;; Reload the buffer to apply this font-locking
+(revert-buffer 't 't)
+
+;; Now print and exit
+(ps-print-buffer-with-faces (concat (file-name-nondirectory
+				     buffer-file-name)
+				    ".ps"))
+(save-buffers-kill-terminal t)
+

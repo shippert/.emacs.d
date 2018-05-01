@@ -1,0 +1,6023 @@
+%!PS-Adobe-3.0
+%%Title: init.el
+%%Creator: ps-print v7.3.5
+%%For: Tim Shippert
+%%CreationDate: 12:53:36 Nov 01 2017
+%%Orientation: Portrait
+%%DocumentNeededResources: font Times-Roman Times-Italic
+%%+ font Courier
+%%+ font Courier-Bold
+%%+ font Courier-Oblique
+%%+ font Courier-BoldOblique
+%%+ font Helvetica
+%%+ font Helvetica-Bold
+%%DocumentSuppliedResources: procset PSPrintUserDefinedPrologue-shippert 0 0
+%%DocumentMedia: Letter 612 792 0 () ()
+%%PageOrder: Ascend
+%%Pages: (atend)
+%%Requirements:
+%%EndComments
+%%BeginDefaults
+%%PageMedia: Letter
+%%EndDefaults
+
+%%BeginProlog
+
+/languagelevel where{pop}{/languagelevel 1 def}ifelse
+/ErrorMessage  1 def
+
+% === BEGIN ps-print prologue 0
+% version: 6.0
+
+% Copyright (C) 2000-2014 Free Software Foundation, Inc.
+
+% This file is part of GNU Emacs.
+
+% GNU Emacs is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+
+% GNU Emacs is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+
+% You should have received a copy of the GNU General Public License
+% along with GNU Emacs.  If not, see <http://www.gnu.org/licenses/>.
+
+% As a special exception, the copyright holders of this module give
+% you permission to include the module in a Postscript file generated
+% by Emacs or other free software together with the result of
+% converting text to be printed, regardless of the license terms of
+% that text, and to use under terms of your choice the page images
+% resulting from formatting said combination.  If you modify this
+% module, you may extend this exception to your version of the module
+% but you are not obligated to do so.  If you do not wish to do so,
+% delete this exception statement from your version.
+
+
+%%BeginProcSet: ErrorHandler
+% Downloaded Error Break-page handler
+% Adapted from:
+%     PostScript Language Program Design,
+%     Adobe Systems Incorporated.
+%     Appendix A, pages 217-219
+
+/ps$brkpage where{pop}
+{
+ /ps$brkpage 64 dict def
+ ps$brkpage begin
+  /tx 0 def/ty 0 def/toy 0 def/tox 0 def
+  /prnt{
+   dup type/stringtype ne{=string cvs}if
+   dup length 6 mul
+   /tx exch def/ty 10 def
+   currentpoint/toy exch def/tox exch def
+   1 setgray newpath
+   tox toy 2 sub moveto
+   0 ty rlineto tx 0 rlineto
+   0 ty neg rlineto
+   closepath fill
+   tox toy moveto 0 setgray show
+  }bind def
+  /nl{currentpoint exch pop lmargin exch moveto 0 -10 rmoveto}def
+  /=={/cp 0 def typeprint nl}def
+  /typeprint{dup type dup currentdict exch known{exec}{unknowntype}ifelse}readonly def
+  /lmargin 72 def
+  /rmargin 72 def
+  /tprint{
+   dup length cp add rmargin gt{nl/cp 0 def}if
+   dup length cp add/cp exch def
+   prnt
+  }readonly def
+  /cvsprint{=string cvs tprint( )tprint}readonly def
+  /unknowntype{exch pop cvlit(??)tprint cvsprint}readonly def
+  /integertype{cvsprint}readonly def
+  /realtype{cvsprint}readonly def
+  /booleantype{cvsprint}readonly def
+  /operatortype{(//)tprint cvsprint}readonly def
+  /marktype{pop(-mark-)tprint}readonly def
+  /dicttype{pop(-dictionary-)tprint}readonly def
+  /nulltype{pop(-null-)tprint}readonly def
+  /filetype{pop(-filestream-)tprint}readonly def
+  /savetype{pop(-savelevel-)tprint}readonly def
+  /fonttype{pop(-fontid-)tprint}readonly def
+  /nametype{dup xcheck not{(/)tprint}if cvsprint}readonly def
+  /stringtype{
+   dup rcheck
+   {(\()tprint tprint(\))tprint}
+   {pop(-string-)tprint}ifelse}readonly def
+  /arraytype{
+   dup rcheck
+   {dup xcheck
+    {({)tprint{typeprint}forall(})tprint}
+    {([)tprint{typeprint}forall(])tprint}ifelse}
+   {pop(-array-)tprint}ifelse}readonly def
+  /packedarraytype{
+   dup rcheck
+   {dup xcheck
+    {({)tprint{typeprint}forall(})tprint}
+    {([)tprint{typeprint}forall(])tprint}ifelse}
+   {pop(-packedarray-)tprint}ifelse}readonly def
+  /courier/Courier findfont 10 scalefont def
+  /OLDhandleerror errordict/handleerror get def
+ end %ps$brkpage
+
+ /handleerror{
+  systemdict begin $error begin ps$brkpage begin
+  newerror
+  {/newerror false store vmstatus pop pop 0 ne{grestoreall}if
+   initgraphics
+   ErrorMessage 1 and 0 ne{ % print on paper
+    courier setfont lmargin 720 moveto
+    (# ERROR: )prnt errorname prnt nl
+    (# OFFENDING COMMAND: )prnt/command load prnt
+    $error/ostack known
+    {nl nl(# STACK:)prnt nl nl $error/ostack get aload length{==}repeat}if
+    $error/errorinfo known
+    {nl nl(# ERRORINFO:)prnt nl nl $error/errorinfo get aload length{==}repeat}if
+    systemdict/showpage get exec}if
+   ErrorMessage 2 and 0 ne{ % send back to printing system
+    (\%\%[ Error: )print errorname =print
+    (; OffendingCommand: )print/command load =print
+    $error/errorinfo known
+    {(; ErrorInfo:)print $error/errorinfo get aload length{( )=print =print}repeat}if
+    ( ]\%\%)= flush
+    (\%\%[ Rest of job is ignored ]\%\%)= flush}if
+   /newerror true store}if
+  end end end
+  stop
+ } % handleerror
+ dup 0 systemdict put % replace name by actual dict object
+ dup 4 ps$brkpage put % replace name by dict object
+ bind readonly
+
+ errordict 3 1 roll put % put proc in errordict as /handleerror
+}ifelse
+%%EndProcSet
+
+
+% operators for language level 2 only
+
+(<<)cvn where			% << operator
+{pop/BMark(<<)cvn load def}
+{/BMark{mark}bind def}ifelse
+(>>)cvn where			% >> operator
+{pop/EMark(>>)cvn load def}
+{/EMark{counttomark 2 idiv dup dict begin{def}repeat pop currentdict end}bind def}ifelse
+/setpagedevice where		% setpagedevice
+{pop}
+{/setpagedevice{pop}bind def}ifelse
+/packedarray where		% packedarray
+{pop}
+{/packedarray{array astore readonly}bind def}ifelse
+
+
+% device dependent operators
+
+/DefOp{
+ dup where{pop pop pop}
+ {exch dup where{pop}{pop/pop}ifelse load def}ifelse}def
+
+/duplexmode/setduplexmode DefOp
+/tumble/settumble DefOp
+
+% === END ps-print prologue 0
+
+%%BeginResource: procset PSPrintUserDefinedPrologue-shippert 0 0
+
+
+%%EndResource
+
+/LandscapeMode       false def
+/UpsideDown          false def
+/NumberOfColumns     1 def
+/LandscapePageHeight 792.0 def
+/PrintPageWidth      498.6141732283465 def
+/PrintWidth   498.6141732283465 def
+/PrintHeight  643.7029732283465 def
+/LeftMargin   56.69291338582677 def
+/RightMargin  56.69291338582677 def
+/InterColumn  56.69291338582677 def
+/BottomMargin 42.51968503937008 def
+/TopMargin    42.51968503937008 def
+/HeaderOffset 28.346456692913385 def
+/HeaderPad    2.4276 def
+/FooterOffset 28.346456692913385 def
+/FooterPad    0 def
+/FooterLines  2 def
+/ShowNofN           true def
+/SwitchHeader       false def
+/PrintOnlyOneHeader false def
+/PrintHeader        true def
+/PrintHeaderFrame   true def
+/HeaderFrameProperties [0.000 0.900 0.400 0.000 0.000 ]def
+/PrintFooter        false def
+/PrintFooterFrame   true def
+/FooterFrameProperties [0.000 0.900 0.400 0.000 0.000 ]def
+/LineSpacing      0 def
+/ParagraphSpacing 0 def
+/LineHeight       8.967500000000001 def
+/LinesPerColumn   72 def
+/WarnPaperSize    true def
+/Zebra            false def
+/PrintLineNumber  true def
+/SyncLineZebra    false def
+/ZebraFollow      0 def
+/PrintLineStep    1 def
+/PrintLineStart   1 def
+/LineNumberColor  [0.000 0.000 0.000] def
+/ZebraHeight      3 def
+/ZebraColor       0.950 def
+/BackgroundColor  [1.000 1.000 1.000] def
+/UseSetpagedevice false def
+
+/PageWidth PrintPageWidth LeftMargin add RightMargin add def
+
+/N-Up           1 def
+/N-Up-Landscape false def
+/N-Up-Border    true def
+/N-Up-Lines     1 def
+/N-Up-Columns   1 def
+/N-Up-Missing   0 def
+/N-Up-Margin    28.346456692913385 def
+/N-Up-Repeat    N-Up-Lines def
+/N-Up-End       N-Up-Columns def
+/N-Up-XColumn   PageWidth def
+/N-Up-YColumn   0 def
+/N-Up-XLine     N-Up-End 1 sub PageWidth mul neg def
+/N-Up-YLine     LandscapePageHeight neg def
+/N-Up-XStart    0 def
+/N-Up-YStart    0 def
+
+% === BEGIN ps-print prologue 1
+% version: 6.1
+
+% Copyright (C) 2000-2014 Free Software Foundation, Inc.
+
+% This file is part of GNU Emacs.
+
+% GNU Emacs is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+
+% GNU Emacs is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+
+% You should have received a copy of the GNU General Public License
+% along with GNU Emacs.  If not, see <http://www.gnu.org/licenses/>.
+
+% As a special exception, the copyright holders of this module give
+% you permission to include the module in a Postscript file generated
+% by Emacs or other free software together with the result of
+% converting text to be printed, regardless of the license terms of
+% that text, and to use under terms of your choice the page images
+% resulting from formatting said combination.  If you modify this
+% module, you may extend this exception to your version of the module
+% but you are not obligated to do so.  If you do not wish to do so,
+% delete this exception statement from your version.
+
+
+% ISOLatin1Encoding stolen from ps_init.ps in GhostScript 2.6.1.4:
+/ISOLatin1Encoding where{pop}{
+% -- The ISO Latin-1 encoding vector isn't known, so define it.
+% -- The first half is the same as the standard encoding,
+% -- except for minus instead of hyphen at code 055.
+/ISOLatin1Encoding
+StandardEncoding 0 45 getinterval aload pop
+    /minus
+StandardEncoding 46 82 getinterval aload pop
+%*** NOTE: the following are missing in the Adobe documentation,
+%*** but appear in the displayed table:
+%*** macron at 0225, dieresis at 0230, cedilla at 0233, space at 0240.
+% 0200 (128)
+    /.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef
+    /.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef
+    /dotlessi/grave/acute/circumflex/tilde/macron/breve/dotaccent
+    /dieresis/.notdef/ring/cedilla/.notdef/hungarumlaut/ogonek/caron
+% 0240 (160)
+    /space/exclamdown/cent/sterling
+	/currency/yen/brokenbar/section
+    /dieresis/copyright/ordfeminine/guillemotleft
+	/logicalnot/hyphen/registered/macron
+    /degree/plusminus/twosuperior/threesuperior
+	/acute/mu/paragraph/periodcentered
+    /cedilla/onesuperior/ordmasculine/guillemotright
+	/onequarter/onehalf/threequarters/questiondown
+% 0300 (192)
+    /Agrave/Aacute/Acircumflex/Atilde
+	/Adieresis/Aring/AE/Ccedilla
+    /Egrave/Eacute/Ecircumflex/Edieresis
+	/Igrave/Iacute/Icircumflex/Idieresis
+    /Eth/Ntilde/Ograve/Oacute
+	/Ocircumflex/Otilde/Odieresis/multiply
+    /Oslash/Ugrave/Uacute/Ucircumflex
+	/Udieresis/Yacute/Thorn/germandbls
+% 0340 (224)
+    /agrave/aacute/acircumflex/atilde
+	/adieresis/aring/ae/ccedilla
+    /egrave/eacute/ecircumflex/edieresis
+	/igrave/iacute/icircumflex/idieresis
+    /eth/ntilde/ograve/oacute
+	/ocircumflex/otilde/odieresis/divide
+    /oslash/ugrave/uacute/ucircumflex
+	/udieresis/yacute/thorn/ydieresis
+256 packedarray def
+}ifelse
+
+/reencodeFontISO{ %def
+  dup
+  length 12 add dict	% Make a new font (a new dict the same size
+			% as the old one) with room for our new symbols.
+
+  begin			% Make the new font the current dictionary.
+
+    % Copy each of the symbols from the old dictionary
+    % to the new one except for the font ID.
+    {1 index/FID ne{def}{pop pop}ifelse}forall
+
+    % Override the encoding with the ISOLatin1 encoding.
+    currentdict/FontType get 0 ne{/Encoding ISOLatin1Encoding def}if
+
+    % Use the font's bounding box to determine the ascent, descent,
+    % and overall height; don't forget that these values have to be
+    % transformed using the font's matrix.
+
+%          ^    (x2 y2)
+%          |       |
+%          |       v
+%          |  +----+ - -
+%          |  |    |   ^
+%          |  |    |   | Ascent (usually > 0)
+%          |  |    |   |
+% (0 0) -> +--+----+-------->
+%             |    |   |
+%             |    |   v Descent (usually < 0)
+% (x1 y1) --> +----+ - -
+
+    currentdict/FontType get 0 ne
+    {/FontBBox load aload pop			% -- x1 y1 x2 y2
+     FontMatrix transform/Ascent  exch def pop
+     FontMatrix transform/Descent exch def pop}
+    {/PrimaryFont FDepVector 0 get def
+     PrimaryFont/FontBBox get aload pop
+     PrimaryFont/FontMatrix get transform/Ascent exch def pop
+     PrimaryFont/FontMatrix get transform/Descent exch def pop}ifelse
+
+    /FontHeight Ascent Descent sub def	% use `sub' because descent < 0
+
+    % Define these in case they're not in the FontInfo
+    % (also, here they're easier to get to).
+    /UnderlinePosition  Descent 0.70 mul def
+    /OverlinePosition   Descent UnderlinePosition sub Ascent add def
+    /StrikeoutPosition  Ascent 0.30 mul def
+    /LineThickness      FontHeight 0.05 mul def
+    /Xshadow            FontHeight  0.08 mul def
+    /Yshadow            FontHeight -0.09 mul def
+    /SpaceBackground    Descent neg UnderlinePosition add def
+    /XBox               Descent neg def
+    /YBox               LineThickness 0.7 mul def
+
+    currentdict		% Leave the new font on the stack
+    end			% Stop using the font as the current dictionary.
+    definefont		% Put the font into the font dictionary
+    pop			% Discard the returned font.
+}bind def
+
+% Font definition
+/DefFont{findfont exch scalefont reencodeFontISO}def
+
+% Font selection
+/F{
+  findfont
+  dup/Ascent            get/Ascent            exch def
+  dup/Descent           get/Descent           exch def
+  dup/FontHeight        get/FontHeight        exch def
+  dup/UnderlinePosition get/UnderlinePosition exch def
+  dup/OverlinePosition  get/OverlinePosition  exch def
+  dup/StrikeoutPosition get/StrikeoutPosition exch def
+  dup/LineThickness     get/LineThickness     exch def
+  dup/Xshadow           get/Xshadow           exch def
+  dup/Yshadow           get/Yshadow           exch def
+  dup/SpaceBackground   get/SpaceBackground   exch def
+  dup/XBox              get/XBox              exch def
+  dup/YBox              get/YBox              exch def
+  setfont
+}def
+
+/FG/setrgbcolor load def
+
+/bg false def
+/BG{
+  dup/bg exch def
+  {[4 1 roll]}
+  {[1.0 1.0 1.0]}
+  ifelse
+  /bgcolor exch def
+}def
+
+%  B    width    C
+%   +-----------+
+%               | Ascent  (usually > 0)
+% A +           +
+%               | Descent (usually < 0)
+%   +-----------+
+%  E    width    D
+
+/dobackground{				% width --
+  currentpoint				% -- width x y
+  gsave
+    newpath
+    moveto				% A (x y)
+    0 Ascent rmoveto			% B
+    dup 0 rlineto			% C
+    0 Descent Ascent sub rlineto	% D
+    neg 0 rlineto			% E
+    closepath
+    FillBgColor
+  grestore
+}def
+
+/eolbg{					% dobackground until right margin
+  PrintWidth				% -- x-eol
+  currentpoint pop			% -- cur-x
+  sub					% -- width until eol
+  dobackground
+}def
+
+/LineHS LineHeight LineSpacing add def
+/ParagraphHS LineHeight ParagraphSpacing add def
+/PSL{/h exch def bg{eolbg}if  0  currentpoint exch pop h sub  moveto}def
+/PLN{PrintLineNumber{doLineNumber}if}def
+
+/SL{LineHS PSL isLineStep pop}def	% Soft Linefeed
+
+/PHL{ParagraphHS PSL PLN}def		% Paragraph Hard Linefeed
+/LHL{LineHS PSL PLN}def			% Hard Linefeed
+
+% Some debug
+/dcp{currentpoint exch 40 string cvs print(, )print =}def
+/dp{print 2 copy  exch 40 string cvs print(, )print =}def
+
+/W{
+  ( )stringwidth	% Get the width of a space in the current font.
+  pop			% Discard the Y component.
+  mul			% Multiply the width of a space
+			% by the number of spaces to plot
+  bg{dup dobackground}if
+  0 rmoveto
+}def
+
+/Effect          0 def
+/EffectUnderline false def
+/EffectStrikeout false def
+/EffectOverline  false def
+/EffectShadow    false def
+/EffectBox       false def
+/EffectOutline   false def
+
+% effect: 1  - underline  2   - strikeout  4  - overline
+%         8  - shadow     16  - box        32 - outline
+/EF{
+  /Effect exch def
+  /EffectUnderline Effect 1  and 0 ne def
+  /EffectStrikeout Effect 2  and 0 ne def
+  /EffectOverline  Effect 4  and 0 ne def
+  /EffectShadow    Effect 8  and 0 ne def
+  /EffectBox       Effect 16 and 0 ne def
+  /EffectOutline   Effect 32 and 0 ne def
+}def
+
+% stack:  string  |-  --
+/S{
+  /xx currentpoint dup Descent add/yy exch def
+  Ascent add/YY exch def def
+  dup stringwidth pop xx add/XX exch def
+  EffectShadow{
+    /yy yy Yshadow add def
+    /XX XX Xshadow add def
+  }if
+  bg{
+    true
+    EffectBox
+      {SpaceBackground doBox}
+      {xx yy XX YY doRect}
+    ifelse
+  }if						% background
+  EffectBox      {false 0 doBox}if		% box
+  EffectShadow   {dup doShadow}if		% shadow
+  EffectOutline
+    {true doOutline}				% outline
+    {show}					% normal text
+  ifelse
+  EffectUnderline{UnderlinePosition Hline}if	% underline
+  EffectStrikeout{StrikeoutPosition Hline}if	% strikeout
+  EffectOverline {OverlinePosition  Hline}if	% overline
+}bind def
+
+% stack:  position  |-  --
+/Hline{
+  currentpoint exch pop add dup
+  gsave
+  newpath
+  xx exch moveto
+  XX exch lineto
+  closepath
+  LineThickness setlinewidth stroke
+  grestore
+}bind def
+
+% stack:  fill-or-not delta  |-  --
+/doBox{
+  /dd exch def
+  xx XBox sub dd sub yy YBox sub dd sub
+  XX XBox add dd add YY YBox add dd add
+  doRect
+}bind def
+
+% stack:  fill-or-not lower-x lower-y upper-x upper-y  |-  --
+/doRect{
+  /rYY exch def
+  /rXX exch def
+  /ryy exch def
+  /rxx exch def
+  gsave
+  newpath
+  rXX rYY moveto
+  rxx rYY lineto
+  rxx ryy lineto
+  rXX ryy lineto
+  closepath
+  % top of stack: fill-or-not
+  {FillBgColor}
+  {LineThickness setlinewidth stroke}ifelse
+  grestore
+}bind def
+
+% stack:  string  |-  --
+/doShadow{
+  gsave
+  Xshadow Yshadow rmoveto
+  false doOutline
+  grestore
+}bind def
+
+/st 1 string def
+
+% stack:  string fill-or-not  |-  --
+/doOutline{
+  /-fillp- exch def
+  /-ox- currentpoint/-oy- exch def def
+  gsave
+  LineThickness setlinewidth
+  {st 0 3 -1 roll put
+   st dup true charpath
+   -fillp- {gsave FillBgColor grestore}if
+   stroke stringwidth
+   -oy- add/-oy- exch def
+   -ox- add/-ox- exch def
+   -ox- -oy- moveto
+  }forall
+  grestore
+  -ox- -oy- moveto
+}bind def
+
+% stack:  --
+/FillBgColor{bgcolor aload pop setrgbcolor fill}bind def
+
+% stack:  -- |- boolean
+/isLineStep{
+  SyncLineZebra
+  {PLScounter 0 gt						% or zebra
+   {/PLScounter PLScounter 1 sub def PLScounter 0 eq}
+   {false}ifelse
+   PrintLineStep 1 gt
+   {/PrintLineStep PrintLineStep 1 sub def}
+   {/PrintLineStep ZebraHeight def
+    /PLScounter PrintLineStart def}ifelse}
+  {LineNumber PrintLineStart sub PrintLineStep mod 0 eq}ifelse	% or line step
+}def
+
+% stack:  --
+/doLineNumber{
+  /LineNumber where
+  {pop
+   isLineStep			% or line step
+   LineNumber Lines ge or	% or last line
+   {currentfont
+    gsave
+    LineNumberColor SetColor
+    /L0 findfont setfont
+    LineNumber Lines ge
+    {(end      )}
+    {LineNumber 6 string cvs(      )strcat}ifelse
+    dup stringwidth pop neg 0 rmoveto
+    show
+    grestore
+    setfont}if
+    /LineNumber LineNumber 1 add def
+  }if
+}def
+
+% stack: color-specifier |- --
+/SetColor{dup type/realtype eq{setgray}{aload pop setrgbcolor}ifelse}def
+
+% stack: --
+/printZebra{
+  gsave
+  ZebraColor SetColor
+  /double-zebra ZebraHeight ZebraHeight add def
+  /yiter double-zebra LineHS mul neg def
+  /xiter PrintWidth InterColumn add def
+  /zebra-line LinesPrinted def
+  NumberOfColumns{LinesPerColumn doColumnZebra xiter 0 rmoveto}repeat
+  grestore
+}def
+
+% stack:  lines-per-column |- --
+/doColumnZebra{
+  /lpc exch def
+  gsave
+  ZebraFollow 1 and 0 ne{
+    /H ZebraHeight zebra-line ZebraHeight mod sub def
+    /lpc lpc H sub def
+    zebra-line double-zebra mod ZebraHeight lt
+    {H doZebra	% "black" stripe followed by a "white" stripe
+     /lpc lpc ZebraHeight sub def
+     H ZebraHeight add}
+    {H}ifelse	% "white" stripe
+    LineHS mul neg 0 exch rmoveto
+    /zebra-line zebra-line LinesPerColumn add def
+  }if
+  /zspacing 0 def
+  lpc dup double-zebra idiv{ZebraHeight doZebra 0 yiter rmoveto}repeat
+  double-zebra mod dup 0 le{pop}
+  {dup ZebraHeight gt
+   {pop ZebraHeight}
+   {/zspacing LineSpacing def
+    ZebraFollow 2 and 0 ne{pop ZebraHeight}if}ifelse
+   doZebra}ifelse
+  grestore
+}def
+
+% stack:  zebra-height (in lines) |- --
+/doZebra{
+  /zh exch 0.05 sub LineHS mul zspacing sub def
+  gsave
+  0 LineHeight 0.65 mul rmoveto
+  PrintWidth 0 rlineto
+  0 zh neg rlineto
+  PrintWidth neg 0 rlineto
+  0 zh rlineto
+  fill
+  grestore
+}def
+
+% stack: --
+/printBackground{
+  /BackgroundColor where{
+    /LHg LineHeight 0.65 mul def
+    /PHg PrintHeight LHg add def
+    pop gsave BackgroundColor SetColor
+    NumberOfColumns{
+     gsave
+     0 LHg rmoveto
+     PrintWidth 0 rlineto
+     0 PHg neg rlineto
+     PrintWidth neg 0 rlineto
+     0 PHg rlineto
+     fill
+     grestore
+     PrintWidth InterColumn add 0 rmoveto
+    }repeat
+    grestore
+  }if
+}def
+
+% tx ty rotation xscale yscale xpos ypos BeginBackImage
+/BeginBackImage{
+  /-save-image- save def
+  /showpage{}def
+  translate
+  scale
+  rotate
+  translate
+}def
+
+/EndBackImage{-save-image- restore}def
+
+% string fontsize fontname rotation gray xpos ypos ShowBackText
+/ShowBackText{
+  gsave
+  translate
+  setgray
+  rotate
+  findfont exch dup/-offset- exch -0.25 mul def scalefont setfont
+  0 -offset- moveto
+  /-saveLineThickness- LineThickness def
+  /LineThickness 1 def
+  false doOutline
+  /LineThickness -saveLineThickness- def
+  grestore
+}def
+
+/SetPageSize{
+  BMark/PageSize[PageWidth LandscapePageHeight LandscapeMode{exch}if]EMark setpagedevice
+}def
+
+/BeginDoc{
+  % ---- Remember space width of the normal text font `f0'.
+  /SpaceWidth/f0 findfont setfont( )stringwidth pop def
+  % ---- save the state of the document (useful for ghostscript!)
+  /docState save def
+  % ---- [andrewi] set PageSize based on chosen dimensions
+  UseSetpagedevice{
+   WarnPaperSize{SetPageSize}{mark{SetPageSize}stopped cleartomark}ifelse
+  }if
+  /ColumnWidth PrintWidth InterColumn add def
+  % ---- define where  printing will start
+  /f0 F					% this installs Ascent
+  /PrintStartY PrintHeight Ascent sub def
+  /ColumnIndex 1 def
+  /N-Up-Counter N-Up-End 1 sub def
+  /PLScounter PrintLineStart def
+}def
+
+/EndDoc{
+  % ---- restore the state of the document (useful for ghostscript!)
+  docState restore
+}def
+
+/BeginDSCPage{
+  % ---- when 1st column, save the state of the page
+  ColumnIndex 1 eq{/pageState save def}if
+  % ---- save the state of the column
+  /columnState save def
+}def
+
+/PrintHeaderWidth PrintOnlyOneHeader{PrintPageWidth}{PrintWidth}ifelse def
+
+/BeginPage{
+  /LinesPrinted exch def
+  % ---- when 1st column, print all background effects
+  ColumnIndex 1 eq{
+    0 PrintStartY moveto		% move to where printing will start
+    printBackground
+    Zebra{printZebra}if
+    printGlobalBackground
+    printLocalBackground
+  }if
+  PrintOnlyOneHeader{ColumnIndex 1 eq}{true}ifelse
+  dup PrintHeader and{
+    PrintHeaderFrame{HeaderFrame}if
+    HeaderText
+  }if
+  PrintFooter and{
+    PrintFooterFrame{FooterFrame}if
+    FooterText
+  }if
+  0 PrintStartY moveto			% move to where printing will start
+  /LineNumber where
+  {pop
+   SyncLineZebra
+   {/H PageNumber 1 sub NumberOfColumns mul ColumnIndex 1 sub add
+       LinesPerColumn mul ZebraHeight mod def
+    /PLScounter H PrintLineStart ge{0}{PrintLineStart H sub}ifelse def
+    /PrintLineStep ZebraHeight H sub def}if}if
+  PLN
+}def
+
+/EndPage{bg{eolbg}if}def
+
+/EndDSCPage{
+  ColumnIndex NumberOfColumns eq{
+    % ---- restore the state of the page
+    pageState restore
+    /ColumnIndex 1 def
+    % ---- N-up printing
+    N-Up 1 gt{
+      N-Up-Counter 0 gt
+      {% ---- Next page on same row
+	/N-Up-Counter N-Up-Counter 1 sub def
+	N-Up-XColumn N-Up-YColumn}
+      {% ---- Next page on next line
+	/N-Up-Counter N-Up-End 1 sub def
+	N-Up-XLine N-Up-YLine}ifelse
+      translate
+    }if
+  }{ % else
+    % ---- restore the state of the current column
+    columnState restore
+    % ---- and translate to the next column
+    ColumnWidth 0 translate
+    /ColumnIndex ColumnIndex 1 add def
+  }ifelse
+}def
+
+/TextStart{
+  LeftMargin BottomMargin
+  PrintFooter{
+    FooterPad add
+    FooterLines FooterLineHeight mul add
+    FooterPad add
+    FooterOffset add}if
+}def
+
+% stack: number-of-pages-per-sheet |- --
+/BeginSheet{
+  /sheetState save def
+  /pages-per-sheet exch def
+
+  % ---- translate to bottom-right corner of Portrait page
+  LandscapeMode{
+    LandscapePageHeight 0 translate
+    90 rotate
+  }if
+  % ---- [jack] Kludge: my ghostscript window is 21x27.7 instead of 21x29.7
+  /JackGhostscript where{pop 1 27.7 29.7 div scale}if
+  UpsideDown{PageWidth LandscapePageHeight translate 180 rotate}if
+  % ---- N-Up printing
+  N-Up 1 gt{
+    % ---- landscape
+    N-Up-Landscape{
+      PageWidth 0 translate
+      90 rotate
+    }if
+    N-Up-Margin dup translate
+    % ---- scale
+    LandscapeMode{
+      /HH PageWidth def
+      /WW LandscapePageHeight def
+    }{
+      /HH LandscapePageHeight def
+      /WW PageWidth def
+    }ifelse
+    /xx 0 def
+    N-Up-Landscape{
+      /ww WW WW mul N-Up-Lines HH mul div def
+      /cc HH N-Up-Columns N-Up-Missing add div def
+      ww cc gt{/xx WW def/WW cc ww div WW mul def/xx xx WW sub def}if
+    }{
+      /hh HH N-Up-Columns N-Up-Missing add div def
+      /cc HH N-Up-Lines div def
+      hh cc gt{/xx WW def/WW cc hh div WW mul def/xx xx WW sub def}if
+    }ifelse
+    WW N-Up-Margin sub N-Up-Margin sub
+    N-Up-Landscape
+    {N-Up-Lines div HH}
+    {N-Up-Columns N-Up-Missing add div WW}ifelse
+    div dup scale
+    LandscapeMode{/yy 0 def}{/yy xx def/xx 0 def}ifelse
+    xx N-Up-Repeat 1 sub LandscapePageHeight mul yy add translate
+    % ---- go to start position in page matrix
+    N-Up-XStart N-Up-Missing 0.5 mul
+    LandscapeMode
+    {LandscapePageHeight mul N-Up-YStart add}
+    {PageWidth mul add N-Up-YStart}ifelse
+    translate
+  }if
+  % ---- translate to lower left corner of TEXT
+  TextStart translate
+
+  % ---- N-up printing
+  N-Up 1 gt N-Up-Border and pages-per-sheet 0 gt and{
+    % ---- page border
+    gsave
+    0 setgray
+    TextStart exch neg exch neg moveto
+    N-Up-Repeat
+    {N-Up-End
+     {gsave
+      PageWidth 0 rlineto
+      0 LandscapePageHeight rlineto
+      PageWidth neg 0 rlineto
+      closepath stroke
+      grestore
+      /pages-per-sheet pages-per-sheet 1 sub def
+      pages-per-sheet 0 le{exit}if
+      N-Up-XColumn N-Up-YColumn rmoveto
+     }repeat
+     pages-per-sheet 0 le{exit}if
+     N-Up-XLine N-Up-XColumn sub N-Up-YLine rmoveto
+    }repeat
+    grestore
+  }if
+}def
+
+/EndSheet{
+  showpage
+  sheetState restore
+}def
+
+/SetHeaderLines{			% nb-lines --
+  /HeaderLines exch def
+  % ---- bottom up
+  HeaderPad
+  HeaderLines 1 sub HeaderLineHeight mul add
+  HeaderTitleLineHeight add
+  HeaderPad add
+  /HeaderHeight exch def
+}def
+
+/SetFooterLines{			% nb-lines --
+  /FooterLines exch def
+  % ---- bottom up
+  FooterPad
+  FooterLines FooterLineHeight mul add
+  FooterPad add
+  /FooterHeight exch def
+}def
+
+% |---------|
+% |  tm     |
+% |---------|
+% |  header |
+% |-+-------| <-- (x y)
+% |  ho     |
+% |---------|
+% |  text   |
+% |---------|
+% |  fo     |
+% |---------|
+% |  footer |
+% |-+-------| <-- (0 0)
+% |  bm     |
+% |---------|
+
+% -- |- x y
+/HeaderFrameStart{0  PrintHeight HeaderOffset add}def
+/FooterFrameStart{0  FooterHeight FooterOffset add neg}def
+
+/doFramePath{
+  /h exch def
+  PrintHeaderWidth	0	rlineto
+  0			h	rlineto
+  PrintHeaderWidth neg	0	rlineto
+  0			h neg	rlineto
+}def
+
+/HeaderFramePath{HeaderHeight doFramePath}def
+/FooterFramePath{FooterHeight doFramePath}def
+
+% /path-fun /start-fun vector-property doFrame
+/doFrame{
+  /vecFrame exch def
+  /startFrame exch load def
+  /pathFrame exch load def
+  gsave
+    vecFrame 2 get setlinewidth				% frame border width
+    % ---- do the shadow of the next rectangle
+    startFrame moveto
+    1 -1 rmoveto
+    pathFrame
+    vecFrame 4 get SetColor fill			% frame shadow color
+    % ---- do the next rectangle ...
+    startFrame moveto
+    pathFrame
+    gsave vecFrame 1 get SetColor fill grestore		% frame background
+    gsave vecFrame 3 get SetColor stroke grestore	% frame border color
+  grestore
+}def
+
+/HeaderFrame{/HeaderFramePath /HeaderFrameStart HeaderFrameProperties doFrame}def
+/FooterFrame{/FooterFramePath /FooterFrameStart FooterFrameProperties doFrame}def
+
+/HeaderStart{
+  HeaderFrameStart
+  exch HeaderPad add exch	% horizontal pad
+  % ---- bottom up
+  HeaderPad add			% vertical   pad
+  HeaderDescent sub
+  HeaderLineHeight HeaderLines 1 sub mul add
+}def
+
+/FooterStart{
+  FooterFrameStart
+  exch FooterPad add exch	% horizontal pad
+  % ---- bottom up
+  FooterPad add			% vertical   pad
+  FooterDescent sub
+  FooterLineHeight FooterLines 1 sub mul add
+}def
+
+/HeaderClip{HeaderFrameStart moveto HeaderFramePath clip}def
+/FooterClip{FooterFrameStart moveto FooterFramePath clip}def
+
+/strcat{
+  dup length 3 -1 roll dup length dup 4 -1 roll add string dup
+  0 5 -1 roll putinterval
+  dup 4 2 roll exch putinterval
+}def
+
+/pagenumberstring{
+  PageNumber 32 string cvs
+  ShowNofN{(/)strcat PageCount 32 string cvs strcat}if
+}def
+
+% lines is-right HeaderOrFooterTextLines
+/HeaderOrFooterTextLines{
+  /is_right exch def
+  HFStart moveto
+  { % ---- process the lines
+   aload pop
+   exch F
+   gsave
+    dup xcheck{exec}if
+    is_right{
+     dup stringwidth pop
+     PrintHeaderWidth exch sub HFPad HFPad add sub 0 rmoveto
+    }if
+    HFColor SetColor
+    show
+   grestore
+   0 HFLineHeight neg rmoveto
+  }forall
+}def
+
+% right-lines left-lines /start lineheight pad fore-color HeaderOrFooterText
+/HeaderOrFooterText{
+  /HFColor exch def
+  /HFPad exch def
+  /HFLineHeight exch def
+  /HFStart exch load def
+
+  % -- rightLines leftLines -- at stack
+
+  % ---- hack: `PN 1 and'  ==  `PN 2 modulo'
+  % ---- if even page number and duplex, then exchange left and right
+  PageNumber 1 and 0 eq SwitchHeader and{exch}if
+
+  % ---- process the left lines
+  false HeaderOrFooterTextLines
+
+  % ---- process the right lines
+  true HeaderOrFooterTextLines
+}def
+
+/HeaderText{
+  gsave HeaderClip
+  HeaderLinesRight HeaderLinesLeft
+  /HeaderStart HeaderLineHeight HeaderPad
+  HeaderFrameProperties 0 get
+  HeaderOrFooterText
+  grestore
+}def
+
+/FooterText{
+  gsave FooterClip
+  FooterLinesRight FooterLinesLeft
+  /FooterStart FooterLineHeight FooterPad
+  FooterFrameProperties 0 get
+  HeaderOrFooterText
+  grestore
+}def
+
+/ReportFontInfo{
+  2 copy
+  /t0 3 1 roll DefFont
+  /t0 F
+  /lh FontHeight def
+  /sw( )stringwidth pop def
+  /aw(01234567890abcdefghijklmnopqrstuvwxyz)dup length exch
+  stringwidth pop exch div def
+  /t1 12/Helvetica-Oblique DefFont
+  /t1 F
+  gsave
+    (languagelevel = )show
+    languagelevel 32 string cvs show
+  grestore
+  0 FontHeight neg rmoveto
+  gsave
+    (For )show
+    128 string cvs show
+    ( )show
+    32 string cvs show
+    ( point, the line height is )show
+    lh 32 string cvs show
+    (, the space width is )show
+    sw 32 string cvs show
+    (,)show
+  grestore
+  0 FontHeight neg rmoveto
+  gsave
+    (and a crude estimate of average character width is )show
+    aw 32 string cvs show
+    (.)show
+  grestore
+  0 FontHeight neg rmoveto
+}def
+
+% cm to point
+/cm{72 mul 2.54 div}def
+
+/ReportAllFontInfo{
+  % key = font name   value = font dictionary
+  FontDirectory{pop 10 exch ReportFontInfo}forall
+}def
+
+% 3 cm 20 cm moveto  10/Courier ReportFontInfo  showpage
+% 3 cm 20 cm moveto  ReportAllFontInfo          showpage
+
+% === END ps-print prologue 1
+
+/printGlobalBackground{
+}def
+/printLocalBackground{
+}def
+
+%%EndProlog
+
+%%BeginSetup
+
+%%IncludeResource: font Times-Roman
+%%IncludeResource: font Times-Italic
+%%IncludeResource: font Courier
+%%IncludeResource: font Courier-Bold
+%%IncludeResource: font Courier-Oblique
+%%IncludeResource: font Courier-BoldOblique
+%%IncludeResource: font Helvetica
+%%IncludeResource: font Helvetica-Bold
+/h0 14(Helvetica-Bold)cvn DefFont
+/h1 12(Helvetica)cvn DefFont
+/L0 6(Times-Italic)cvn DefFont
+/H0 12(Helvetica)cvn DefFont
+
+
+% ---- These lines must be kept together because...
+
+/h0 F
+/HeaderTitleLineHeight FontHeight def
+
+/h1 F
+/HeaderLineHeight FontHeight def
+/HeaderDescent    Descent def
+
+/H0 F
+/FooterLineHeight FontHeight def
+/FooterDescent    Descent def
+
+% ---- ...because `F' has a side-effect on `FontHeight' and `Descent'
+
+/f0 8.5(Courier)cvn DefFont
+/f1 8.5(Courier-Bold)cvn DefFont
+/f2 8.5(Courier-Oblique)cvn DefFont
+/f3 8.5(Courier-BoldOblique)cvn DefFont
+/SpaceWidthRatio 0.600000 def
+
+%%BeginFeature: *ManualFeed False
+BMark /ManualFeed false EMark setpagedevice
+%%EndFeature
+
+%%%% Start of Mule Section
+
+/Latin1Encoding {	% newname fontname  |  font
+    findfont dup length dict begin
+	{ 1 index /FID ne { def } { pop pop } ifelse } forall
+        /Encoding ISOLatin1Encoding def
+	currentdict
+    end
+    definefont
+} bind def
+
+%% Redefine fonts for multiple charsets.
+/ReDefFont {		     % fontname encoding fdepvector size  |  -
+  20 dict begin
+  3 index findfont {
+    1 index /FID ne 2 index /UniqueID ne and {def} {pop pop} ifelse
+  } forall
+  /FontType 0 def
+  /FMapType 3 def
+  /EscChar 0 def
+  % FontMatrix ::= [ size 0 0 size 0 0 ]
+  /FontMatrix exch [ exch dup 0 exch 0 exch 0 0 ] def
+  /FDepVector exch def
+  /Encoding exch def
+  currentdict
+  end			% fontname dic
+  definefont pop
+} bind def
+
+/EscChar 0 def
+
+%% End of Mule Section
+
+/F00 /Courier findfont def
+/ETOP0 256 array def
+0 1 255 { ETOP0 exch 0 put } for
+ETOP0 0 0 put
+/VTOP0 [F00] def
+/ETOP1 256 array def
+0 1 255 { ETOP1 exch 0 put } for
+ETOP1 0 0 put
+/VTOP1 [F00] def
+/ETOP2 256 array def
+0 1 255 { ETOP2 exch 0 put } for
+ETOP2 0 0 put
+/VTOP2 [F00] def
+/ETOP3 256 array def
+0 1 255 { ETOP3 exch 0 put } for
+ETOP3 0 0 put
+/VTOP3 [F00] def
+/Vh0 [ VTOP1 aload pop ] def
+
+Vh0 0 /Helvetica-Bold-latin1 /Helvetica-Bold Latin1Encoding put
+/h0 ETOP1 Vh0 14.000000 ReDefFont
+/Vh1 [ VTOP0 aload pop ] def
+
+Vh1 0 /Helvetica-latin1 /Helvetica Latin1Encoding put
+/h1 ETOP0 Vh1 12.000000 ReDefFont
+/VH0 [ VTOP0 aload pop ] def
+
+VH0 0 /Helvetica-latin1 /Helvetica Latin1Encoding put
+/H0 ETOP0 VH0 12.000000 ReDefFont
+/Vf0 [ VTOP0 aload pop ] def
+
+Vf0 0 /Courier-latin1 /Courier Latin1Encoding put
+/f0 ETOP0 Vf0 8.500000 ReDefFont
+/Vf1 [ VTOP1 aload pop ] def
+
+Vf1 0 /Courier-Bold-latin1 /Courier-Bold Latin1Encoding put
+/f1 ETOP1 Vf1 8.500000 ReDefFont
+/Vf2 [ VTOP2 aload pop ] def
+
+Vf2 0 /Courier-Oblique-latin1 /Courier-Oblique Latin1Encoding put
+/f2 ETOP2 Vf2 8.500000 ReDefFont
+/Vf3 [ VTOP3 aload pop ] def
+
+Vf3 0 /Courier-BoldOblique-latin1 /Courier-BoldOblique Latin1Encoding put
+/f3 ETOP3 Vf3 8.500000 ReDefFont
+BeginDoc
+%%EndSetup
+
+%%Page: 1 1
+/Lines 812 def
+/PageCount 12 def
+1 BeginSheet
+BeginDSCPage
+/LineNumber 1 def
+/PageNumber 1 def
+/HeaderLinesLeft[
+ [/h0 (init.el)]
+ [/h1 (~/.emacs.d/)]
+]def
+/HeaderLinesRight[
+ [/h0 /pagenumberstring load]
+ [/h1 (11/01/2017)]
+]def
+2 SetHeaderLines
+0 BeginPage
+/f0 F
+false BG
+0.000 0.000 0.000 FG
+(\() S
+/f1 F
+0.804 0.000 0.000 FG
+(if) S
+/f0 F
+0.000 0.000 0.000 FG
+( \(not \(string-match emacs-version ) S
+0.000 0.545 0.000 FG
+("21.4.1") S
+0.000 0.000 0.000 FG
+(\)\)) S
+LHL
+(    \(set-default-font ) S
+0.000 0.545 0.000 FG
+("Liberation Mono-12") S
+0.000 0.000 0.000 FG
+(\)\)) S
+PHL
+LHL
+0.000 0.000 0.804 FG
+(; ) S
+/f2 F
+(Set up for Sparc \(now\), customized for my comfort, and this is just) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+(\(define-key global-map ) S
+0.000 0.545 0.000 FG
+("\\C-l") S
+0.000 0.000 0.000 FG
+( 'forward-char\)) S
+LHL
+(\(define-key global-map ) S
+0.000 0.545 0.000 FG
+("\\C-f") S
+0.000 0.000 0.000 FG
+( 'recenter\)) S
+LHL
+(\(define-key ctl-x-map ) S
+0.000 0.545 0.000 FG
+("\\C-r") S
+0.000 0.000 0.000 FG
+( 'replace-string\)) S
+LHL
+0.000 0.000 0.804 FG
+(;;) S
+/f2 F
+(\(define-key ctl-x-map "r" 'rmail\)) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+(\(define-key ctl-x-map ) S
+0.000 0.545 0.000 FG
+("\\C-q") S
+0.000 0.000 0.000 FG
+( 'query-replace\)) S
+LHL
+0.000 0.000 0.804 FG
+(;; ) S
+/f2 F
+(ESC sequence is \\C-[) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+(\(define-key esc-map ) S
+0.000 0.545 0.000 FG
+("g") S
+0.000 0.000 0.000 FG
+( 'goto-line\)) S
+LHL
+(\(define-key esc-map ) S
+0.000 0.545 0.000 FG
+("$") S
+0.000 0.000 0.000 FG
+( 'ispell-word\)) S
+LHL
+(\(define-key esc-map ) S
+0.000 0.545 0.000 FG
+("w") S
+0.000 0.000 0.000 FG
+( 'ispell-complete-word\)) S
+LHL
+(\(define-key esc-map ) S
+0.000 0.545 0.000 FG
+("\\t") S
+0.000 0.000 0.000 FG
+( 'self-insert-command\)) S
+LHL
+(\(define-key ctl-x-map ) S
+0.000 0.545 0.000 FG
+("y") S
+0.000 0.000 0.000 FG
+( 'yow\)) S
+LHL
+(\(define-key ctl-x-map ) S
+0.000 0.545 0.000 FG
+("c") S
+0.000 0.000 0.000 FG
+( 'compile\)) S
+LHL
+(\(define-key ctl-x-map ) S
+0.000 0.545 0.000 FG
+("p") S
+0.000 0.000 0.000 FG
+( 'tprint-buffer\) ) S
+0.000 0.000 0.804 FG
+(; ) S
+/f2 F
+(in tprint.el) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+(\(define-key ctl-x-map ) S
+0.000 0.545 0.000 FG
+("f") S
+0.000 0.000 0.000 FG
+( 'flame\)) S
+LHL
+0.000 0.000 0.804 FG
+(;;) S
+/f2 F
+(\(define-key ctl-x-map "r" 'gnus\)) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+(\(define-key ctl-x-map ) S
+0.000 0.545 0.000 FG
+("m") S
+0.000 0.000 0.000 FG
+( 'message-mail\)) S
+LHL
+(\(define-key ctl-x-4-map ) S
+0.000 0.545 0.000 FG
+("f") S
+0.000 0.000 0.000 FG
+( 'font-lock-fontify-buffer\)) S
+LHL
+(\(define-key ctl-x-map ) S
+0.000 0.545 0.000 FG
+("l") S
+0.000 0.000 0.000 FG
+( 'add-change-log-entry\)) S
+LHL
+(\(global-unset-key ) S
+0.000 0.545 0.000 FG
+("\\C-]") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(\(define-key ctl-x-4-map ) S
+0.000 0.545 0.000 FG
+("x") S
+0.000 0.000 0.000 FG
+( 'exchange-point-and-mark\)) S
+LHL
+(\(define-key ctl-x-4-map ) S
+0.000 0.545 0.000 FG
+("h") S
+0.000 0.000 0.000 FG
+( 'split-window-horizontally\)) S
+LHL
+(\(define-key ctl-x-4-map ) S
+0.000 0.545 0.000 FG
+("a") S
+0.000 0.000 0.000 FG
+( 'auto-fill-mode\)) S
+LHL
+(\(define-key ctl-x-4-map ) S
+0.000 0.545 0.000 FG
+("k") S
+0.000 0.000 0.000 FG
+( 'copy-region-as-kill\)) S
+LHL
+(\(define-key ctl-x-4-map ) S
+0.000 0.545 0.000 FG
+("d") S
+0.000 0.000 0.000 FG
+( 'delete-rectangle\)) S
+LHL
+(\(define-key ctl-x-map ) S
+0.000 0.545 0.000 FG
+("vq") S
+0.000 0.000 0.000 FG
+( 'vc-toggle-read-only\)) S
+LHL
+0.000 0.000 0.804 FG
+(; ) S
+/f2 F
+(The "R2" key on a sun keypad is PrSc) S
+LHL
+/f0 F
+(; ) S
+/f2 F
+(This isn't as cool as I'd like, because it doesn't 2-up) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+(\(define-key global-map [f12] 'ps-print-buffer-with-faces\)) S
+LHL
+(\(define-key global-map [print] 'ps-print-buffer-with-faces\)) S
+PHL
+LHL
+0.000 0.000 0.804 FG
+(; ) S
+/f2 F
+(Get the keypad right on wombat) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+(\(define-key global-map [f35] 'scroll-up\)) S
+LHL
+(\(define-key global-map [f29] 'scroll-down\)) S
+PHL
+LHL
+(\() S
+/f1 F
+0.804 0.000 0.000 FG
+(if) S
+/f0 F
+0.000 0.000 0.000 FG
+( \(string-match emacs-version ) S
+0.000 0.545 0.000 FG
+("21.4.1") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(    \(standard-display-european t\)\)) S
+PHL
+LHL
+(\(turn-on-auto-fill\)) S
+PHL
+LHL
+0.000 0.000 0.804 FG
+(;) S
+/f2 F
+(\(require 'diff-mode-.el\)) S
+PHL
+/f0 F
+0.000 0.000 0.000 FG
+LHL
+0.000 0.000 0.804 FG
+(; ) S
+/f2 F
+(for TM) S
+LHL
+/f0 F
+(;) S
+/f2 F
+(\(setenv "TM_TMP_DIR" "/home/d3a230/mime"\)) S
+PHL
+/f0 F
+0.000 0.000 0.000 FG
+LHL
+0.000 0.000 0.804 FG
+(;; ) S
+/f2 F
+(I'm not supposed to do this, but I don't like dark blue) S
+LHL
+/f0 F
+(;; ) S
+/f2 F
+(Has to be in .emacs, before we run gnus down there with the TM stuff) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+(\(setq gnus-face-dark-name-list) S
+LHL
+(  \(list ) S
+0.000 0.545 0.000 FG
+("blue3") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("firebrick") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("dark green") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("OrangeRed") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("dark khaki") S
+0.000 0.000 0.000 FG
+LHL
+9 W
+0.000 0.545 0.000 FG
+("dark violet") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("SteelBlue4") S
+0.000 0.000 0.000 FG
+(\)\) ) S
+PHL
+LHL
+0.000 0.000 0.804 FG
+(; ) S
+/f2 F
+(;;; set my faces) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+(\(setq font-lock-maximum-decoration t\)) S
+PHL
+LHL
+0.000 0.000 0.804 FG
+(;) S
+/f2 F
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+(\(setq-default case-fold-search nil\)) S
+LHL
+(\(setq require-final-newline 'foo\)) S
+LHL
+(\(setq rmail-file-name ) S
+0.000 0.545 0.000 FG
+("~/mail/RMAIL") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(\(setq rmail-last-rmail-file ) S
+0.000 0.545 0.000 FG
+("~/mail/XMAIL") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(\(setq rmail-default-rmail-file ) S
+0.000 0.545 0.000 FG
+("~/mail/XMAIL") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(\(setq rmail-secondary-file-directory ) S
+0.000 0.545 0.000 FG
+("~/mail") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(\(setq rmail-in-reply-to-use-message-id nil\)) S
+LHL
+0.000 0.000 0.804 FG
+(;) S
+/f2 F
+(\(setq rmail-dont-reply-to-names) S
+LHL
+/f0 F
+(;      ) S
+/f2 F
+("info-\\\\|tr_shippert\\\\|d3a230\\\\|timothy.shippert\\\\>"\)) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+(\(setq rmail-dont-reply-to-names) S
+LHL
+(      ) S
+0.000 0.545 0.000 FG
+("info-) S
+(\\\\) S
+(|) S
+(\\"?Shippert) S
+(\\\\) S
+(\() S
+(, Tim) S
+(\\\\) S
+(\() S
+(othy) S
+(\\\\) S
+(\)) S
+(?) S
+(\\\\) S
+(\() S
+( R\\"?) S
+(\\\\) S
+(\)) S
+(?) S
+(\\\\) S
+(\)) S
+(?) S
+(\\\\) S
+(|) S
+(tr_shippert) S
+(\\\\) S
+(|) S
+(tim) S
+(\\\\) S
+(\() S
+(othy) S
+(\\\\) S
+(\)) S
+(?.ship) S
+SL
+(pert) S
+(\\\\) S
+(|) S
+(Tim) S
+(\\\\) S
+(\() S
+(othy) S
+(\\\\) S
+(\)) S
+(? Shippert) S
+(\\\\) S
+(|) S
+(d3a230") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+0.000 0.000 0.804 FG
+(;) S
+/f2 F
+PHL
+/f0 F
+0.000 0.000 0.000 FG
+EndPage
+EndDSCPage
+EndSheet
+
+%%Page: 2 2
+/Lines 812 def
+/PageCount 12 def
+1 BeginSheet
+BeginDSCPage
+/LineNumber 72 def
+/PageNumber 2 def
+/HeaderLinesLeft[
+ [/h0 (init.el)]
+ [/h1 (~/.emacs.d/)]
+]def
+/HeaderLinesRight[
+ [/h0 /pagenumberstring load]
+ [/h1 (11/01/2017)]
+]def
+2 SetHeaderLines
+72 BeginPage
+/f0 F
+false BG
+0.000 0.000 0.000 FG
+0.000 0.000 0.804 FG
+(;) S
+/f2 F
+(\(setq compile-command "/svr/apps/gnu_utils/bin/make"\)) S
+PHL
+/f0 F
+0.000 0.000 0.000 FG
+LHL
+(\(setq browse-url-netscape-program ) S
+0.000 0.545 0.000 FG
+("/usr/bin/mozilla") S
+0.000 0.000 0.000 FG
+(\)) S
+PHL
+LHL
+0.000 0.000 0.804 FG
+(;; ) S
+/f2 F
+(set my faces) S
+LHL
+/f0 F
+(;; ) S
+/f2 F
+(New face here for green - so I can keep underlining.) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+(\(make-face 'emphasize\)) S
+PHL
+LHL
+0.000 0.000 0.804 FG
+(;; ) S
+/f2 F
+(For emacs version 23+, we can use themes to change colors and stuff) S
+LHL
+/f0 F
+(;; ) S
+/f2 F
+(Version 24 themes will skip confirmation with a following true, but) S
+LHL
+/f0 F
+(;; ) S
+/f2 F
+(23 does not.) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+(\() S
+/f1 F
+0.804 0.000 0.000 FG
+(cond) S
+/f0 F
+0.000 0.000 0.000 FG
+( \(\(>= emacs-major-version 24\) \(load-theme 'gruber-darker t\)\)) S
+LHL
+(      \(\(= emacs-major-version 23\) \(load-theme 'gruber-darker\)\)) S
+LHL
+(      \(t ) S
+LHL
+(       ) S
+0.000 0.000 0.804 FG
+(;; ) S
+/f2 F
+(Prior to themes, do it the hard way) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+8 W
+(\() S
+/f1 F
+0.804 0.000 0.000 FG
+(progn) S
+/f0 F
+0.000 0.000 0.000 FG
+LHL
+10 W
+(\(setq font-lock-comment-face 'italic\)) S
+LHL
+10 W
+(\(setq font-lock-keyword-face 'bold\)) S
+LHL
+10 W
+(\(setq font-lock-string-face 'emphasize\)) S
+LHL
+10 W
+(\(setq font-lock-type-face 'bold-italic\)) S
+LHL
+10 W
+(\(setq font-lock-function-name-face 'bold-italic\)) S
+PHL
+10 W
+LHL
+10 W
+(\(set-face-foreground 'emphasize ) S
+0.000 0.545 0.000 FG
+("green4") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+10 W
+(\(set-face-foreground 'italic ) S
+0.000 0.545 0.000 FG
+("blue3") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+10 W
+(\(set-face-foreground 'bold ) S
+0.000 0.545 0.000 FG
+("red3") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+10 W
+(\(set-face-foreground 'underline ) S
+0.000 0.545 0.000 FG
+("firebrick") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+10 W
+(\(set-face-foreground 'bold-italic ) S
+0.000 0.545 0.000 FG
+("blue4") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+10 W
+(\(make-face-bold 'bold-italic nil t\)) S
+PHL
+10 W
+LHL
+10 W
+0.000 0.000 0.804 FG
+(;; ) S
+/f2 F
+(only need this here, because italic shows up bold on squid) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+10 W
+(\(make-face-unbold 'italic nil t\)) S
+PHL
+10 W
+LHL
+10 W
+(\(setq font-lock-face-attributes  ) S
+LHL
+16 W
+(\(list '\(font-lock-comment-face ) S
+0.000 0.545 0.000 FG
+("blue3") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+22 W
+('\(font-lock-string-face ) S
+0.000 0.545 0.000 FG
+("green4") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+22 W
+('\(font-lock-keyword-face ) S
+0.000 0.545 0.000 FG
+("darkgoldenrod") S
+0.000 0.000 0.000 FG
+( nil t\)) S
+LHL
+22 W
+('\(font-lock-function-name-face ) S
+0.000 0.545 0.000 FG
+("red3") S
+0.000 0.000 0.000 FG
+( nil t\) ) S
+LHL
+22 W
+('\(font-lock-variable-name-face ) S
+0.000 0.545 0.000 FG
+("blue3") S
+0.000 0.000 0.000 FG
+( nil t\) ) S
+LHL
+22 W
+('\(font-lock-type-face ) S
+0.000 0.545 0.000 FG
+("orangered") S
+0.000 0.000 0.000 FG
+(\) ) S
+LHL
+22 W
+('\(font-lock-reference-face ) S
+0.000 0.545 0.000 FG
+("blue3") S
+0.000 0.000 0.000 FG
+( nil t\)\)\)\)\)\)) S
+PHL
+(      ) S
+LHL
+0.000 0.000 0.804 FG
+(; ) S
+/f2 F
+(Awful way to do this, and slime sucks anyway.  Keeping it here for reference.) S
+LHL
+/f0 F
+(;) S
+/f2 F
+(\(if \(>= emacs-major-version 24\)) S
+LHL
+/f0 F
+(;    ) S
+/f2 F
+(;;) S
+LHL
+/f0 F
+(;    ) S
+/f2 F
+(\(load-library \(expand-file-name "~/emacs/slime-theme.el"\)\)\)) S
+PHL
+/f0 F
+0.000 0.000 0.000 FG
+LHL
+(\(global-font-lock-mode t\)) S
+PHL
+LHL
+(\(setq load-path) S
+LHL
+( \(append \(list \(expand-file-name ) S
+0.000 0.545 0.000 FG
+("~/emacs") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+15 W
+(\(expand-file-name ) S
+0.000 0.545 0.000 FG
+("/usr/local/lib/emacs/site-lisp") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+15 W
+(\)) S
+LHL
+9 W
+(load-path\)\)) S
+PHL
+LHL
+0.000 0.000 0.804 FG
+(; ) S
+/f2 F
+(to test the latest gnus) S
+LHL
+/f0 F
+(;) S
+/f2 F
+(\(setq load-path \(cons \(expand-file-name "/usr/local/src/gnus-5.10.6/lisp"\) load-path\)\)) S
+LHL
+/f0 F
+(;) S
+/f2 F
+(\(require 'gnus-load\)) S
+LHL
+/f0 F
+(;) S
+/f2 F
+(\(setq load-path \(cons \(expand-file-name "/usr/local/src/emacs-21.3/lisp/gnus"\) load-path\)\)) S
+PHL
+/f0 F
+0.000 0.000 0.000 FG
+LHL
+0.000 0.000 0.804 FG
+(; ) S
+/f2 F
+(This stuff apparantly won't work with my podunk emacs...) S
+LHL
+/f0 F
+(;) S
+/f2 F
+(\(setq load-path \(cons "/usr/local/src/custom-1.9962") S
+LHL
+/f0 F
+(;) S
+/f2 F
+21 W
+(\(cons "/usr/local/src/gnus-5.6.24/lisp") S
+LHL
+/f0 F
+(;) S
+/f2 F
+27 W
+(load-path\)\)\)) S
+LHL
+/f0 F
+(;) S
+/f2 F
+(\(setq load-path \(cons "/usr/local/src/gnus-5.8.3/lisp" load-path\)\)) S
+PHL
+/f0 F
+0.000 0.000 0.000 FG
+LHL
+0.000 0.000 0.804 FG
+(;) S
+/f2 F
+(\(setq Info-default-directory-list ) S
+LHL
+/f0 F
+(;        ) S
+/f2 F
+(\(cons "/usr/local/src/gnus-5.6.24/texi" Info-default-directory-list\)\)) S
+PHL
+/f0 F
+0.000 0.000 0.000 FG
+LHL
+0.000 0.000 0.804 FG
+(;) S
+/f2 F
+(\(setq Info-default-directory-list ) S
+LHL
+/f0 F
+(;        ) S
+/f2 F
+(\(cons "/usr/local/src/gnus-5.8.3/texi" Info-default-directory-list\)\)) S
+PHL
+/f0 F
+0.000 0.000 0.000 FG
+LHL
+(\() S
+/f1 F
+0.804 0.000 0.000 FG
+(if) S
+/f0 F
+0.000 0.000 0.000 FG
+( window-system) S
+EndPage
+EndDSCPage
+EndSheet
+
+%%Page: 3 3
+/Lines 812 def
+/PageCount 12 def
+1 BeginSheet
+BeginDSCPage
+/LineNumber 144 def
+/PageNumber 3 def
+/HeaderLinesLeft[
+ [/h0 (init.el)]
+ [/h1 (~/.emacs.d/)]
+]def
+/HeaderLinesRight[
+ [/h0 /pagenumberstring load]
+ [/h1 (11/01/2017)]
+]def
+2 SetHeaderLines
+144 BeginPage
+/f0 F
+false BG
+0.000 0.000 0.000 FG
+(    \() S
+/f1 F
+0.804 0.000 0.000 FG
+(require) S
+/f0 F
+0.000 0.000 0.000 FG
+( ') S
+0.000 0.545 0.545 FG
+(igor-mode) S
+0.000 0.000 0.000 FG
+(\)\)) S
+PHL
+LHL
+(\() S
+/f1 F
+0.804 0.000 0.000 FG
+(require) S
+/f0 F
+0.000 0.000 0.000 FG
+( ') S
+0.000 0.545 0.545 FG
+(generic) S
+0.000 0.000 0.000 FG
+(\)) S
+PHL
+LHL
+(\() S
+/f1 F
+0.804 0.000 0.000 FG
+(define-generic-mode) S
+/f0 F
+0.000 0.000 0.000 FG
+( ') S
+/f3 F
+0.000 0.000 0.545 FG
+(flat-generic-mode) S
+/f0 F
+0.000 0.000 0.000 FG
+LHL
+(  \(list ?# \)) S
+LHL
+(  '\(\)) S
+LHL
+(  \(list) S
+LHL
+(   '\() S
+0.000 0.545 0.000 FG
+("^[ \\t]*) S
+(\\\\) S
+(\() S
+([a-zA-Z0-9_-]+) S
+(\\\\) S
+(\)) S
+([ \\t]*:") S
+0.000 0.000 0.000 FG
+( 1 'font-lock-type-face\)) S
+LHL
+(   '\() S
+0.000 0.545 0.000 FG
+("[ \\t]*) S
+(\\\\) S
+(\() S
+([a-zA-Z0-9_-]+) S
+(\\\\) S
+(\)) S
+([ \\t]*:") S
+0.000 0.000 0.000 FG
+( 1 'font-lock-constant-face\)) S
+LHL
+(   '\() S
+0.000 0.545 0.000 FG
+("[ \\t]*) S
+(\\\\) S
+(\() S
+([a-zA-Z0-9_-]+) S
+(\\\\) S
+(\)) S
+([ \\t]*=") S
+0.000 0.000 0.000 FG
+( 1 'font-lock-variable-name-face\)) S
+LHL
+(   \)) S
+LHL
+(  \(list ) S
+0.000 0.545 0.000 FG
+("\\\\.flat") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(  \(list 'font-lock-mode 'auto-fill-mode\)\)) S
+PHL
+LHL
+(\() S
+/f1 F
+0.804 0.000 0.000 FG
+(define-generic-mode) S
+/f0 F
+0.000 0.000 0.000 FG
+( ') S
+/f3 F
+0.000 0.000 0.545 FG
+(vip-generic-mode) S
+/f0 F
+0.000 0.000 0.000 FG
+LHL
+(  \(list ?# ?\\;\)) S
+LHL
+(  '\(\)) S
+LHL
+(  \(list) S
+LHL
+(   '\() S
+0.000 0.545 0.000 FG
+("[ \\t]*) S
+(\\\\) S
+(\() S
+([a-zA-Z0-9_-]+) S
+(\\\\) S
+(\)) S
+([ \\t]*=") S
+0.000 0.000 0.000 FG
+( 1 'font-lock-function-name-face\)) S
+LHL
+(   \)) S
+LHL
+(  \(list ) S
+0.000 0.545 0.000 FG
+("vip.*\\\\.txt") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(  \(list 'font-lock-mode 'auto-fill-mode\)\)) S
+PHL
+PHL
+LHL
+0.000 0.000 0.804 FG
+(; ) S
+/f2 F
+(Print setup) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+(\(setq tprint-command ) S
+0.000 0.545 0.000 FG
+("tpr") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(\(setq tprint-switches ) S
+0.000 0.545 0.000 FG
+(" ") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(\(setq tprint-printer \(getenv ) S
+0.000 0.545 0.000 FG
+("PRINTER") S
+0.000 0.000 0.000 FG
+(\)\)) S
+PHL
+LHL
+0.000 0.000 0.804 FG
+(; ) S
+/f2 F
+(Rmail print setup) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+(\(setq mprint-command ) S
+0.000 0.545 0.000 FG
+("tpr") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(\(setq mprint-switches ) S
+0.000 0.545 0.000 FG
+("-F") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(\(setq mprint-printer \(getenv ) S
+0.000 0.545 0.000 FG
+("PRINTER") S
+0.000 0.000 0.000 FG
+(\)\)) S
+PHL
+LHL
+0.000 0.000 0.804 FG
+(; ) S
+/f2 F
+(Rmail print setup) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+(\(setq rmail-print-command) S
+LHL
+(      ) S
+0.000 0.545 0.000 FG
+("cpr") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(\(setq rmail-print-switches) S
+LHL
+(      ) S
+0.000 0.545 0.000 FG
+("-l -F") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(\(setq rmail-print-printer tprint-printer\)) S
+PHL
+LHL
+0.000 0.000 0.804 FG
+(; ) S
+/f2 F
+(RMAIL output defaults) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+(\(setq rmail-output-file-alist) S
+LHL
+(      '\() S
+LHL
+8 W
+(\() S
+0.000 0.545 0.000 FG
+("cart@met.das.bnl.gov") S
+0.000 0.000 0.000 FG
+( . ) S
+0.000 0.545 0.000 FG
+("SITEOPS") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+8 W
+(\() S
+0.000 0.545 0.000 FG
+("opslog@met.das.bnl.gov") S
+0.000 0.000 0.000 FG
+( . ) S
+0.000 0.545 0.000 FG
+("SITEOPS") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+8 W
+(\() S
+0.000 0.545 0.000 FG
+("mdslog@") S
+0.000 0.000 0.000 FG
+( . ) S
+0.000 0.545 0.000 FG
+("SITEOPS") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+8 W
+(\() S
+0.000 0.545 0.000 FG
+("opslog@") S
+0.000 0.000 0.000 FG
+( . ) S
+0.000 0.545 0.000 FG
+("SITEOPS") S
+0.000 0.000 0.000 FG
+(\)\)\)) S
+PHL
+LHL
+0.000 0.000 0.804 FG
+(;; ) S
+/f2 F
+(NOTES mode autoload - load notes.el) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+(\(autoload 'notes-mode) S
+6 W
+0.000 0.545 0.000 FG
+("notes") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("Notes mode") S
+0.000 0.000 0.000 FG
+( t\)) S
+LHL
+(\(autoload 'dod-mode) S
+8 W
+0.000 0.545 0.000 FG
+("dod") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("DOD mode") S
+0.000 0.000 0.000 FG
+( t\)) S
+PHL
+LHL
+0.000 0.000 0.804 FG
+(; ) S
+/f2 F
+(Rmail faces - I don't like this, but I need to make quoted stuff) S
+LHL
+/f0 F
+(; ) S
+/f2 F
+(use the comment face, not the reference face.) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+(\() S
+/f1 F
+0.804 0.000 0.000 FG
+(defvar) S
+/f0 F
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.000 0.804 FG
+(rmail-font-lock-keywords) S
+0.000 0.000 0.000 FG
+( ) S
+LHL
+(  \() S
+/f1 F
+0.804 0.000 0.000 FG
+(eval-when-compile) S
+/f0 F
+0.000 0.000 0.000 FG
+( ) S
+LHL
+(    \() S
+/f1 F
+0.804 0.000 0.000 FG
+(let*) S
+/f0 F
+0.000 0.000 0.000 FG
+( \(\(cite-prefix ) S
+0.000 0.545 0.000 FG
+("A-Za-z") S
+0.000 0.000 0.000 FG
+(\) \(cite-suffix \(concat cite-prefix ) S
+0.000 0.545 0.000 FG
+("0-9_.@-") S
+0.000 0.000 0.000 FG
+(\)\)\)) S
+LHL
+(      \(list) S
+LHL
+(       '\() S
+0.000 0.545 0.000 FG
+("^) S
+(\\\\) S
+(\() S
+(From) S
+(\\\\) S
+(|) S
+(Sender) S
+(\\\\) S
+(\)) S
+(:") S
+0.000 0.000 0.000 FG
+( . font-lock-function-name-face\)) S
+LHL
+(       '\() S
+0.000 0.545 0.000 FG
+("^Reply-To:.*$") S
+0.000 0.000 0.000 FG
+( . font-lock-function-name-face\)) S
+LHL
+(       '\() S
+0.000 0.545 0.000 FG
+("^Subject:.*$") S
+0.000 0.000 0.000 FG
+( . font-lock-reference-face\)) S
+LHL
+(       '\() S
+0.000 0.545 0.000 FG
+("^Subject:") S
+0.000 0.000 0.000 FG
+( . font-lock-comment-face\)) S
+LHL
+(       '\() S
+0.000 0.545 0.000 FG
+("^) S
+(\\\\) S
+(\() S
+(To) S
+(\\\\) S
+(|) S
+(Apparently-To) S
+(\\\\) S
+(|) S
+(Cc) S
+(\\\\) S
+(\)) S
+(:") S
+0.000 0.000 0.000 FG
+( . font-lock-keyword-face\)) S
+LHL
+(       \(cons \(concat ) S
+0.000 0.545 0.000 FG
+("^[ \\t]*") S
+0.000 0.000 0.000 FG
+LHL
+21 W
+0.000 0.545 0.000 FG
+(") S
+(\\\\) S
+(\() S
+([") S
+0.000 0.000 0.000 FG
+( cite-prefix ) S
+0.000 0.545 0.000 FG
+("]+[") S
+0.000 0.000 0.000 FG
+( cite-suffix ) S
+0.000 0.545 0.000 FG
+("]*) S
+(\\\\) S
+(\)) S
+(?") S
+0.000 0.000 0.000 FG
+LHL
+21 W
+0.000 0.545 0.000 FG
+("[>|}].*") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+13 W
+('font-lock-comment-face\)) S
+LHL
+(       '\() S
+0.000 0.545 0.000 FG
+("^) S
+(\\\\) S
+(\() S
+(X-[A-Za-z0-9-]+) S
+(\\\\) S
+(|) S
+(In-reply-to) S
+(\\\\) S
+(|) S
+(Date) S
+(\\\\) S
+(\)) S
+(:.*$") S
+0.000 0.000 0.000 FG
+LHL
+9 W
+(. font-lock-string-face\)\)\)\)) S
+LHL
+(  ) S
+0.000 0.545 0.000 FG
+("Additional expressions to highlight in Rmail mode.") S
+0.000 0.000 0.000 FG
+(\)) S
+EndPage
+EndDSCPage
+EndSheet
+
+%%Page: 4 4
+/Lines 812 def
+/PageCount 12 def
+1 BeginSheet
+BeginDSCPage
+/LineNumber 216 def
+/PageNumber 4 def
+/HeaderLinesLeft[
+ [/h0 (init.el)]
+ [/h1 (~/.emacs.d/)]
+]def
+/HeaderLinesRight[
+ [/h0 /pagenumberstring load]
+ [/h1 (11/01/2017)]
+]def
+2 SetHeaderLines
+216 BeginPage
+/f0 F
+false BG
+0.000 0.000 0.000 FG
+LHL
+0.000 0.000 0.804 FG
+(; ) S
+/f2 F
+(Misc setup) S
+LHL
+/f0 F
+(;;) S
+/f2 F
+(\(setq mail-archive-blind-file "~/mail/archive"\)) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+(\(setq mail-archive-blind-file nil\)) S
+LHL
+(\(setq rmail-in-reply-to-use-message-id nil\)) S
+LHL
+(\(setq comment-column -5\)) S
+LHL
+(\(setq lpr-command ) S
+0.000 0.545 0.000 FG
+("lp") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(\(setq lpr-switches '\() S
+0.000 0.545 0.000 FG
+("-2l") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("-ln1") S
+0.000 0.000 0.000 FG
+(\)\)) S
+LHL
+(\(setq ps-lpr-command ) S
+0.000 0.545 0.000 FG
+("lp") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(\(setq ps-lpr-switches nil\)) S
+LHL
+(\(setq fortran-continuation-string ) S
+0.000 0.545 0.000 FG
+("+") S
+0.000 0.000 0.000 FG
+(\)) S
+PHL
+LHL
+(\(setq completion-ignored-extensions) S
+LHL
+(      \(append completion-ignored-extensions) S
+LHL
+14 W
+(\(quote) S
+11 W
+LHL
+16 W
+(\() S
+0.000 0.545 0.000 FG
+(".lpt") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+(".PS") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+(".aux") S
+0.000 0.000 0.000 FG
+(  ) S
+0.000 0.545 0.000 FG
+(".bak") S
+0.000 0.000 0.000 FG
+(\)\)\)\)) S
+PHL
+LHL
+(\(setq default-major-mode \(quote text-mode\)\)) S
+PHL
+LHL
+0.000 0.000 0.804 FG
+(;; ) S
+/f2 F
+(pod mode) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+(\() S
+/f1 F
+0.804 0.000 0.000 FG
+(require) S
+/f0 F
+0.000 0.000 0.000 FG
+( ') S
+0.000 0.545 0.545 FG
+(pod-mode) S
+0.000 0.000 0.000 FG
+(\)) S
+PHL
+LHL
+(\(setq auto-mode-alist) S
+LHL
+(      \(append '\(\() S
+0.000 0.545 0.000 FG
+("\\\\.letter$") S
+0.000 0.000 0.000 FG
+( . mail-mode\)\)) S
+LHL
+14 W
+('\(\() S
+0.000 0.545 0.000 FG
+("Makefile.*$") S
+0.000 0.000 0.000 FG
+( . makefile-mode\)\)) S
+LHL
+14 W
+('\(\() S
+0.000 0.545 0.000 FG
+("\\\\.gnus$") S
+0.000 0.000 0.000 FG
+( . emacs-lisp-mode\)\)) S
+LHL
+14 W
+('\(\() S
+0.000 0.545 0.000 FG
+("\\\\.pro$") S
+0.000 0.000 0.000 FG
+( . idlwave-mode\)\)) S
+LHL
+14 W
+('\(\() S
+0.000 0.545 0.000 FG
+("\\\\.F90$") S
+0.000 0.000 0.000 FG
+( . f90-mode\)\)) S
+LHL
+14 W
+('\(\() S
+0.000 0.545 0.000 FG
+("NOTES\\\\..*") S
+0.000 0.000 0.000 FG
+( . notes-mode\)\)) S
+LHL
+14 W
+('\(\() S
+0.000 0.545 0.000 FG
+("\\\\.dod$") S
+0.000 0.000 0.000 FG
+( . dod-mode\)\)) S
+LHL
+14 W
+('\(\() S
+0.000 0.545 0.000 FG
+("\\\\.cdl$") S
+0.000 0.000 0.000 FG
+( . dod-mode\)\)) S
+LHL
+14 W
+('\(\() S
+0.000 0.545 0.000 FG
+("README\\\\..*") S
+0.000 0.000 0.000 FG
+( . text-mode\)\)) S
+LHL
+14 W
+('\(\() S
+0.000 0.545 0.000 FG
+("vip.*\\\\.txt") S
+0.000 0.000 0.000 FG
+( . vip-generic-mode\)\)) S
+LHL
+14 W
+('\(\() S
+0.000 0.545 0.000 FG
+("\\\\.txt") S
+0.000 0.000 0.000 FG
+( . text-mode\)\)) S
+LHL
+14 W
+('\(\() S
+0.000 0.545 0.000 FG
+("\\\\.dat") S
+0.000 0.000 0.000 FG
+( . text-mode\)\)) S
+LHL
+14 W
+('\(\() S
+0.000 0.545 0.000 FG
+("\\\\.ipf") S
+0.000 0.000 0.000 FG
+( . igor-mode\)\)) S
+LHL
+14 W
+('\(\() S
+0.000 0.545 0.000 FG
+("\\\\.pod$") S
+0.000 0.000 0.000 FG
+( . pod-mode\)\)) S
+LHL
+14 W
+(auto-mode-alist\)\)) S
+PHL
+LHL
+0.000 0.000 0.804 FG
+(;) S
+/f2 F
+(\(setq auto-mode-alist \(append auto-mode-alist) S
+LHL
+/f0 F
+(;) S
+/f2 F
+29 W
+(\(quote \(\("\\\\.roff$" . nroff-mode\)\)\)\)\)) S
+PHL
+/f0 F
+0.000 0.000 0.000 FG
+LHL
+(\(add-hook 'perl-mode 'turn-on-font-lock\)) S
+PHL
+LHL
+(\(add-hook 'pod-mode-hook 'font-lock-mode\)) S
+LHL
+(\(add-hook 'pod-mode-hook 'turn-on-auto-fill\)) S
+PHL
+LHL
+(\(add-hook 'sh-mode-hook 'turn-on-auto-fill\)) S
+PHL
+LHL
+(\(add-hook 'text-mode-hook) S
+LHL
+10 W
+(\(function \() S
+/f1 F
+0.804 0.000 0.000 FG
+(lambda) S
+/f0 F
+0.000 0.000 0.000 FG
+( \(\)) S
+LHL
+22 W
+(\(turn-on-auto-fill\)) S
+LHL
+22 W
+(\(local-set-key ) S
+0.000 0.545 0.000 FG
+("\\t") S
+0.000 0.000 0.000 FG
+( 'tab-to-tab-stop\)) S
+LHL
+22 W
+(\(local-set-key ) S
+0.000 0.545 0.000 FG
+("\\e\\t") S
+0.000 0.000 0.000 FG
+( 'indent-relative\)) S
+LHL
+22 W
+0.000 0.000 0.804 FG
+(;; ) S
+/f2 F
+(I think adaptive-fill-mode is hopelessly) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+22 W
+0.000 0.000 0.804 FG
+(;; ) S
+/f2 F
+(munged for text mode; Better to just turn it) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+22 W
+0.000 0.000 0.804 FG
+(;; ) S
+/f2 F
+(off altogether, and then make my own) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+22 W
+0.000 0.000 0.804 FG
+(;; ) S
+/f2 F
+(indent-line-function that ignore hanging tabs) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+22 W
+(\(make-local-variable 'adaptive-fill-mode\)) S
+LHL
+22 W
+(\(setq adaptive-fill-mode nil\)) S
+LHL
+22 W
+0.000 0.000 0.804 FG
+(;) S
+/f2 F
+(\(setq indent-line-function 'indent-relative\)) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+22 W
+(\(setq fill-column 75\)) S
+LHL
+22 W
+(\(abbrev-mode 1\)\)\)\)) S
+PHL
+LHL
+(\(add-hook 'html-helper-mode-hook) S
+LHL
+10 W
+(\(function \() S
+/f1 F
+0.804 0.000 0.000 FG
+(lambda) S
+/f0 F
+0.000 0.000 0.000 FG
+( \(\)) S
+LHL
+22 W
+0.000 0.000 0.804 FG
+(;; ) S
+/f2 F
+(list indent doesn't work right in html-helper) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+22 W
+(\(setq html-helper-item-continue-indent 0\)\)\)\)) S
+PHL
+LHL
+(\(add-hook 'c-mode-hook) S
+LHL
+10 W
+(\(function \() S
+/f1 F
+0.804 0.000 0.000 FG
+(lambda) S
+/f0 F
+0.000 0.000 0.000 FG
+( \(\)) S
+LHL
+22 W
+(\(turn-on-auto-fill\)) S
+EndPage
+EndDSCPage
+EndSheet
+
+%%Page: 5 5
+/Lines 812 def
+/PageCount 12 def
+1 BeginSheet
+BeginDSCPage
+/LineNumber 288 def
+/PageNumber 5 def
+/HeaderLinesLeft[
+ [/h0 (init.el)]
+ [/h1 (~/.emacs.d/)]
+]def
+/HeaderLinesRight[
+ [/h0 /pagenumberstring load]
+ [/h1 (11/01/2017)]
+]def
+2 SetHeaderLines
+288 BeginPage
+/f0 F
+false BG
+0.000 0.000 0.000 FG
+22 W
+(\(setq fill-column 75\)) S
+LHL
+22 W
+(\(setq comment-column 0\)) S
+LHL
+22 W
+(\(local-set-key ) S
+0.000 0.545 0.000 FG
+("\\e\\t") S
+0.000 0.000 0.000 FG
+( 'tab-to-tab-stop\)) S
+LHL
+22 W
+(\(setq c-electric-flag 't\)) S
+LHL
+22 W
+(\(line-number-mode 't\)) S
+LHL
+16 W
+0.000 0.000 0.804 FG
+(;      ) S
+/f2 F
+(\(font-lock-mode\)) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+22 W
+(\)\)\)) S
+PHL
+LHL
+(\(add-hook 'perl-mode-hook) S
+LHL
+10 W
+(\(function \() S
+/f1 F
+0.804 0.000 0.000 FG
+(lambda) S
+/f0 F
+0.000 0.000 0.000 FG
+( \(\)) S
+LHL
+22 W
+(\(turn-on-auto-fill\)) S
+LHL
+22 W
+(\(setq fill-column 75\)) S
+LHL
+22 W
+(\(setq perl-indent-level 2\)\)\)\)) S
+PHL
+PHL
+LHL
+(\(add-hook 'fortran-mode-hook) S
+LHL
+10 W
+(\(function \() S
+/f1 F
+0.804 0.000 0.000 FG
+(lambda) S
+/f0 F
+0.000 0.000 0.000 FG
+( \(\) ) S
+LHL
+22 W
+(\(turn-on-auto-fill\)) S
+LHL
+22 W
+(\(setq fill-column 72\)) S
+LHL
+22 W
+(\(setq comment-column 0\)) S
+LHL
+22 W
+(\)\)\)) S
+PHL
+LHL
+(\(add-hook 'rmail-summary-mode-hook) S
+LHL
+10 W
+(\(function) S
+LHL
+11 W
+(\() S
+/f1 F
+0.804 0.000 0.000 FG
+(lambda) S
+/f0 F
+0.000 0.000 0.000 FG
+( \(\)) S
+LHL
+13 W
+(\(turn-on-font-lock\)) S
+LHL
+13 W
+(\(local-set-key ) S
+0.000 0.545 0.000 FG
+("D") S
+0.000 0.000 0.000 FG
+LHL
+28 W
+('rmail-summary-delete-forward-nokidding\)) S
+LHL
+13 W
+(\)\)\)) S
+PHL
+LHL
+(\(add-hook 'rmail-mode-hook                   ) S
+0.000 0.000 0.804 FG
+(;;; ) S
+/f2 F
+(Stupid stupid stupid) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+(      \(function) S
+LHL
+(       \() S
+/f1 F
+0.804 0.000 0.000 FG
+(lambda) S
+/f0 F
+0.000 0.000 0.000 FG
+( \(\)) S
+LHL
+9 W
+(\(local-set-key ) S
+0.000 0.545 0.000 FG
+("e") S
+0.000 0.000 0.000 FG
+( 'rmail-edit-current-message\)) S
+LHL
+9 W
+(\(local-set-key ) S
+0.000 0.545 0.000 FG
+("x") S
+0.000 0.000 0.000 FG
+( 'rmail-expunge\)) S
+LHL
+9 W
+(\(local-set-key ) S
+0.000 0.545 0.000 FG
+("P") S
+0.000 0.000 0.000 FG
+( 'mprint-buffer\)) S
+LHL
+9 W
+(\(local-set-key ) S
+0.000 0.545 0.000 FG
+("\\C-xp") S
+0.000 0.000 0.000 FG
+( 'mprint-buffer\)) S
+LHL
+9 W
+(\(turn-on-font-lock\)) S
+LHL
+9 W
+(\(setq rmail-highlighted-headers ) S
+0.000 0.545 0.000 FG
+("^From:") S
+0.000 0.000 0.000 FG
+( \)) S
+LHL
+9 W
+(\(setq rmail-ignored-headers) S
+LHL
+15 W
+(\(concat) S
+LHL
+16 W
+(rmail-ignored-headers) S
+LHL
+0.000 0.000 0.804 FG
+(;) S
+/f2 F
+15 W
+("\\\\|^Mime-Version:\\\\|^Content-Type:\\\\|^X-Sender:"\)\)) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+16 W
+0.000 0.545 0.000 FG
+(") S
+(\\\\) S
+(|) S
+(^X-Sender:") S
+0.000 0.000 0.000 FG
+(\)\)) S
+LHL
+9 W
+(\)\)\)) S
+PHL
+LHL
+0.000 0.000 0.804 FG
+(;; ) S
+/f2 F
+(goofy rmime.el stuff) S
+LHL
+/f0 F
+(;) S
+/f2 F
+(\(if \(or \(equal "vt200" \(getenv "TERM" \)\)) S
+LHL
+/f0 F
+(;) S
+/f2 F
+7 W
+(\(equal "vt220" \(getenv "TERM" \)\)\)) S
+LHL
+/f0 F
+(;    ) S
+/f2 F
+(nil) S
+LHL
+/f0 F
+(;  ) S
+/f2 F
+(\(add-hook 'rmail-show-message-hook 'rmime-format\)) S
+LHL
+/f0 F
+(;  ) S
+/f2 F
+(\(add-hook 'rmail-edit-mode-hook 'rmime-cancel\)) S
+LHL
+/f0 F
+(;) S
+/f2 F
+(\(setq rmail-output-file-alist '\(\("" rmime-cancel\)\)\)) S
+LHL
+/f0 F
+(;  ) S
+/f2 F
+(\(autoload 'rmime-format "rmime" "" nil\)\)) S
+PHL
+/f0 F
+0.000 0.000 0.000 FG
+LHL
+0.000 0.000 0.804 FG
+(; ) S
+/f2 F
+(Try tm for mime stuff for now - see below.) S
+PHL
+/f0 F
+0.000 0.000 0.000 FG
+LHL
+(\(setq mail-mode-hook) S
+LHL
+(      '\() S
+/f1 F
+0.804 0.000 0.000 FG
+(lambda) S
+/f0 F
+0.000 0.000 0.000 FG
+( nil) S
+LHL
+(         \() S
+/f1 F
+0.804 0.000 0.000 FG
+(progn) S
+/f0 F
+0.000 0.000 0.000 FG
+LHL
+0.000 0.000 0.804 FG
+(;          ) S
+/f2 F
+(\(local-set-key "\\eq" 'fill-quoted-paragraph\)) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+(           \(local-set-key ) S
+0.000 0.545 0.000 FG
+("\\C-c\\C-y") S
+0.000 0.000 0.000 FG
+( 'mail-yank-tim\)) S
+LHL
+(           \(local-set-key ) S
+0.000 0.545 0.000 FG
+("\\C-xa") S
+0.000 0.000 0.000 FG
+( 'mail-realias\)) S
+LHL
+11 W
+(\(setq mail-default-reply-to ) S
+0.000 0.545 0.000 FG
+("timothy.shippert@pnl.gov") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(           \(setq mail-yank-prefix ) S
+0.000 0.545 0.000 FG
+(">") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(           \(setq mail-header-separator) S
+LHL
+(                 ) S
+0.000 0.545 0.000 FG
+("-------") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+11 W
+(\(setq mime-editor/split-message nil\) ) S
+0.000 0.000 0.804 FG
+(; ) S
+/f2 F
+(this is important for tm!) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+(           \(setq mail-yank-ignored-headers) S
+LHL
+(                 \(concat mail-yank-ignored-headers) S
+LHL
+(                         ) S
+0.000 0.545 0.000 FG
+(") S
+(\\\\) S
+(|) S
+(^X-Sender:") S
+0.000 0.000 0.000 FG
+(\)\)) S
+LHL
+11 W
+(\(turn-on-font-lock\)) S
+EndPage
+EndDSCPage
+EndSheet
+
+%%Page: 6 6
+/Lines 812 def
+/PageCount 12 def
+1 BeginSheet
+BeginDSCPage
+/LineNumber 360 def
+/PageNumber 6 def
+/HeaderLinesLeft[
+ [/h0 (init.el)]
+ [/h1 (~/.emacs.d/)]
+]def
+/HeaderLinesRight[
+ [/h0 /pagenumberstring load]
+ [/h1 (11/01/2017)]
+]def
+2 SetHeaderLines
+360 BeginPage
+/f0 F
+false BG
+0.000 0.000 0.000 FG
+11 W
+0.000 0.000 0.804 FG
+(;; ) S
+/f2 F
+(reset mail-citation-hook so we can do RMAIL and GNUS) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+11 W
+0.000 0.000 0.804 FG
+(;; ) S
+/f2 F
+(mail.  What a pain.) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+11 W
+(\(setq mail-citation-hook) S
+LHL
+17 W
+('\() S
+/f1 F
+0.804 0.000 0.000 FG
+(lambda) S
+/f0 F
+0.000 0.000 0.000 FG
+( nil) S
+LHL
+20 W
+(\() S
+/f1 F
+0.804 0.000 0.000 FG
+(progn) S
+/f0 F
+0.000 0.000 0.000 FG
+LHL
+22 W
+(\(mail-fixup-citation\)\)\)\)) S
+LHL
+(           \)\)\)) S
+PHL
+LHL
+(\(add-hook 'message-mode-hook) S
+LHL
+10 W
+(\(function) S
+LHL
+11 W
+(\() S
+/f1 F
+0.804 0.000 0.000 FG
+(lambda) S
+/f0 F
+0.000 0.000 0.000 FG
+( \(\)) S
+LHL
+13 W
+(\(setq mail-header-separator ) S
+0.000 0.545 0.000 FG
+("-------") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+13 W
+0.000 0.000 0.804 FG
+(;; ) S
+/f2 F
+(we have to actually _reset_ mail-citation-hook,) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+13 W
+0.000 0.000 0.804 FG
+(;; ) S
+/f2 F
+(because message-yank-original calls it, and we want) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+13 W
+0.000 0.000 0.804 FG
+(;; ) S
+/f2 F
+(GNUS to do that wacky citation stuff.  If we reset it) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+13 W
+0.000 0.000 0.804 FG
+(;; ) S
+/f2 F
+(down here in the hook, then it still works for RMAIL.) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+13 W
+(\(local-set-key ) S
+0.000 0.545 0.000 FG
+("\\C-xa") S
+0.000 0.000 0.000 FG
+( 'mail-realias\)) S
+LHL
+13 W
+(\(setq mail-citation-hook nil\) ) S
+LHL
+13 W
+(\(setq message-yank-prefix ) S
+0.000 0.545 0.000 FG
+(">") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+13 W
+(\(setq message-cite-function) S
+LHL
+19 W
+('message-cite-original-without-signature\)) S
+LHL
+13 W
+(\(set-face-foreground 'message-cited-text-face) S
+LHL
+34 W
+0.000 0.545 0.000 FG
+("firebrick") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+13 W
+(\(set-face-foreground 'message-header-to-face ) S
+0.000 0.545 0.000 FG
+("red4") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+13 W
+(\(set-face-foreground 'message-header-name-face ) S
+0.000 0.545 0.000 FG
+("green4") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+13 W
+0.000 0.000 0.804 FG
+(;; ) S
+/f2 F
+(I don't like how it auto-fills with a tab when I start) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+13 W
+0.000 0.000 0.804 FG
+(;; ) S
+/f2 F
+(a paragraph with a tab. Especially since it doesn't) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+13 W
+0.000 0.000 0.804 FG
+(;; ) S
+/f2 F
+(seem to work with other regexps.) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+13 W
+(\(make-local-variable 'adaptive-fill-mode\)) S
+LHL
+13 W
+(\(setq adaptive-fill-mode nil\)) S
+LHL
+13 W
+(\(setq normal-auto-fill-function 'do-auto-fill\) ) S
+0.000 0.000 0.804 FG
+(;; ) S
+/f2 F
+(for) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+13 W
+0.000 0.000 0.804 FG
+(;; ) S
+/f2 F
+(gnus 5.10.6?) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+13 W
+0.000 0.000 0.804 FG
+(;; ) S
+/f2 F
+(But, I do like adaptive-fill-mode on some things, like) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+13 W
+0.000 0.000 0.804 FG
+(;; ) S
+/f2 F
+(message-newline-and-reformat.  C'est la vie.) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+13 W
+(\(setq message-default-headers ) S
+0.000 0.545 0.000 FG
+("Reply-To: tim.shippert@pnl.gov") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+13 W
+(\(local-set-key ) S
+0.000 0.545 0.000 FG
+("\\M-\\r") S
+0.000 0.000 0.000 FG
+LHL
+28 W
+('message-newline-and-adaptive-reformat\)) S
+LHL
+13 W
+(\(local-set-key ) S
+0.000 0.545 0.000 FG
+("\\C-c\\C-x\\t") S
+0.000 0.000 0.000 FG
+( 'mime-editor/insert-file\) ) S
+LHL
+13 W
+(\(setq mime-editor/split-message nil\) ) S
+0.000 0.000 0.804 FG
+(; ) S
+/f2 F
+(this is important for tm!) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+13 W
+(\(setq message-signature nil\)) S
+LHL
+13 W
+(\)\)\)) S
+PHL
+LHL
+(\() S
+/f1 F
+0.804 0.000 0.000 FG
+(defun) S
+/f0 F
+0.000 0.000 0.000 FG
+( ) S
+/f3 F
+0.000 0.000 0.545 FG
+(generic-send-hook) S
+/f0 F
+0.000 0.000 0.000 FG
+( \(\)) S
+0.000 0.000 0.804 FG
+(;;;) S
+/f2 F
+(mail-send-hook) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+(  \() S
+/f1 F
+0.804 0.000 0.000 FG
+(progn) S
+/f0 F
+0.000 0.000 0.000 FG
+LHL
+(    \(interactive\)) S
+LHL
+(    \() S
+/f1 F
+0.804 0.000 0.000 FG
+(if) S
+/f0 F
+0.000 0.000 0.000 FG
+( \(y-or-n-p ) S
+0.000 0.545 0.000 FG
+("Insert ~/.signature file?") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+8 W
+(\(mail-signature nil\)\)) S
+LHL
+(    \() S
+/f1 F
+0.804 0.000 0.000 FG
+(if) S
+/f0 F
+0.000 0.000 0.000 FG
+( mail-archive-blind-file) S
+LHL
+8 W
+(\() S
+/f1 F
+0.804 0.000 0.000 FG
+(progn) S
+/f0 F
+0.000 0.000 0.000 FG
+LHL
+10 W
+(\(mail-position-on-field ) S
+0.000 0.545 0.000 FG
+("Subject") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+10 W
+(\(insert ) S
+0.000 0.545 0.000 FG
+("\\nFCC: ") S
+0.000 0.000 0.000 FG
+( mail-archive-blind-file\)\)\)\)\)) S
+PHL
+LHL
+(\(add-hook 'message-send-hook 'generic-send-hook\)) S
+LHL
+(\(add-hook 'mail-send-hook 'generic-send-hook\)) S
+PHL
+10 W
+LHL
+(\(add-hook 'gnus-summary-mode-hook) S
+LHL
+10 W
+('\() S
+/f1 F
+0.804 0.000 0.000 FG
+(lambda) S
+/f0 F
+0.000 0.000 0.000 FG
+( nil) S
+LHL
+13 W
+(\() S
+/f1 F
+0.804 0.000 0.000 FG
+(progn) S
+/f0 F
+0.000 0.000 0.000 FG
+LHL
+15 W
+(\(local-set-key [print] 'gnus-summary-print-article\)) S
+LHL
+15 W
+(\(setq mm-default-directory ) S
+0.000 0.545 0.000 FG
+("~/MIME/") S
+0.000 0.000 0.000 FG
+(\)\)\)\)) S
+PHL
+LHL
+(\(add-hook 'idl-mode-hook) S
+LHL
+10 W
+(\(function ) S
+LHL
+11 W
+(\() S
+/f1 F
+0.804 0.000 0.000 FG
+(lambda) S
+/f0 F
+0.000 0.000 0.000 FG
+( \(\)) S
+LHL
+13 W
+(\(setq) S
+22 W
+0.000 0.000 0.804 FG
+(; ) S
+/f2 F
+(Set options here) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+14 W
+(idl-block-indent 2          ) S
+0.000 0.000 0.804 FG
+(; ) S
+/f2 F
+(Indentation settings) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+14 W
+(idl-main-block-indent 2) S
+LHL
+14 W
+(idl-end-offset -2) S
+LHL
+14 W
+(idl-continuation-indent 2) S
+LHL
+14 W
+(idl-begin-line-comment ) S
+0.000 0.545 0.000 FG
+("^\\;[) S
+(^) S
+(\\;]") S
+0.000 0.000 0.000 FG
+( ) S
+LHL
+14 W
+(idl-surround-by-blank nil   ) S
+0.000 0.000 0.804 FG
+(; ) S
+/f2 F
+(Turn on padding symbols =,<,>, etc.) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+14 W
+(abbrev-mode 1) S
+5 W
+0.000 0.000 0.804 FG
+(; ) S
+/f2 F
+(Turn on abbrevs \(-1 for off\)) S
+EndPage
+EndDSCPage
+EndSheet
+
+%%Page: 7 7
+/Lines 812 def
+/PageCount 12 def
+1 BeginSheet
+BeginDSCPage
+/LineNumber 432 def
+/PageNumber 7 def
+/HeaderLinesLeft[
+ [/h0 (init.el)]
+ [/h1 (~/.emacs.d/)]
+]def
+/HeaderLinesRight[
+ [/h0 /pagenumberstring load]
+ [/h1 (11/01/2017)]
+]def
+2 SetHeaderLines
+432 BeginPage
+/f2 F
+false BG
+0.000 0.000 0.804 FG
+/f0 F
+0.000 0.000 0.000 FG
+14 W
+(idl-pad-keyword nil ) S
+0.000 0.000 0.804 FG
+(; ) S
+/f2 F
+(Remove spaces for keyword assign '=') S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+14 W
+0.000 0.000 0.804 FG
+(;; ) S
+/f2 F
+(If abbrev-mode is off, then case changes \(the next 2 lines\)) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+14 W
+0.000 0.000 0.804 FG
+(;; ) S
+/f2 F
+(will not occur.) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+14 W
+(idl-reserved-word-upcase t  ) S
+0.000 0.000 0.804 FG
+(; ) S
+/f2 F
+(Change reserved words to upper case) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+14 W
+(idl-abbrev-change-case nil  ) S
+0.000 0.000 0.804 FG
+(; ) S
+/f2 F
+(Don't force case of expansions) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+14 W
+0.000 0.000 0.804 FG
+(; ) S
+/f2 F
+(idl-hang-indent-regexp ": " ; Change from "- ") S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+14 W
+(idl-show-block t          ) S
+0.000 0.000 0.804 FG
+(; ) S
+/f2 F
+(Turn off blinking to matching begin) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+14 W
+(idl-abbrev-move t        ) S
+0.000 0.000 0.804 FG
+(; ) S
+/f2 F
+(Allow abbrevs to move point backwards) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+14 W
+(case-fold-search nil   ) S
+0.000 0.000 0.804 FG
+(; ) S
+/f2 F
+(Make searches case sensitive) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+14 W
+(\)) S
+LHL
+13 W
+(\(turn-on-font-lock\)) S
+LHL
+13 W
+(\)\)\)) S
+PHL
+LHL
+(\(setq emacs-lisp-mode-hook '\() S
+/f1 F
+0.804 0.000 0.000 FG
+(lambda) S
+/f0 F
+0.000 0.000 0.000 FG
+( nil \() S
+/f1 F
+0.804 0.000 0.000 FG
+(progn) S
+/f0 F
+0.000 0.000 0.000 FG
+LHL
+34 W
+(\(turn-on-auto-fill\)) S
+LHL
+34 W
+0.000 0.000 0.804 FG
+(;) S
+/f2 F
+(\(setq fill-column 75\)) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+34 W
+(\(setq comment-column 0\)) S
+LHL
+32 W
+0.000 0.000 0.804 FG
+(;  ) S
+/f2 F
+(\(font-lock-mode\)) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+34 W
+(\)\)\)) S
+PHL
+LHL
+(\(setq scribe-mode-hook '\() S
+/f1 F
+0.804 0.000 0.000 FG
+(lambda) S
+/f0 F
+0.000 0.000 0.000 FG
+( nil \() S
+/f1 F
+0.804 0.000 0.000 FG
+(progn) S
+/f0 F
+0.000 0.000 0.000 FG
+LHL
+36 W
+(\(turn-on-auto-fill\)) S
+LHL
+35 W
+0.000 0.000 0.804 FG
+(; ) S
+/f2 F
+(\(setq fill-column 108\)) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+36 W
+(\(read-abbrev-file ) S
+LHL
+37 W
+(\(expand-file-name ) S
+0.000 0.545 0.000 FG
+(".abbrev_file") S
+0.000 0.000 0.000 FG
+(\)\)) S
+LHL
+36 W
+(\(abbrev-mode 1\)\)\)\)) S
+PHL
+LHL
+(\(setq server-switch-hook) S
+LHL
+(      '\() S
+/f1 F
+0.804 0.000 0.000 FG
+(lambda) S
+/f0 F
+0.000 0.000 0.000 FG
+( nil) S
+LHL
+9 W
+(\() S
+/f1 F
+0.804 0.000 0.000 FG
+(progn) S
+/f0 F
+0.000 0.000 0.000 FG
+LHL
+11 W
+(\(local-set-key ) S
+0.000 0.545 0.000 FG
+("\\C-c\\C-c") S
+0.000 0.000 0.000 FG
+( 'server-edit\)\)\)\)) S
+PHL
+LHL
+(\() S
+/f1 F
+0.804 0.000 0.000 FG
+(if) S
+/f0 F
+0.000 0.000 0.000 FG
+( \(equal ) S
+0.000 0.545 0.000 FG
+("vt220") S
+0.000 0.000 0.000 FG
+( \(getenv ) S
+0.000 0.545 0.000 FG
+("TERM") S
+0.000 0.000 0.000 FG
+( \)\)) S
+LHL
+(    nil) S
+LHL
+(  \(add-hook 'dired-mode-hook 'turn-on-font-lock\)) S
+LHL
+(  \(add-hook 'emacs-lisp-mode-hook 'turn-on-font-lock\)) S
+LHL
+(  \(add-hook 'c-mode-hook 'turn-on-font-lock\)) S
+LHL
+(  \(add-hook 'fortran-mode-hook 'turn-on-font-lock\)) S
+LHL
+(  \)) S
+PHL
+PHL
+LHL
+0.000 0.000 0.804 FG
+(;; ) S
+/f2 F
+(A generic mode for info files.  Let's see how it goes) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+(\() S
+/f1 F
+0.804 0.000 0.000 FG
+(require) S
+/f0 F
+0.000 0.000 0.000 FG
+( ') S
+0.000 0.545 0.545 FG
+(generic) S
+0.000 0.000 0.000 FG
+(\)) S
+PHL
+LHL
+(\() S
+/f1 F
+0.804 0.000 0.000 FG
+(define-generic-mode) S
+/f0 F
+0.000 0.000 0.000 FG
+( ') S
+/f3 F
+0.000 0.000 0.545 FG
+(flat-generic-mode) S
+/f0 F
+0.000 0.000 0.000 FG
+LHL
+(  \(list ?# \)) S
+LHL
+(  '\(\)) S
+LHL
+(  \(list) S
+LHL
+(   '\() S
+0.000 0.545 0.000 FG
+("^[ \\t]*) S
+(\\\\) S
+(\() S
+([a-zA-Z0-9_-]+) S
+(\\\\) S
+(\)) S
+([ \\t]*:") S
+0.000 0.000 0.000 FG
+( 1 'font-lock-type-face\)) S
+LHL
+(   '\() S
+0.000 0.545 0.000 FG
+("[ \\t]*) S
+(\\\\) S
+(\() S
+([a-zA-Z0-9_-]+) S
+(\\\\) S
+(\)) S
+([ \\t]*:") S
+0.000 0.000 0.000 FG
+( 1 'font-lock-constant-face\)) S
+LHL
+(   '\() S
+0.000 0.545 0.000 FG
+("[ \\t]*) S
+(\\\\) S
+(\() S
+([a-zA-Z0-9_-]+) S
+(\\\\) S
+(\)) S
+([ \\t]*=") S
+0.000 0.000 0.000 FG
+( 1 'font-lock-variable-name-face\)) S
+LHL
+(   \)) S
+LHL
+(  \(list ) S
+0.000 0.545 0.000 FG
+("\\\\.flat") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(  \(list 'font-lock-mode 'auto-fill-mode\)\)) S
+PHL
+LHL
+(\() S
+/f1 F
+0.804 0.000 0.000 FG
+(define-generic-mode) S
+/f0 F
+0.000 0.000 0.000 FG
+( ') S
+/f3 F
+0.000 0.000 0.545 FG
+(infofile-generic-mode) S
+/f0 F
+0.000 0.000 0.000 FG
+LHL
+(  \(list ?# \)) S
+LHL
+(  '\(\)) S
+LHL
+0.000 0.000 0.804 FG
+(;  ) S
+/f2 F
+(\(list "float" "double" "int" "long_int" "long[) S
+(^) S
+(_]?" "char"\)) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+(  \(list ) S
+0.000 0.545 0.000 FG
+("^[ \\t]*sgp[) S
+(^) S
+( \\t]*") S
+0.000 0.000 0.000 FG
+LHL
+8 W
+0.000 0.545 0.000 FG
+("^[ \\t]*twp[) S
+(^) S
+( \\t]*") S
+0.000 0.000 0.000 FG
+LHL
+8 W
+0.000 0.545 0.000 FG
+("^[ \\t]*nsa[) S
+(^) S
+( \\t]*") S
+0.000 0.000 0.000 FG
+LHL
+8 W
+0.000 0.545 0.000 FG
+("^[ \\t]*gec[) S
+(^) S
+( \\t]*") S
+0.000 0.000 0.000 FG
+LHL
+8 W
+0.000 0.545 0.000 FG
+("^[ \\t]*pye[) S
+(^) S
+( \\t]*") S
+0.000 0.000 0.000 FG
+LHL
+8 W
+0.000 0.545 0.000 FG
+("^[ \\t]*nim[) S
+(^) S
+( \\t]*") S
+0.000 0.000 0.000 FG
+LHL
+8 W
+0.000 0.545 0.000 FG
+("^[ \\t]*NULL[) S
+(^) S
+( \\t]*") S
+0.000 0.000 0.000 FG
+LHL
+8 W
+0.000 0.000 0.804 FG
+(;; ) S
+/f2 F
+(Not sure what to do about "long_name" and the "long" type) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+8 W
+('\() S
+0.000 0.545 0.000 FG
+("\\\\b) S
+(\\\\) S
+(\() S
+([a-zA-Z0-9_-]+) S
+(\\\\) S
+(\)) S
+(\() S
+(\\\\) S
+(\() S
+([) S
+(^) S
+(\)]*?) S
+(\\\\) S
+(\)) S
+(\)") S
+0.000 0.000 0.000 FG
+LHL
+10 W
+(\(1 font-lock-function-name-face\)) S
+LHL
+10 W
+(\(2 font-lock-variable-name-face\)\)) S
+LHL
+8 W
+('\() S
+0.000 0.545 0.000 FG
+("\\\\b$[a-zA-Z0-9_-]+\\\\b") S
+0.000 0.000 0.000 FG
+( . font-lock-variable-name-face\)) S
+LHL
+8 W
+('\() S
+0.000 0.545 0.000 FG
+("{) S
+(\\\\) S
+(\() S
+([) S
+(^) S
+(}]*) S
+(\\\\) S
+(\)) S
+(}") S
+0.000 0.000 0.000 FG
+( 1 font-lock-reference-face\)) S
+EndPage
+EndDSCPage
+EndSheet
+
+%%Page: 8 8
+/Lines 812 def
+/PageCount 12 def
+1 BeginSheet
+BeginDSCPage
+/LineNumber 504 def
+/PageNumber 8 def
+/HeaderLinesLeft[
+ [/h0 (init.el)]
+ [/h1 (~/.emacs.d/)]
+]def
+/HeaderLinesRight[
+ [/h0 /pagenumberstring load]
+ [/h1 (11/01/2017)]
+]def
+2 SetHeaderLines
+504 BeginPage
+/f0 F
+false BG
+0.000 0.000 0.000 FG
+(        '\() S
+0.000 0.545 0.000 FG
+("\\\\b) S
+(\\\\) S
+(\() S
+(float) S
+(\\\\) S
+(|) S
+(double) S
+(\\\\) S
+(|) S
+(int) S
+(\\\\) S
+(|) S
+(long_int) S
+(\\\\) S
+(|) S
+(\\\\) S
+(|) S
+(char) S
+(\\\\) S
+(\)) S
+(\\\\b") S
+0.000 0.000 0.000 FG
+( .) S
+LHL
+10 W
+(font-lock-reference-face\)) S
+LHL
+8 W
+('\() S
+0.000 0.545 0.000 FG
+("= ) S
+(\\\\) S
+(\() S
+(.*) S
+(\\\\) S
+(\)) S
+(") S
+0.000 0.000 0.000 FG
+( 1 font-lock-string-face\)) S
+LHL
+8 W
+(\)) S
+LHL
+(  \(list ) S
+0.000 0.545 0.000 FG
+("\\.info") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(  \(list 'font-lock-mode\)\)) S
+PHL
+LHL
+0.000 0.000 0.804 FG
+(;;;) S
+/f2 F
+LHL
+/f0 F
+(;) S
+/f2 F
+(\(autoload 'rmail-tim-setup "rmail-tim" "My redefs of some things" t\)) S
+LHL
+/f0 F
+(;) S
+/f2 F
+(\(autoload 'mail "mail-tim" "Load up mail file" t\)) S
+PHL
+/f0 F
+0.000 0.000 0.000 FG
+LHL
+0.000 0.000 0.804 FG
+(;) S
+/f2 F
+(\(autoload 'rmail-execute-content-type' "mm" "MIME stuff - wacky and) S
+LHL
+/f0 F
+(;) S
+/f2 F
+(old, but it works" t\)) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+(\(autoload 'indent-relative-tab ) S
+0.000 0.545 0.000 FG
+("indent-tim") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("My attempt to fix indent-relative") S
+0.000 0.000 0.000 FG
+( t\)) S
+PHL
+LHL
+(\(autoload 'buffer-citation ) S
+0.000 0.545 0.000 FG
+("buffer-cite") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("Highlight citations in) S
+LHL
+(current buffer \(used for printing email\)") S
+0.000 0.000 0.000 FG
+( t\)) S
+PHL
+LHL
+(\(autoload 'tprint-buffer' ) S
+0.000 0.545 0.000 FG
+("tprint") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("My customization of printing) S
+LHL
+( stuff") S
+0.000 0.000 0.000 FG
+( t\)) S
+PHL
+LHL
+(\(autoload 'mprint-buffer' ) S
+0.000 0.545 0.000 FG
+("mprint") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("My customization of mail printing stuff) S
+LHL
+( - there's got to be a better way") S
+0.000 0.000 0.000 FG
+( t\)) S
+PHL
+LHL
+(\(autoload 'ispell ) S
+0.000 0.545 0.000 FG
+("ispell") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("Run ispell over buffer") S
+0.000 0.000 0.000 FG
+( t\)) S
+LHL
+(\(autoload 'ispell-region ) S
+0.000 0.545 0.000 FG
+("ispell") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("Run ispell over region") S
+0.000 0.000 0.000 FG
+( t\)) S
+LHL
+(\(autoload 'ispell-word ) S
+0.000 0.545 0.000 FG
+("ispell") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("Check word under cursor") S
+0.000 0.000 0.000 FG
+( t\)) S
+PHL
+LHL
+(\(autoload 'html-helper-mode ) S
+0.000 0.545 0.000 FG
+("html-helper-mode") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("Yay HTML") S
+0.000 0.000 0.000 FG
+( t\)) S
+LHL
+(\(setq auto-mode-alist \(cons '\() S
+0.000 0.545 0.000 FG
+("\\\\.html$") S
+0.000 0.000 0.000 FG
+( . html-helper-mode\) auto-mode-alist\)\)) S
+PHL
+LHL
+0.000 0.000 0.804 FG
+(;) S
+/f2 F
+(\(autoload 'calendar "cal" ) S
+LHL
+/f0 F
+(;  ) S
+/f2 F
+("\\) S
+LHL
+/f0 F
+(;) S
+/f2 F
+(Load the damn calendar file") S
+LHL
+/f0 F
+(; ) S
+/f2 F
+(t\)) S
+PHL
+/f0 F
+0.000 0.000 0.000 FG
+LHL
+(\(autoload 'vpr-buffer ) S
+0.000 0.545 0.000 FG
+("vpr") S
+0.000 0.000 0.000 FG
+LHL
+(  ) S
+0.000 0.545 0.000 FG
+("\\) S
+LHL
+(print out buffer using vpr") S
+0.000 0.000 0.000 FG
+LHL
+( t\)) S
+PHL
+LHL
+(\(autoload 'idlwave-mode ) S
+0.000 0.545 0.000 FG
+("idlwave") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("IDLWAVE Mode") S
+0.000 0.000 0.000 FG
+( t\)) S
+LHL
+(\(autoload 'idlwave-shell ) S
+0.000 0.545 0.000 FG
+("idlw-shell") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("IDLWAVE Shell") S
+0.000 0.000 0.000 FG
+( t\)) S
+PHL
+PHL
+LHL
+0.000 0.000 0.804 FG
+(;) S
+/f2 F
+(\(setq 'idlwave-surround '\(\)\)) S
+PHL
+/f0 F
+0.000 0.000 0.000 FG
+LHL
+(\() S
+/f1 F
+0.804 0.000 0.000 FG
+(cond) S
+/f0 F
+0.000 0.000 0.000 FG
+( \(window-system) S
+LHL
+(       \(mwheel-install\)\)\)) S
+PHL
+LHL
+0.000 0.000 0.804 FG
+(;;; ) S
+/f2 F
+(You might want to bind ispell-word and ispell-complete word to) S
+LHL
+/f0 F
+(;;; ) S
+/f2 F
+(keys.) S
+PHL
+/f0 F
+0.000 0.000 0.000 FG
+PHL
+LHL
+0.000 0.000 0.804 FG
+(;;; ) S
+/f2 F
+(Ess stuff) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+(\(load ) S
+0.000 0.545 0.000 FG
+("/home/shippert/emacs/ess-5.3.7/lisp/ess-site.el") S
+0.000 0.000 0.000 FG
+(\)) S
+PHL
+LHL
+0.000 0.000 0.804 FG
+(;;;) S
+/f2 F
+LHL
+/f0 F
+(;;;) S
+/f2 F
+(\(load "sendmail"\)) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+(\(load ) S
+0.000 0.545 0.000 FG
+("tim") S
+0.000 0.000 0.000 FG
+(\)) S
+PHL
+LHL
+0.000 0.000 0.804 FG
+(;) S
+/f2 F
+LHL
+/f0 F
+(; ) S
+/f2 F
+(Here it is - the tm stuff to read MIME with rmail.) S
+LHL
+/f0 F
+(;) S
+/f2 F
+LHL
+/f0 F
+(;; ) S
+/f2 F
+(I think if I load gnus first then mime-setup, the mouse buttons) S
+LHL
+/f0 F
+(;; ) S
+/f2 F
+(will work right in both.  I don't know why.) S
+LHL
+/f0 F
+(;;) S
+/f2 F
+(\(load "gnus"\)) S
+LHL
+/f0 F
+(;;) S
+/f2 F
+(\(load "mime-setup"\)) S
+PHL
+/f0 F
+0.000 0.000 0.000 FG
+LHL
+0.000 0.000 0.804 FG
+(;) S
+/f2 F
+(\(load "next-line"\)) S
+PHL
+/f0 F
+0.000 0.000 0.000 FG
+LHL
+0.000 0.000 0.804 FG
+(;;; ) S
+/f2 F
+(Terminal stuff) S
+EndPage
+EndDSCPage
+EndSheet
+
+%%Page: 9 9
+/Lines 812 def
+/PageCount 12 def
+1 BeginSheet
+BeginDSCPage
+/LineNumber 576 def
+/PageNumber 9 def
+/HeaderLinesLeft[
+ [/h0 (init.el)]
+ [/h1 (~/.emacs.d/)]
+]def
+/HeaderLinesRight[
+ [/h0 /pagenumberstring load]
+ [/h1 (11/01/2017)]
+]def
+2 SetHeaderLines
+576 BeginPage
+/f2 F
+false BG
+0.000 0.000 0.804 FG
+/f0 F
+(;) S
+/f2 F
+(\(let \(\(termoo \(getenv "TERM"\)\)\)) S
+LHL
+/f0 F
+(;  ) S
+/f2 F
+(\(cond \(\(equal termoo "vt102"\)   ; modem) S
+LHL
+/f0 F
+(;) S
+/f2 F
+8 W
+(\(load "~/.emacs.vt102"\)\)) S
+LHL
+/f0 F
+(;) S
+/f2 F
+7 W
+(\)) S
+LHL
+/f0 F
+(;  ) S
+/f2 F
+(\)) S
+PHL
+/f0 F
+0.000 0.000 0.000 FG
+LHL
+(\(display-time\)) S
+PHL
+LHL
+0.000 0.000 0.804 FG
+(;;; ) S
+/f2 F
+(Commands added by calc-private-autoloads on Mon Jun 29 11:31:53 1998.) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+(\(autoload 'calc-dispatch) S
+11 W
+0.000 0.545 0.000 FG
+("calc") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("Calculator Options") S
+0.000 0.000 0.000 FG
+( t\)) S
+LHL
+(\(autoload 'full-calc) S
+15 W
+0.000 0.545 0.000 FG
+("calc") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("Full-screen Calculator") S
+0.000 0.000 0.000 FG
+( t\)) S
+LHL
+(\(autoload 'full-calc-keypad) S
+8 W
+0.000 0.545 0.000 FG
+("calc") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("Full-screen X Calculator") S
+0.000 0.000 0.000 FG
+( t\)) S
+LHL
+(\(autoload 'calc-eval) S
+15 W
+0.000 0.545 0.000 FG
+("calc") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("Use Calculator from Lisp") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(\(autoload 'defmath) S
+17 W
+0.000 0.545 0.000 FG
+("calc") S
+0.000 0.000 0.000 FG
+( nil t t\)) S
+LHL
+(\(autoload 'calc) S
+20 W
+0.000 0.545 0.000 FG
+("calc") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("Calculator Mode") S
+0.000 0.000 0.000 FG
+( t\)) S
+LHL
+(\(autoload 'quick-calc) S
+14 W
+0.000 0.545 0.000 FG
+("calc") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("Quick Calculator") S
+0.000 0.000 0.000 FG
+( t\)) S
+LHL
+(\(autoload 'calc-keypad) S
+13 W
+0.000 0.545 0.000 FG
+("calc") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("X windows Calculator") S
+0.000 0.000 0.000 FG
+( t\)) S
+LHL
+(\(autoload 'calc-embedded) S
+11 W
+0.000 0.545 0.000 FG
+("calc") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("Use Calc inside any buffer") S
+0.000 0.000 0.000 FG
+( t\)) S
+LHL
+(\(autoload 'calc-embedded-activate  ) S
+0.000 0.545 0.000 FG
+("calc") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("Activate =>'s in buffer") S
+0.000 0.000 0.000 FG
+( t\)) S
+LHL
+(\(autoload 'calc-grab-region) S
+8 W
+0.000 0.545 0.000 FG
+("calc") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("Grab region of Calc data") S
+0.000 0.000 0.000 FG
+( t\)) S
+LHL
+(\(autoload 'calc-grab-rectangle) S
+5 W
+0.000 0.545 0.000 FG
+("calc") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("Grab rectangle of data") S
+0.000 0.000 0.000 FG
+( t\)) S
+LHL
+(\(setq load-path \(nconc load-path \(list ) S
+0.000 0.545 0.000 FG
+("/usr/local/src/calc-2.02f") S
+0.000 0.000 0.000 FG
+(\)\)\)) S
+LHL
+(\(global-set-key ) S
+0.000 0.545 0.000 FG
+("\\e#") S
+0.000 0.000 0.000 FG
+( 'calc-dispatch\)) S
+LHL
+(\(global-set-key [SunF36] 'calc-dispatch\)) S
+PHL
+LHL
+0.000 0.000 0.804 FG
+(;;; ) S
+/f2 F
+(End of Calc autoloads.) S
+PHL
+/f0 F
+0.000 0.000 0.000 FG
+LHL
+0.000 0.000 0.804 FG
+(;;; ) S
+/f2 F
+(Custom mail stuff.) S
+PHL
+/f0 F
+0.000 0.000 0.000 FG
+LHL
+(\() S
+/f1 F
+0.804 0.000 0.000 FG
+(defun) S
+/f0 F
+0.000 0.000 0.000 FG
+( ) S
+/f3 F
+0.000 0.000 0.545 FG
+(mail-realias) S
+/f0 F
+0.000 0.000 0.000 FG
+( \(\)) S
+LHL
+(  ) S
+0.000 0.545 0.000 FG
+("Rebuild the alias list from .mailrc") S
+0.000 0.000 0.000 FG
+LHL
+(  \(interactive\)) S
+LHL
+(  \(princ ) S
+0.000 0.545 0.000 FG
+("Loading ~/.mailrc...") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(  \(build-mail-aliases\)) S
+LHL
+(  \(princ ) S
+0.000 0.545 0.000 FG
+("done") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(\)) S
+PHL
+LHL
+0.000 0.000 0.804 FG
+(; ) S
+/f2 F
+(re-written to do what _I_ want.  I defun it here so that it) S
+LHL
+/f0 F
+(; ) S
+/f2 F
+(supercedes all other defuns later on...) S
+PHL
+/f0 F
+0.000 0.000 0.000 FG
+LHL
+(\() S
+/f1 F
+0.804 0.000 0.000 FG
+(defun) S
+/f0 F
+0.000 0.000 0.000 FG
+( ) S
+/f3 F
+0.000 0.000 0.545 FG
+(mail-fixup-citation) S
+/f0 F
+0.000 0.000 0.000 FG
+( \(\)) S
+LHL
+(  ) S
+0.000 0.545 0.000 FG
+("Modify text just inserted from a message to be cited.) S
+LHL
+(The inserted text should be the region.) S
+LHL
+(When this function returns, the region is again around the modified text.) S
+PHL
+LHL
+(Normally, indent each nonblank line `) S
+0.000 0.545 0.545 FG
+(mail-indentation-spaces) S
+0.000 0.545 0.000 FG
+(' spaces.) S
+LHL
+(However, if `) S
+0.000 0.545 0.545 FG
+(mail-yank-prefix) S
+0.000 0.545 0.000 FG
+(' is non-nil, insert that prefix on each line.") S
+0.000 0.000 0.000 FG
+LHL
+(  \() S
+/f1 F
+0.804 0.000 0.000 FG
+(let) S
+/f0 F
+0.000 0.000 0.000 FG
+( \(\(start \(point\)\)\)) S
+LHL
+(    \(mail-yank-clear-headers start \(mark t\)\)) S
+LHL
+(    \() S
+/f1 F
+0.804 0.000 0.000 FG
+(if) S
+/f0 F
+0.000 0.000 0.000 FG
+( \(null mail-yank-prefix\)) S
+LHL
+(        \(indent-rigidly start \(mark t\) mail-indentation-spaces\)) S
+LHL
+(      \() S
+/f1 F
+0.804 0.000 0.000 FG
+(save-excursion) S
+/f0 F
+0.000 0.000 0.000 FG
+LHL
+(        \(goto-char start\)) S
+LHL
+(        \() S
+/f1 F
+0.804 0.000 0.000 FG
+(while) S
+/f0 F
+0.000 0.000 0.000 FG
+( \(< \(point\) \(mark t\)\)) S
+LHL
+(          \() S
+/f1 F
+0.804 0.000 0.000 FG
+(if) S
+/f0 F
+0.000 0.000 0.000 FG
+( \(not \(looking-at ) S
+0.000 0.545 0.000 FG
+("^[ \\t]*$") S
+0.000 0.000 0.000 FG
+(\)\) ) S
+0.000 0.000 0.804 FG
+(; ) S
+/f2 F
+(don't quote whitespace) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+(              \(insert mail-yank-prefix\)\)) S
+LHL
+(          \(forward-line 1\)\)\)\)\)\)) S
+PHL
+LHL
+(\() S
+/f1 F
+0.804 0.000 0.000 FG
+(defun) S
+/f0 F
+0.000 0.000 0.000 FG
+( ) S
+/f3 F
+0.000 0.000 0.545 FG
+(mail-yank-tim) S
+/f0 F
+0.000 0.000 0.000 FG
+( \(arg\)) S
+LHL
+(  ) S
+0.000 0.545 0.000 FG
+("Insert the message being replied to, if any \(in rmail\).) S
+LHL
+(Puts point before the text and mark after.) S
+LHL
+(Normally, indents each nonblank line ARG spaces \(default 3\).) S
+LHL
+(However, if `) S
+0.000 0.545 0.545 FG
+(mail-yank-prefix) S
+0.000 0.545 0.000 FG
+(' is non-nil, insert that prefix on each line.) S
+PHL
+LHL
+(Just \\\\[) S
+0.000 0.545 0.545 FG
+(universal-argument) S
+0.000 0.545 0.000 FG
+(] as argument means don't indent, insert no prefix,) S
+LHL
+(and don't delete any header fields.") S
+0.000 0.000 0.000 FG
+LHL
+(  \(interactive ) S
+0.000 0.545 0.000 FG
+("P") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(  \() S
+/f1 F
+0.804 0.000 0.000 FG
+(if) S
+/f0 F
+0.000 0.000 0.000 FG
+( mail-reply-buffer) S
+LHL
+(      \() S
+/f1 F
+0.804 0.000 0.000 FG
+(let) S
+/f0 F
+0.000 0.000 0.000 FG
+( \(\(start \(point\)\)\)) S
+LHL
+(        \(delete-windows-on mail-reply-buffer\)) S
+LHL
+(        \(insert-buffer mail-reply-buffer\)) S
+LHL
+(        \() S
+/f1 F
+0.804 0.000 0.000 FG
+(if) S
+/f0 F
+0.000 0.000 0.000 FG
+( \(consp arg\)) S
+EndPage
+EndDSCPage
+EndSheet
+
+%%Page: 10 10
+/Lines 812 def
+/PageCount 12 def
+1 BeginSheet
+BeginDSCPage
+/LineNumber 648 def
+/PageNumber 10 def
+/HeaderLinesLeft[
+ [/h0 (init.el)]
+ [/h1 (~/.emacs.d/)]
+]def
+/HeaderLinesRight[
+ [/h0 /pagenumberstring load]
+ [/h1 (11/01/2017)]
+]def
+2 SetHeaderLines
+648 BeginPage
+/f0 F
+false BG
+0.000 0.000 0.000 FG
+(            nil) S
+LHL
+(          \(goto-char start\)) S
+LHL
+(          \() S
+/f1 F
+0.804 0.000 0.000 FG
+(let) S
+/f0 F
+0.000 0.000 0.000 FG
+( \(\(mail-indentation-spaces \() S
+/f1 F
+0.804 0.000 0.000 FG
+(if) S
+/f0 F
+0.000 0.000 0.000 FG
+( arg \(prefix-numeric-value arg\)) S
+LHL
+(                                           mail-indentation-spaces\)\)\)) S
+LHL
+(            \() S
+/f1 F
+0.804 0.000 0.000 FG
+(if) S
+/f0 F
+0.000 0.000 0.000 FG
+( mail-citation-hook) S
+LHL
+(                \(run-hooks 'mail-citation-hook\)) S
+LHL
+(              \(run-hooks 'mail-yank-hooks\)\)\)\)) S
+LHL
+0.000 0.000 0.804 FG
+(;       ) S
+/f2 F
+(\(exchange-point-and-mark\)) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+(        \)\)\)) S
+PHL
+PHL
+LHL
+(\() S
+/f1 F
+0.804 0.000 0.000 FG
+(defun) S
+/f0 F
+0.000 0.000 0.000 FG
+( ) S
+/f3 F
+0.000 0.000 0.545 FG
+(rmail-summary-delete-forward-nokidding) S
+/f0 F
+0.000 0.000 0.000 FG
+( \(arg\)) S
+LHL
+(  ) S
+0.000 0.545 0.000 FG
+("Silly hack so we can delete ARG number of messages") S
+0.000 0.000 0.000 FG
+LHL
+(  \(interactive ) S
+0.000 0.545 0.000 FG
+("p") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(  \() S
+/f1 F
+0.804 0.000 0.000 FG
+(let) S
+/f0 F
+0.000 0.000 0.000 FG
+( \(\(foo \() S
+/f1 F
+0.804 0.000 0.000 FG
+(if) S
+/f0 F
+0.000 0.000 0.000 FG
+( \(null arg\) 1 arg\)\)) S
+LHL
+8 W
+(\(num 0\)\)) S
+LHL
+(    \() S
+/f1 F
+0.804 0.000 0.000 FG
+(while) S
+/f0 F
+0.000 0.000 0.000 FG
+( \(< num foo\)) S
+LHL
+(      \(rmail-summary-delete-forward\)) S
+LHL
+(      \(setq num \(1+ num\)\)\)\)\)) S
+PHL
+LHL
+(\() S
+/f1 F
+0.804 0.000 0.000 FG
+(defun) S
+/f0 F
+0.000 0.000 0.000 FG
+( ) S
+/f3 F
+0.000 0.000 0.545 FG
+(message-newline-and-adaptive-reformat) S
+/f0 F
+0.000 0.000 0.000 FG
+(\(\)) S
+LHL
+(  ) S
+0.000 0.545 0.000 FG
+("Do the message-newline-and-reformat, but force adaptive filling") S
+0.000 0.000 0.000 FG
+LHL
+(  \(interactive\)) S
+LHL
+(  \() S
+/f1 F
+0.804 0.000 0.000 FG
+(let) S
+/f0 F
+0.000 0.000 0.000 FG
+( \(\(adaptive-fill-mode t\)\)) S
+LHL
+(    \(message-newline-and-reformat\)\)\)) S
+PHL
+LHL
+(\(put 'upcase-region 'disabled nil\)) S
+PHL
+PHL
+LHL
+(\() S
+/f1 F
+0.804 0.000 0.000 FG
+(defun) S
+/f0 F
+0.000 0.000 0.000 FG
+( ) S
+/f3 F
+0.000 0.000 0.545 FG
+(update-diff-colors) S
+/f0 F
+0.000 0.000 0.000 FG
+( \(\)) S
+LHL
+(  ) S
+0.000 0.545 0.000 FG
+("update the colors for diff faces") S
+0.000 0.000 0.000 FG
+LHL
+(  ) S
+0.000 0.000 0.804 FG
+(;) S
+/f2 F
+(\(set-face-attribute 'diff-added nil) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+(  ) S
+0.000 0.000 0.804 FG
+(;                    ) S
+/f2 F
+(:foreground "white" :background "blue"\)) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+(  ) S
+0.000 0.000 0.804 FG
+(;) S
+/f2 F
+(\(set-face-attribute 'diff-removed nil) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+(  ) S
+0.000 0.000 0.804 FG
+(;                    ) S
+/f2 F
+(:foreground "white" :background "red3"\)) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+(  \(set-face-attribute 'diff-added nil) S
+LHL
+(                      ) S
+0.282 0.239 0.545 FG
+(:foreground) S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("blue") S
+0.000 0.000 0.000 FG
+( ) S
+0.282 0.239 0.545 FG
+(:background) S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("white") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(  \(set-face-attribute 'diff-removed nil) S
+LHL
+(                      ) S
+0.282 0.239 0.545 FG
+(:foreground) S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("red") S
+0.000 0.000 0.000 FG
+( ) S
+0.282 0.239 0.545 FG
+(:background) S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("white") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(  \(set-face-attribute 'diff-changed nil) S
+LHL
+(                      ) S
+0.282 0.239 0.545 FG
+(:foreground) S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("green3") S
+0.000 0.000 0.000 FG
+( ) S
+0.282 0.239 0.545 FG
+(:background) S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("white") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(  \(set-face-attribute 'diff-file-header nil) S
+LHL
+(                      ) S
+0.282 0.239 0.545 FG
+(:foreground) S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("purple") S
+0.000 0.000 0.000 FG
+( ) S
+0.282 0.239 0.545 FG
+(:background) S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("white") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(  \(set-face-attribute 'diff-hunk-header nil) S
+LHL
+(                      ) S
+0.282 0.239 0.545 FG
+(:foreground) S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("yellow") S
+0.000 0.000 0.000 FG
+( ) S
+0.282 0.239 0.545 FG
+(:background) S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("purple") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(  \)) S
+LHL
+(\(eval-after-load ) S
+0.000 0.545 0.000 FG
+("diff-mode") S
+0.000 0.000 0.000 FG
+LHL
+(  '\(update-diff-colors\)\)) S
+PHL
+LHL
+0.000 0.000 0.804 FG
+(;) S
+/f2 F
+(\(load "custom"\)) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+(\() S
+/f1 F
+0.804 0.000 0.000 FG
+(require) S
+/f0 F
+0.000 0.000 0.000 FG
+( ') S
+0.000 0.545 0.545 FG
+(tramp) S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(\(custom-set-variables) S
+LHL
+( ) S
+0.000 0.000 0.804 FG
+(;; ) S
+/f2 F
+(custom-set-variables was added by Custom.) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.000 0.804 FG
+(;; ) S
+/f2 F
+(If you edit it by hand, you could mess it up, so be careful.) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.000 0.804 FG
+(;; ) S
+/f2 F
+(Your init file should contain only one such instance.) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.000 0.804 FG
+(;; ) S
+/f2 F
+(If there is more than one, they won't work right.) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+( '\(ange-ftp-ftp-program-args nil\)) S
+LHL
+( '\(ange-ftp-ftp-program-name ) S
+0.000 0.545 0.000 FG
+("sftp") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+( '\(ange-ftp-gateway-ftp-program-name ) S
+0.000 0.545 0.000 FG
+("sftp") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+( '\(ansi-color-faces-vector) S
+LHL
+(   [default bold shadow italic underline bold bold-italic bold]\)) S
+LHL
+( '\(ansi-color-names-vector) S
+LHL
+(   [) S
+0.000 0.545 0.000 FG
+("#2e3436") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("#a40000") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("#4e9a06") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("#c4a000") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("#204a87") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("#5c3566") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("#729fcf") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("#eeeeec") S
+0.000 0.000 0.000 FG
+(]\)) S
+LHL
+( '\(custom-safe-themes) S
+LHL
+(   \(quote) S
+LHL
+(    \() S
+0.000 0.545 0.000 FG
+("8094177f57315be0278de74e1cbbc0cceaa823288cd479dc7b7de11e1b5b855a") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("4a3f7f40fda830409fe0fe93) S
+SL
+(c3379ade3ec33b1e6fd0a607c55d34ef6cc95763") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("d6eedfc0013149f2f2ad8d44192e179af41c099131b4d24d7485ad) S
+SL
+(5ee64ce392") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("3683af725c9a22b9ff70427dbe410e23df12be43c4622bf29be6693748877923") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("e556ba5ef0496a1b6) S
+SL
+(01854ad88e79877a7983e0091495df68a77821267528db8") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("5e3fc08bcadce4c6785fc49be686a4a82a356db569f55d4) S
+SL
+(11258984e952f194a") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("ab04c00a7e48ad784b52f34aa6bfa1e80d0c3fcacc50e1189af3651013eb0d58") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("dc16ca33b8) S
+SL
+(3579d105555fc31a990e4c1a4047627ec6b53da9eb78f8b9312ebf") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("f82941a294a4268b66f9cf71f65934434a5f2c8d) S
+SL
+(b6645efc91bb62a176d5aca0") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("7153b82e50b6f7452b4519097f880d968a6eaf6f6ef38cc45a144958e553fbc6") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("a0f) S
+EndPage
+EndDSCPage
+EndSheet
+
+%%Page: 11 11
+/Lines 812 def
+/PageCount 12 def
+1 BeginSheet
+BeginDSCPage
+/LineNumber 713 def
+/PageNumber 11 def
+/HeaderLinesLeft[
+ [/h0 (init.el)]
+ [/h1 (~/.emacs.d/)]
+]def
+/HeaderLinesRight[
+ [/h0 /pagenumberstring load]
+ [/h1 (11/01/2017)]
+]def
+2 SetHeaderLines
+720 BeginPage
+/f0 F
+false BG
+0.000 0.545 0.000 FG
+(eb1322de9e26a4d209d1cfa236deaf64662bb604fa513cca6a057ddf0ef64") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("04dd0236a367865e591927a3810f178e8) S
+SL
+(d33c372ad5bfef48b5ce90d4b476481") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("7356632cebc6a11a87bc5fcffaa49bae528026a78637acd03cae57c091afd9b) S
+SL
+(9") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("b946bb7354f8f468fb16218fa347034998b4812b758b8494d28ea686d977f1de") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("eca7176eedb7b8a5b9e2a6500c) S
+SL
+(7b2bc6b1e290dc5e405bc5f38e9a0b41122692") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("c335adbb7d7cb79bc34de77a16e12d28e6b927115b992bccc109fb75) S
+SL
+(2a365c72") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("16e45b6dee0b6d1bf2d) S
+SL
+(5dd8ccd1c5c69fbaa32432931ff84da6536f40eb8eac7") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("20f8f3e47d55f73310e2376369e0e5ec7fd518b1a07821b97) S
+SL
+(200c3833b0575d5") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("c210c9e7116e4f899abd2f4409824a8ce0f9afcb284ba6c6b89a077eba1f57d6") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("56ebbbe5158c) S
+SL
+(1c4e2874aef0366874a4b9a28a705b52844ddd538c2a6dada9fb") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("49a3c59e4b1ca3d1b2e4e19fbc41fa93e7f8613ff3) S
+SL
+(d92010d90027125f1fe6da") S
+0.000 0.000 0.000 FG
+( default\)\)\)) S
+LHL
+( '\(diary-entry-marker \(quote font-lock-variable-name-face\)\)) S
+LHL
+( '\(display-time-mode t\)) S
+LHL
+( '\(electric-indent-mode nil\)) S
+LHL
+( '\(emms-mode-line-icon-image-cache) S
+LHL
+(   \(quote) S
+LHL
+(    \(image ) S
+0.282 0.239 0.545 FG
+(:type) S
+0.000 0.000 0.000 FG
+( xpm ) S
+0.282 0.239 0.545 FG
+(:ascent) S
+0.000 0.000 0.000 FG
+( center ) S
+0.282 0.239 0.545 FG
+(:data) S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("/* XPM */) S
+LHL
+(static char *note[] = {) S
+LHL
+(/* width height num_colors chars_per_pixel */) S
+LHL
+(\\"    10   11        2            1\\",) S
+LHL
+(/* colors */) S
+LHL
+(\\". c #358d8d\\",) S
+LHL
+(\\"# c None s None\\",) S
+LHL
+(/* pixels */) S
+LHL
+(\\"###...####\\",) S
+LHL
+(\\"###.#...##\\",) S
+LHL
+(\\"###.###...\\",) S
+LHL
+(\\"###.#####.\\",) S
+LHL
+(\\"###.#####.\\",) S
+LHL
+(\\"#...#####.\\",) S
+LHL
+(\\"....#####.\\",) S
+LHL
+(\\"#..######.\\",) S
+LHL
+(\\"#######...\\",) S
+LHL
+(\\"######....\\",) S
+LHL
+(\\"#######..#\\" };") S
+0.000 0.000 0.000 FG
+(\)\)\)) S
+LHL
+( '\(fci-rule-color ) S
+0.000 0.545 0.000 FG
+("#f6f0e1") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+( '\(frame-brackground-mode \(quote dark\)\)) S
+LHL
+( '\(gnus-logo-colors \(quote \() S
+0.000 0.545 0.000 FG
+("#0d7b72") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("#adadad") S
+0.000 0.000 0.000 FG
+(\)\)\)) S
+LHL
+( '\(gnus-mode-line-image-cache) S
+LHL
+(   \(quote) S
+LHL
+(    \(image ) S
+0.282 0.239 0.545 FG
+(:type) S
+0.000 0.000 0.000 FG
+( xpm ) S
+0.282 0.239 0.545 FG
+(:ascent) S
+0.000 0.000 0.000 FG
+( center ) S
+0.282 0.239 0.545 FG
+(:data) S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("/* XPM */) S
+LHL
+(static char *gnus-pointer[] = {) S
+LHL
+(/* width height num_colors chars_per_pixel */) S
+LHL
+(\\"    18    13        2            1\\",) S
+LHL
+(/* colors */) S
+LHL
+(\\". c #358d8d\\",) S
+LHL
+(\\"# c None s None\\",) S
+LHL
+(/* pixels */) S
+LHL
+(\\"##################\\",) S
+LHL
+(\\"######..##..######\\",) S
+LHL
+(\\"#####........#####\\",) S
+LHL
+(\\"#.##.##..##...####\\",) S
+LHL
+(\\"#...####.###...##.\\",) S
+LHL
+(\\"#..###.######.....\\",) S
+LHL
+(\\"#####.########...#\\",) S
+LHL
+(\\"###########.######\\",) S
+LHL
+(\\"####.###.#..######\\",) S
+LHL
+(\\"######..###.######\\",) S
+LHL
+(\\"###....####.######\\",) S
+LHL
+(\\"###..######.######\\",) S
+LHL
+(\\"###########.######\\" };") S
+0.000 0.000 0.000 FG
+(\)\)\)) S
+LHL
+( '\(idlwave-help-use-assistant t\)) S
+LHL
+( '\(load-home-init-file t t\)) S
+LHL
+( '\(tramp-auto-save-directory ) S
+0.000 0.545 0.000 FG
+("/home/shippert/tmp") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+( '\(vc-annotate-background ) S
+0.000 0.545 0.000 FG
+("#f6f0e1") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+( '\(vc-annotate-color-map) S
+LHL
+(   \(quote) S
+LHL
+(    \(\(20 . ) S
+0.000 0.545 0.000 FG
+("#e43838") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(     \(40 . ) S
+0.000 0.545 0.000 FG
+("#f71010") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(     \(60 . ) S
+0.000 0.545 0.000 FG
+("#ab9c3a") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(     \(80 . ) S
+0.000 0.545 0.000 FG
+("#9ca30b") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(     \(100 . ) S
+0.000 0.545 0.000 FG
+("#ef8300") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(     \(120 . ) S
+0.000 0.545 0.000 FG
+("#958323") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(     \(140 . ) S
+0.000 0.545 0.000 FG
+("#1c9e28") S
+0.000 0.000 0.000 FG
+(\)) S
+EndPage
+EndDSCPage
+EndSheet
+
+%%Page: 12 12
+/Lines 812 def
+/PageCount 12 def
+1 BeginSheet
+BeginDSCPage
+/LineNumber 777 def
+/PageNumber 12 def
+/HeaderLinesLeft[
+ [/h0 (init.el)]
+ [/h1 (~/.emacs.d/)]
+]def
+/HeaderLinesRight[
+ [/h0 /pagenumberstring load]
+ [/h1 (11/01/2017)]
+]def
+2 SetHeaderLines
+792 BeginPage
+/f0 F
+false BG
+0.000 0.000 0.000 FG
+(     \(160 . ) S
+0.000 0.545 0.000 FG
+("#3cb368") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(     \(180 . ) S
+0.000 0.545 0.000 FG
+("#028902") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(     \(200 . ) S
+0.000 0.545 0.000 FG
+("#008b45") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(     \(220 . ) S
+0.000 0.545 0.000 FG
+("#077707") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(     \(240 . ) S
+0.000 0.545 0.000 FG
+("#259ea2") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(     \(260 . ) S
+0.000 0.545 0.000 FG
+("#358d8d") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(     \(280 . ) S
+0.000 0.545 0.000 FG
+("#0eaeae") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(     \(300 . ) S
+0.000 0.545 0.000 FG
+("#2c53ca") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(     \(320 . ) S
+0.000 0.545 0.000 FG
+("#1111ff") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(     \(340 . ) S
+0.000 0.545 0.000 FG
+("#2020cc") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(     \(360 . ) S
+0.000 0.545 0.000 FG
+("#a020f0") S
+0.000 0.000 0.000 FG
+(\)\)\)\)) S
+LHL
+( '\(vc-annotate-very-old-color ) S
+0.000 0.545 0.000 FG
+("#a020f0") S
+0.000 0.000 0.000 FG
+(\)\)) S
+LHL
+(\(custom-set-faces) S
+LHL
+( ) S
+0.000 0.000 0.804 FG
+(;; ) S
+/f2 F
+(custom-set-faces was added by Custom.) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.000 0.804 FG
+(;; ) S
+/f2 F
+(If you edit it by hand, you could mess it up, so be careful.) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.000 0.804 FG
+(;; ) S
+/f2 F
+(Your init file should contain only one such instance.) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.000 0.804 FG
+(;; ) S
+/f2 F
+(If there is more than one, they won't work right.) S
+LHL
+/f0 F
+0.000 0.000 0.000 FG
+( '\(scroll-bar \(\(t \() S
+0.282 0.239 0.545 FG
+(:background) S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("dim gray") S
+0.000 0.000 0.000 FG
+( ) S
+0.282 0.239 0.545 FG
+(:foreground) S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("black") S
+0.000 0.000 0.000 FG
+(\)\)\)\)\)) S
+PHL
+LHL
+(\() S
+/f1 F
+0.804 0.000 0.000 FG
+(defun) S
+/f0 F
+0.000 0.000 0.000 FG
+( ) S
+/f3 F
+0.000 0.000 0.545 FG
+(paragraph-to-line) S
+/f0 F
+0.000 0.000 0.000 FG
+(\(\)) S
+LHL
+(  ) S
+0.000 0.545 0.000 FG
+("Convert paragraph to a single line, for insertion in web forms") S
+0.000 0.000 0.000 FG
+LHL
+(  \(interactive\)) S
+LHL
+(  \() S
+/f1 F
+0.804 0.000 0.000 FG
+(save-excursion) S
+/f0 F
+0.000 0.000 0.000 FG
+LHL
+(    \(replace-regexp ) S
+0.000 0.545 0.000 FG
+(") S
+(\\\\) S
+(\() S
+([) S
+(^) S
+(\\n]) S
+(\\\\) S
+(\)) S
+(\\n) S
+(\\\\) S
+(\() S
+([) S
+(^) S
+(\\n]) S
+(\\\\) S
+(\)) S
+(") S
+0.000 0.000 0.000 FG
+( ) S
+0.000 0.545 0.000 FG
+("\\\\1 \\\\2") S
+0.000 0.000 0.000 FG
+(\)\)\)) S
+PHL
+LHL
+( \() S
+/f1 F
+0.804 0.000 0.000 FG
+(defun) S
+/f0 F
+0.000 0.000 0.000 FG
+( ) S
+/f3 F
+0.000 0.000 0.545 FG
+(unfill-paragraph) S
+/f0 F
+0.000 0.000 0.000 FG
+( \(\) ) S
+0.000 0.545 0.000 FG
+("Does the opposite of fill-paragraph") S
+0.000 0.000 0.000 FG
+LHL
+(   \(interactive\)) S
+LHL
+(   \() S
+/f1 F
+0.804 0.000 0.000 FG
+(let) S
+/f0 F
+0.000 0.000 0.000 FG
+( \(\(fill-column \(point-max\)\)\) \(fill-paragraph nil\)\)\)) S
+PHL
+(  ) S
+LHL
+(\(setq minibuffer-max-depth nil\)) S
+PHL
+LHL
+(\(server-start\)) S
+PHL
+LHL
+(\() S
+/f1 F
+0.804 0.000 0.000 FG
+(if) S
+/f0 F
+0.000 0.000 0.000 FG
+( \(file-exists-p ) S
+0.000 0.545 0.000 FG
+("~/.emacs.d/local-init.el") S
+0.000 0.000 0.000 FG
+(\)) S
+LHL
+(    \(load-file ) S
+0.000 0.545 0.000 FG
+("~/.emacs.d/local-init.el") S
+0.000 0.000 0.000 FG
+(\)\)) S
+PHL
+EndPage
+EndDSCPage
+EndSheet
+
+%%Trailer
+%%Pages: 12
+
+EndDoc
+
+%%EOF
