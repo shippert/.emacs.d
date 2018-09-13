@@ -27,6 +27,8 @@
 (define-key ctl-x-4-map "k" 'copy-region-as-kill)
 (define-key ctl-x-4-map "d" 'delete-rectangle)
 (define-key ctl-x-map "vq" 'vc-toggle-read-only)
+(define-key ctl-x-map "\C-d" 'date)
+
 ; The "R2" key on a sun keypad is PrSc
 ; This isn't as cool as I'd like, because it doesn't 2-up
 (define-key global-map [f12] 'ps-print-buffer-with-faces)
@@ -798,9 +800,19 @@ static char *gnus-pointer[] = {
   (save-excursion
     (replace-regexp "\\([^\n]\\)\n\\([^\n]\\)" "\\1 \\2")))
 
- (defun unfill-paragraph () "Does the opposite of fill-paragraph"
-   (interactive)
-   (let ((fill-column (point-max))) (fill-paragraph nil)))
+(defun unfill-paragraph () "Does the opposite of fill-paragraph"
+       (interactive)
+       (let ((fill-column (point-max))) (fill-paragraph nil)))
+
+(defun date (arg)
+  (interactive "P")
+  (insert (if arg
+	      (format-time-string "%Y%m%d")
+	    (format-time-string "%-m/%-d/%Y"))))
+
+(defun timestamp ()
+  (interactive)
+  (insert (format-time-string "%Y-%m-%dT%H:%M:%S")))
   
 (setq minibuffer-max-depth nil)
 
