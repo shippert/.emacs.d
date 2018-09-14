@@ -27,7 +27,7 @@
 (define-key ctl-x-4-map "k" 'copy-region-as-kill)
 (define-key ctl-x-4-map "d" 'delete-rectangle)
 (define-key ctl-x-map "vq" 'vc-toggle-read-only)
-(define-key ctl-x-map "\C-d" 'date)
+(define-key global-map "\C-c\C-d" 'date)
 
 ; The "R2" key on a sun keypad is PrSc
 ; This isn't as cool as I'd like, because it doesn't 2-up
