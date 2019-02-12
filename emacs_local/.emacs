@@ -1,6 +1,3 @@
-(if (not (string-match emacs-version "21.4.1"))
-    (set-default-font "Liberation Mono-12"))
-
 ; Set up for Sparc (now), customized for my comfort, and this is just
 (define-key global-map "\C-l" 'forward-char)
 (define-key global-map "\C-f" 'recenter)
@@ -27,26 +24,16 @@
 (define-key ctl-x-4-map "k" 'copy-region-as-kill)
 (define-key ctl-x-4-map "d" 'delete-rectangle)
 (define-key ctl-x-map "vq" 'vc-toggle-read-only)
-
-; Date and time
-(define-key global-map "\C-c\C-d" 'date)
-(define-key global-map "\C-c\C-t" 'timestamp)
-
 ; The "R2" key on a sun keypad is PrSc
 ; This isn't as cool as I'd like, because it doesn't 2-up
-(define-key global-map [f12] 'ps-print-buffer-with-faces)
+;(define-key global-map [f22] 'ps-print-buffer-with-faces)
 (define-key global-map [print] 'ps-print-buffer-with-faces)
 
 ; Get the keypad right on wombat
 (define-key global-map [f35] 'scroll-up)
 (define-key global-map [f29] 'scroll-down)
 
-(if (string-match emacs-version "21.4.1")
-    (standard-display-european t))
-
-(turn-on-auto-fill)
-
-;(require 'diff-mode-.el)
+(standard-display-european t)
 
 ; for TM
 ;(setenv "TM_TMP_DIR" "/home/d3a230/mime")
@@ -59,7 +46,6 @@
 
 ; ;;; set my faces
 (setq font-lock-maximum-decoration t)
-(setq ps-line-number t)
 
 ;
 (setq-default case-fold-search nil)
@@ -79,52 +65,40 @@
 
 (setq browse-url-netscape-program "/usr/bin/mozilla")
 
-;; set my faces
-;; New face here for green - so I can keep underlining.
+
+;;; set my faces
+;;; New face here for green - so I can keep underlining.
 (make-face 'emphasize)
 
-;; For emacs version 23+, we can use themes to change colors and stuff
-;; Version 24 themes will skip confirmation with a following true, but
-;; 23 does not.
-(cond ((>= emacs-major-version 24) (load-theme 'gruber-darker t))
-      ((= emacs-major-version 23) (load-theme 'gruber-darker))
-      (t 
-       ;; Prior to themes, do it the hard way
-	(progn
-	  (setq font-lock-comment-face 'italic)
-	  (setq font-lock-keyword-face 'bold)
-	  (setq font-lock-string-face 'emphasize)
-	  (setq font-lock-type-face 'bold-italic)
-	  (setq font-lock-function-name-face 'bold-italic)
-	  
-	  (set-face-foreground 'emphasize "green4")
-	  (set-face-foreground 'italic "blue3")
-	  (set-face-foreground 'bold "red3")
-	  (set-face-foreground 'underline "firebrick")
-	  (set-face-foreground 'bold-italic "blue4")
-	  (make-face-bold 'bold-italic nil t)
-	  
-	  ;; only need this here, because italic shows up bold on squid
-	  (make-face-unbold 'italic nil t)
-	  
-	  (setq font-lock-face-attributes  
-		(list '(font-lock-comment-face "blue3")
-		      '(font-lock-string-face "green4")
-		      '(font-lock-keyword-face "darkgoldenrod" nil t)
-		      '(font-lock-function-name-face "red3" nil t) 
-		      '(font-lock-variable-name-face "blue3" nil t) 
-		      '(font-lock-type-face "orangered") 
-		      '(font-lock-reference-face "blue3" nil t))))))
-      
-; Awful way to do this, and slime sucks anyway.  Keeping it here for reference.
-;(if (>= emacs-major-version 24)
-;    ;;
-;    (load-library (expand-file-name "~/emacs/slime-theme.el")))
+(setq font-lock-comment-face 'italic)
+(setq font-lock-keyword-face 'bold)
+(setq font-lock-string-face 'emphasize)
+(setq font-lock-type-face 'bold-italic)
+(setq font-lock-function-name-face 'bold-italic)
+
+(set-face-foreground 'emphasize "green4")
+(set-face-foreground 'italic "blue3")
+(set-face-foreground 'bold "red3")
+(set-face-foreground 'underline "firebrick")
+(set-face-foreground 'bold-italic "blue4")
+(make-face-bold 'bold-italic nil t)
+
+; only need this here, because italic shows up bold on squid
+(make-face-unbold 'italic nil t)
+
+(setq font-lock-face-attributes  
+  (list '(font-lock-comment-face "blue3")
+	'(font-lock-string-face "green4")
+	'(font-lock-keyword-face "darkgoldenrod" nil t)
+	'(font-lock-function-name-face "red3" nil t) 
+	'(font-lock-variable-name-face "blue3" nil t) 
+	'(font-lock-type-face "orangered") 
+	'(font-lock-reference-face "blue3" nil t)))
 
 (global-font-lock-mode t)
 
 (setq load-path
- (append (list (expand-file-name "~/.emacs.d/emacs_local")
+ (append (list (expand-file-name "~/emacs")
 	       (expand-file-name "/usr/local/lib/emacs/site-lisp")
 	       )
 	 load-path))
@@ -145,31 +119,6 @@
 
 ;(setq Info-default-directory-list 
 ;        (cons "/usr/local/src/gnus-5.8.3/texi" Info-default-directory-list))
-
-(if window-system
-    (require 'igor-mode))
-
-(require 'generic)
-
-(define-generic-mode 'flat-generic-mode
-  (list ?# )
-  '()
-  (list
-   '("^[ \t]*\\([a-zA-Z0-9_-]+\\)[ \t]*:" 1 'font-lock-type-face)
-   '("[ \t]*\\([a-zA-Z0-9_-]+\\)[ \t]*:" 1 'font-lock-constant-face)
-   '("[ \t]*\\([a-zA-Z0-9_-]+\\)[ \t]*=" 1 'font-lock-variable-name-face)
-   )
-  (list "\\.flat")
-  (list 'font-lock-mode 'auto-fill-mode))
-
-(define-generic-mode 'vip-generic-mode
-  (list ?# ?\;)
-  '()
-  (list
-   '("[ \t]*\\([a-zA-Z0-9_-]+\\)[ \t]*=" 1 'font-lock-function-name-face)
-   )
-  (list "vip.*\\.txt")
-  (list 'font-lock-mode 'auto-fill-mode))
 
 
 ; Print setup
@@ -199,7 +148,6 @@
 
 ;; NOTES mode autoload - load notes.el
 (autoload 'notes-mode	   "notes" "Notes mode" t)
-(autoload 'dod-mode	   "dod" "DOD mode" t)
 
 ; Rmail faces - I don't like this, but I need to make quoted stuff
 ; use the comment face, not the reference face.
@@ -238,35 +186,21 @@
 
 (setq default-major-mode (quote text-mode))
 
-;; pod mode
-(require 'pod-mode)
-
 (setq auto-mode-alist
       (append '(("\\.letter$" . mail-mode))
-	      '(("Makefile.*$" . makefile-mode))
 	      '(("\\.gnus$" . emacs-lisp-mode))
 	      '(("\\.pro$" . idlwave-mode))
 	      '(("\\.F90$" . f90-mode))
 	      '(("NOTES\\..*" . notes-mode))
-	      '(("\\.dod$" . dod-mode))
-	      '(("\\.cdl$" . dod-mode))
 	      '(("README\\..*" . text-mode))
-	      '(("vip.*\\.txt" . vip-generic-mode))
 	      '(("\\.txt" . text-mode))
 	      '(("\\.dat" . text-mode))
-	      '(("\\.ipf" . igor-mode))
-	      '(("\\.pod$" . pod-mode))
 	      auto-mode-alist))
 
 ;(setq auto-mode-alist (append auto-mode-alist
 ;			      (quote (("\\.roff$" . nroff-mode)))))
 
 (add-hook 'perl-mode 'turn-on-font-lock)
-
-(add-hook 'pod-mode-hook 'font-lock-mode)
-(add-hook 'pod-mode-hook 'turn-on-auto-fill)
-
-(add-hook 'sh-mode-hook 'turn-on-auto-fill)
 
 (add-hook 'text-mode-hook
 	  (function (lambda ()
@@ -279,7 +213,7 @@
 		      ;; indent-line-function that ignore hanging tabs
 		      (make-local-variable 'adaptive-fill-mode)
 		      (setq adaptive-fill-mode nil)
-		      ;(setq indent-line-function 'indent-relative)
+		      (setq indent-line-function 'indent-relative-tab)
 		      (setq fill-column 75)
 		      (abbrev-mode 1))))
 
@@ -294,7 +228,6 @@
 		      (setq fill-column 75)
 		      (setq comment-column 0)
 		      (local-set-key "\e\t" 'tab-to-tab-stop)
-		      (setq c-electric-flag 't)
 		      (line-number-mode 't)
 		;      (font-lock-mode)
 		      )))
@@ -475,52 +408,14 @@
   (add-hook 'fortran-mode-hook 'turn-on-font-lock)
   )
 
-
-;; A generic mode for info files.  Let's see how it goes
-(require 'generic)
-
-(define-generic-mode 'flat-generic-mode
-  (list ?# )
-  '()
-  (list
-   '("^[ \t]*\\([a-zA-Z0-9_-]+\\)[ \t]*:" 1 'font-lock-type-face)
-   '("[ \t]*\\([a-zA-Z0-9_-]+\\)[ \t]*:" 1 'font-lock-constant-face)
-   '("[ \t]*\\([a-zA-Z0-9_-]+\\)[ \t]*=" 1 'font-lock-variable-name-face)
-   )
-  (list "\\.flat")
-  (list 'font-lock-mode 'auto-fill-mode))
-
-(define-generic-mode 'infofile-generic-mode
-  (list ?# )
-  '()
-;  (list "float" "double" "int" "long_int" "long[^_]?" "char")
-  (list "^[ \t]*sgp[^ \t]*"
-	"^[ \t]*twp[^ \t]*"
-	"^[ \t]*nsa[^ \t]*"
-	"^[ \t]*gec[^ \t]*"
-	"^[ \t]*pye[^ \t]*"
-	"^[ \t]*nim[^ \t]*"
-	"^[ \t]*NULL[^ \t]*"
-	;; Not sure what to do about "long_name" and the "long" type
-	'("\\b\\([a-zA-Z0-9_-]+\\)(\\([^)]*?\\))"
-	  (1 font-lock-function-name-face)
-	  (2 font-lock-variable-name-face))
-	'("\\b$[a-zA-Z0-9_-]+\\b" . font-lock-variable-name-face)
-	'("{\\([^}]*\\)}" 1 font-lock-reference-face)
-        '("\\b\\(float\\|double\\|int\\|long_int\\|\\|char\\)\\b" .
-	  font-lock-reference-face)
-	'("= \\(.*\\)" 1 font-lock-string-face)
-	)
-  (list "\.info")
-  (list 'font-lock-mode))
-
 ;;;
 ;(autoload 'rmail-tim-setup "rmail-tim" "My redefs of some things" t)
 ;(autoload 'mail "mail-tim" "Load up mail file" t)
 
 ;(autoload 'rmail-execute-content-type' "mm" "MIME stuff - wacky and
 ;old, but it works" t)
-(autoload 'indent-relative-tab "indent-tim" "My attempt to fix indent-relative" t)
+(autoload 'indent-relative-tab "indent-tim" "My attempt to fix
+indent-relative" t)
 
 (autoload 'buffer-citation "buffer-cite" "Highlight citations in
 current buffer (used for printing email)" t)
@@ -550,9 +445,6 @@ print out buffer using vpr"
 
 (autoload 'idlwave-mode "idlwave" "IDLWAVE Mode" t)
 (autoload 'idlwave-shell "idlw-shell" "IDLWAVE Shell" t)
-
-
-;(setq 'idlwave-surround '())
 
 (cond (window-system
        (mwheel-install)))
@@ -586,6 +478,8 @@ print out buffer using vpr"
 ;  )
 
 (display-time)
+
+(server-start)
 
 ;;; Commands added by calc-private-autoloads on Mon Jun 29 11:31:53 1998.
 (autoload 'calc-dispatch	   "calc" "Calculator Options" t)
@@ -679,150 +573,20 @@ and don't delete any header fields."
 
 (put 'upcase-region 'disabled nil)
 
-
-(defun update-diff-colors ()
-  "update the colors for diff faces"
-  ;(set-face-attribute 'diff-added nil
-  ;                    :foreground "white" :background "blue")
-  ;(set-face-attribute 'diff-removed nil
-  ;                    :foreground "white" :background "red3")
-  (set-face-attribute 'diff-added nil
-                      :foreground "blue" :background "white")
-  (set-face-attribute 'diff-removed nil
-                      :foreground "red" :background "white")
-  (set-face-attribute 'diff-changed nil
-                      :foreground "green3" :background "white")
-  (set-face-attribute 'diff-file-header nil
-                      :foreground "purple" :background "white")
-  (set-face-attribute 'diff-hunk-header nil
-                      :foreground "yellow" :background "purple")
-  )
-(eval-after-load "diff-mode"
-  '(update-diff-colors))
-
 ;(load "custom")
 (require 'tramp)
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
+  ;; custom-set-variables was added by Custom -- don't edit or cut/paste it!
+  ;; Your init file should contain only one such instance.
  '(ange-ftp-ftp-program-args nil)
  '(ange-ftp-ftp-program-name "sftp")
  '(ange-ftp-gateway-ftp-program-name "sftp")
- '(ansi-color-faces-vector
-   [default bold shadow italic underline bold bold-italic bold])
- '(ansi-color-names-vector
-   ["#2e3436" "#a40000" "#4e9a06" "#c4a000" "#204a87" "#5c3566" "#729fcf" "#eeeeec"])
- '(custom-safe-themes
-   (quote
-    ("50badd2f0ca18497fb6a5a24971199f50e6bf68c728fab815f51cb92819e7920" "cbcd1b97157de3c73e3e4db61a20110e2d2f03dec6582afaefdbbb4601708521" "8094177f57315be0278de74e1cbbc0cceaa823288cd479dc7b7de11e1b5b855a" "4a3f7f40fda830409fe0fe93c3379ade3ec33b1e6fd0a607c55d34ef6cc95763" "d6eedfc0013149f2f2ad8d44192e179af41c099131b4d24d7485ad5ee64ce392" "3683af725c9a22b9ff70427dbe410e23df12be43c4622bf29be6693748877923" "e556ba5ef0496a1b601854ad88e79877a7983e0091495df68a77821267528db8" "5e3fc08bcadce4c6785fc49be686a4a82a356db569f55d411258984e952f194a" "ab04c00a7e48ad784b52f34aa6bfa1e80d0c3fcacc50e1189af3651013eb0d58" "dc16ca33b83579d105555fc31a990e4c1a4047627ec6b53da9eb78f8b9312ebf" "f82941a294a4268b66f9cf71f65934434a5f2c8db6645efc91bb62a176d5aca0" "7153b82e50b6f7452b4519097f880d968a6eaf6f6ef38cc45a144958e553fbc6" "a0feb1322de9e26a4d209d1cfa236deaf64662bb604fa513cca6a057ddf0ef64" "04dd0236a367865e591927a3810f178e8d33c372ad5bfef48b5ce90d4b476481" "7356632cebc6a11a87bc5fcffaa49bae528026a78637acd03cae57c091afd9b9" "b946bb7354f8f468fb16218fa347034998b4812b758b8494d28ea686d977f1de" "eca7176eedb7b8a5b9e2a6500c7b2bc6b1e290dc5e405bc5f38e9a0b41122692" "c335adbb7d7cb79bc34de77a16e12d28e6b927115b992bccc109fb752a365c72" "1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" "16e45b6dee0b6d1bf2d5dd8ccd1c5c69fbaa32432931ff84da6536f40eb8eac7" "20f8f3e47d55f73310e2376369e0e5ec7fd518b1a07821b97200c3833b0575d5" "c210c9e7116e4f899abd2f4409824a8ce0f9afcb284ba6c6b89a077eba1f57d6" "56ebbbe5158c1c4e2874aef0366874a4b9a28a705b52844ddd538c2a6dada9fb" "49a3c59e4b1ca3d1b2e4e19fbc41fa93e7f8613ff3d92010d90027125f1fe6da" default)))
- '(diary-entry-marker (quote font-lock-variable-name-face))
- '(display-time-mode t)
- '(electric-indent-mode nil)
- '(emms-mode-line-icon-image-cache
-   (quote
-    (image :type xpm :ascent center :data "/* XPM */
-static char *note[] = {
-/* width height num_colors chars_per_pixel */
-\"    10   11        2            1\",
-/* colors */
-\". c #358d8d\",
-\"# c None s None\",
-/* pixels */
-\"###...####\",
-\"###.#...##\",
-\"###.###...\",
-\"###.#####.\",
-\"###.#####.\",
-\"#...#####.\",
-\"....#####.\",
-\"#..######.\",
-\"#######...\",
-\"######....\",
-\"#######..#\" };")))
- '(fci-rule-color "#f6f0e1")
- '(file-name-shadow-mode nil)
- '(frame-brackground-mode (quote dark))
- '(gnus-logo-colors (quote ("#0d7b72" "#adadad")))
- '(gnus-mode-line-image-cache
-   (quote
-    (image :type xpm :ascent center :data "/* XPM */
-static char *gnus-pointer[] = {
-/* width height num_colors chars_per_pixel */
-\"    18    13        2            1\",
-/* colors */
-\". c #358d8d\",
-\"# c None s None\",
-/* pixels */
-\"##################\",
-\"######..##..######\",
-\"#####........#####\",
-\"#.##.##..##...####\",
-\"#...####.###...##.\",
-\"#..###.######.....\",
-\"#####.########...#\",
-\"###########.######\",
-\"####.###.#..######\",
-\"######..###.######\",
-\"###....####.######\",
-\"###..######.######\",
-\"###########.######\" };")))
- '(idlwave-help-use-assistant t)
  '(load-home-init-file t t)
- '(tramp-auto-save-directory "/home/shippert/tmp")
- '(vc-annotate-background "#f6f0e1")
- '(vc-annotate-color-map
-   (quote
-    ((20 . "#e43838")
-     (40 . "#f71010")
-     (60 . "#ab9c3a")
-     (80 . "#9ca30b")
-     (100 . "#ef8300")
-     (120 . "#958323")
-     (140 . "#1c9e28")
-     (160 . "#3cb368")
-     (180 . "#028902")
-     (200 . "#008b45")
-     (220 . "#077707")
-     (240 . "#259ea2")
-     (260 . "#358d8d")
-     (280 . "#0eaeae")
-     (300 . "#2c53ca")
-     (320 . "#1111ff")
-     (340 . "#2020cc")
-     (360 . "#a020f0"))))
- '(vc-annotate-very-old-color "#a020f0"))
+ '(tramp-auto-save-directory "/home/shippert/tmp"))
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(scroll-bar ((t (:background "dim gray" :foreground "black")))))
+  ;; custom-set-faces was added by Custom -- don't edit or cut/paste it!
+  ;; Your init file should contain only one such instance.
+ )
 
-(defun paragraph-to-line()
-  "Convert paragraph to a single line, for insertion in web forms"
-  (interactive)
-  (save-excursion
-    (replace-regexp "\\([^\n]\\)\n\\([^\n]\\)" "\\1 \\2")))
-
-(defun unfill-paragraph () "Does the opposite of fill-paragraph"
-       (interactive)
-       (let ((fill-column (point-max))) (fill-paragraph nil)))
-
-(defun date (arg)
-  (interactive "P")
-  (insert (if arg
-	      (format-time-string "%Y%m%d")
-	    (format-time-string "%-m/%-d/%Y"))))
-
-(defun timestamp ()
-  (interactive)
-  (insert (format-time-string "%Y-%m-%d %H:%M:%S")))
-  
 (setq minibuffer-max-depth nil)
 
-(server-start)
-
-(if (file-exists-p "~/.emacs.d/local-init.el")
-    (load-file "~/.emacs.d/local-init.el"))

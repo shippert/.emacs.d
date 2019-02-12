@@ -1,0 +1,46 @@
+		 Answers to Commonly Asked Questions
+	       About the GNU Emacs Lisp Code Directory
+
+
+Q. What *is* the Lisp Code Directory?
+A. Originally it was simply a list, in tabular form, of various
+packages of GNU Emacs Lisp code that had been posted to one of the
+Emacs-related Internet or USENET mailing lists or newsgroups.  Later
+it became a flat-file database and associated formatting software.
+Today it includes over 350 entries, also contains entries for the
+packages in the standard GNU Emacs distribution, and there are three
+different software packages available for use with it.
+
+Q. Where can I get a copy of the Directory?
+A. It's posted periodically to the aforementioned lists.  You can
+request a copy directly from the custodian, Dave Sill, via
+dsill@relay.nswc.navy.mil.  It is not currently available via ftp.
+
+Q. How can I get a copy of a package listed in the Directory?
+A. Good question.  There does not exist a repository of all the
+packages in the Directory.  The "contact" field in the database
+indicates where one can find the code.  In the case of a package
+that's part of the standard Emacs distribution, you probably already
+have it in your $EMACS/lisp directory.  Most of the other code is
+available directly from the author or poster.  PLEASE don't ask the
+custodian, Dave Sill, to send you code.  If you're unable to find a
+copy through the listed contact, post a query to gnu.emacs,
+info-gnu-emacs, or your favorite Emacs group.
+
+Q. What are the three formatting packages?
+A. There's the original `format' shell/awk script, an elisp package
+called `lispdir', and a perl script (called `format.perl' for lack of
+a better name).  Format and format.perl both produce a tabular format
+similar to the original pre-database Directory.  Lispdir is a little
+more flexible.  It currently produces a full-directory report in three
+different formats, two of which are tabular.  It also provides a
+function called lisp-dir-apropos that pops up a buffer containing
+entries that relate to a given topic.  Lispdir is the preferred
+formatting package.
+
+Q. How can I get my package added to the Directory or get typos or
+inaccuracies fixed?
+A. Hopefully all packages posted to an Emacs group/list are added
+automatically.  If you've posted something and don't see it in the
+next release of the directory, or you have corrections or suggestions
+of any kind, send them to Dave Sill, dsill@relay.nswc.navy.mil.

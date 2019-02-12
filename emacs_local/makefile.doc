@@ -1,0 +1,55 @@
+Path: nntp-server.caltech.edu!news.claremont.edu!uunet!mcsun!Germany.EU.net!unido!horga!ruhr.de!reswi!smart.bo.open.de!smart!tom
+From: tom@smart.bo.open.de (Thomas Neumann)
+Newsgroups: gnu.emacs.sources
+Subject: Makefile mode -- bugfixes, user feedback incorporated
+Message-ID: <TOM.92Jul6164009@smart.bo.open.de>
+Date: 6 Jul 92 15:40:20 GMT
+Sender: nntpost@smart.bo.open.de (NNTP-Posting-Agent)
+Distribution: gnu
+Organization: News at smart
+Lines: 804
+
+
+Hi,
+
+I received a lot of helpful comments on the makefile mode I
+posted a few days ago.
+
+Most people pointed out that they had problems because two
+functions, namely (beginning-of-line-point) and (end-of-line-point)
+were undefined.
+
+I got those functions from objc-mode.el, which is dumped into
+my emacs, so I unfortunately did not recognize that two functions
+are not available in a plain emacs installation. Sorry about
+that.
+
+Other things fixed/changed in the new version:
+
+	* h.b.furuseth@usit.uio.no pointed out that the key bindings
+	  used in version 1.4, which was something like \C-c<letter>
+	  is likely to conflict with common user keys.
+	  I agree. Most of the bindings have been changed to \C-c\C-<letter> .
+
+	* makefile-hooks has been renamed to makefile-hook .
+	  makefile-browser-hooks has been renamed to makefile-browser-hook .
+
+	* [ = : . ] are now all `electric' and behave special only at
+	  the beginning of the line.
+
+	* makefile-find-file-autopickup is now added to the end
+	  of find-file-hooks instead of the beginning due to
+	  reported problems with ange-ftp.
+
+	* multiple target names on the left hand side of a dependency
+	  are now recognized and picked up correctly.
+
+
+Since the diffs are too numerous, here's a complete post of
+the new version.
+Again, thanks to everyone who responded with constructive,
+informative bug fixes and suggestions. Good software needs
+people like you to get better, so keep that bug reports and
+ideas comming !
+
+
