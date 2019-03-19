@@ -1,0 +1,76 @@
+*** rmime.el	Tue Mar  5 15:14:15 1996
+--- /usr/local/emacs/site-lisp/rmime.el	Mon Feb 26 12:16:43 1996
+***************
+*** 62,64 ****
+  ;; encoding is deprecated.
+! (defvar rmime-uufilter-program nil
+    "Program to decode uuencoded MIME messages.")
+--- 62,64 ----
+  ;; encoding is deprecated.
+! (defvar rmime-uufilter-program "uufilter"
+    "Program to decode uuencoded MIME messages.")
+***************
+*** 246,247 ****
+--- 246,261 ----
+  
++ ;; Added by tugdual, SOR project Feb 1996
++ (defun rmime-member-string= (elt list)
++   "This member predicate uses 'string=' in place of 'equal'.
++ So string properties are not considered during the test."
++   (if (not (stringp elt))
++       (member elt list)
++     (let ((l list))
++       (catch 'found
++ 	(while l
++ 	  (if (string= elt (car l))
++ 	      (throw 'found l)
++ 	    (setq l (cdr l))))))))
++ 
++   
+  (defun rmime-mode (&optional arg)
+***************
+*** 419,421 ****
+  			     (eq rmime-source-buffer (current-buffer))
+! 			     (or (member encoding rmime-transparent-encodings)
+  				 (search-forward rmime-magic-string nil t)))
+--- 433,435 ----
+  			     (eq rmime-source-buffer (current-buffer))
+! 			     (or (rmime-member-string= encoding rmime-transparent-encodings)
+  				 (search-forward rmime-magic-string nil t)))
+***************
+*** 426,428 ****
+  			  ;; See which one.
+! 			  (if (member encoding rmime-transparent-encodings)
+  
+--- 440,442 ----
+  			  ;; See which one.
+! 			  (if (rmime-member-string= encoding rmime-transparent-encodings)
+  
+***************
+*** 1036,1037 ****
+--- 1050,1052 ----
+      (normal-mode)
++     (set-buffer-modified-p t)		; added by tugdual. Buffer is really flushed on disk.
+      (save-buffer)))
+***************
+*** 1116,1118 ****
+  (defun rmime-barf-if-opaque (encoding)
+!   (or (member encoding rmime-transparent-encodings)
+        (error "A MIME bodypart has an explicitly prohibited Content-Transfer-Encoding")))
+--- 1131,1133 ----
+  (defun rmime-barf-if-opaque (encoding)
+!   (or (rmime-member-string= encoding rmime-transparent-encodings)
+        (error "A MIME bodypart has an explicitly prohibited Content-Transfer-Encoding")))
+***************
+*** 1128,1130 ****
+  (defun rmime-insert-content (binaryp encoding content)
+!   (cond ((member encoding rmime-transparent-encodings)
+  	 (rmime-insert-unencoded-content                                                 content))
+--- 1143,1145 ----
+  (defun rmime-insert-content (binaryp encoding content)
+!   (cond ((rmime-member-string= encoding rmime-transparent-encodings)
+  	 (rmime-insert-unencoded-content                                                 content))
+---------------------rmime.el.patch end
+
+
+

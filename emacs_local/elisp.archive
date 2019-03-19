@@ -1,0 +1,15 @@
+
+In article <2495@ruuinf.cs.ruu.nl> piet@cs.ruu.nl (Piet van Oostrum) writes:
+   Is there an FTP-able archive somewhere that contains all (or most of) the
+   available elisp stuff?
+
+There is tut.cis.ohio-state.edu [128.146.8.60], which has a directory
+of stuff in pub/gnu/emacs/elisp-archive for anonymous ftp.
+
+-rich
+-=-
+Rich Kaul                         | "Horse sense is what keeps horses from
+kaul@icarus.eng.ohio-state.edu    |  betting on what people will do."
+or ...!osu-cis!kaul		  |  			-Damon  Runyon
+
+

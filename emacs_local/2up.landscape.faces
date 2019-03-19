@@ -1,0 +1,43 @@
+From nobody Tue Apr 24 11:59:06 2001
+Path: pnlmse11.pnl.gov!newsfeed.pnl.gov!sea-feed.news.verio.net!news.verio.net!news1.ltinet.net!newspump.monmouth.com!newspeer.monmouth.com!xfer13.netnews.com!netnews.com!cpk-news-hub1.bbnplanet.com!news.gtei.net!nntp2.deja.com!nnrp1.deja.com!not-for-mail
+NNTP-Posting-Host: 134.9.17.16
+Newsgroups: comp.emacs,gnu.emacs.help
+Date: Wed, 18 Oct 2000 17:59:01 -0700
+Message-ID: <8slh0i$ss5$1@nnrp1.deja.com>
+Xref: pnlmse0.pnl.gov gnu.emacs.help:531 comp.emacs:358
+From: Joe Savic <reklar@my-deja.com>
+Subject: Re: enscript/Emacs text highlighting colors
+Organization: Deja.com - Before you buy.
+Lines: 25
+References: <8s3r6f$tua$1@nnrp1.deja.com> <ok4s2ibaee.fsf@hgmp.mrc.ac.uk> <8s59hb$5k8$1@nnrp1.deja.com> <vafbswpvwwx.fsf@lucy.cs.uni-dortmund.de>
+X-Article-Creation-Date: Thu Oct 19 00:59:01 2000 GMT
+X-Http-User-Agent: Mozilla/4.75 [en] (X11; U; SunOS 5.7 sun4u)
+X-Http-Proxy: 1.0 x55.deja.com:80 (Squid/1.1.22) for client 134.9.17.16
+X-MyDeja-Info: XMYDJUIDreklar
+
+  Thanks to all who posted help on this thread.
+  Looking at ps-print.el was helpful, but there are
+  so many options that it is hard to wade through it
+  all at first.  I'm pretty well setup though.
+
+  For the record, here is what I'm using as my print
+  setup under unix.  This setup prints two columns,
+  landscape with a pretty header and colors based
+  on the emacs faces in the buffer to a color, postscript
+  printer called colorprinter1...
+
+  (defvar fave-printer "colorprinter1")
+  (setq ps-landscape-mode t)
+  (setq ps-lpr-command "lpr")
+  (setq ps-lpr-switches (list (concat "-P" fave-printer)))
+  (setq ps-print-only-one-header t)
+  (setq ps-number-of-columns 2)
+
+  Thanks,
+
+  joe
+
+
+Sent via Deja.com http://www.deja.com/
+Before you buy.
+
