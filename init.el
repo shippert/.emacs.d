@@ -817,7 +817,8 @@ static char *gnus-pointer[] = {
 
 (defun timestamp ()
   (interactive)
-  (insert (format-time-string "%Y-%m-%d %H:%M:%S")))
+  ;;(insert (format-time-string "%Y-%m-%d %H:%M:%S")))
+  (insert (format-time-string "%-m/%-d/%Y %H:%M:%S %Z")))
   
 (setq minibuffer-max-depth nil)
 
