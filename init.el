@@ -1,5 +1,4 @@
-(if (not (string-match emacs-version "21.4.1"))
-    (set-default-font "Liberation Mono-12"))
+(set-default-font "Liberation Mono-12")
 
 ; Set up for Sparc (now), customized for my comfort, and this is just
 (define-key global-map "\C-l" 'forward-char)
@@ -741,6 +740,7 @@ static char *note[] = {
 \"#######...\",
 \"######....\",
 \"#######..#\" };")))
+ '(f90-beginning-ampersand nil)
  '(fci-rule-color "#f6f0e1")
  '(file-name-shadow-mode nil)
  '(frame-brackground-mode (quote dark))
