@@ -740,6 +740,7 @@ static char *note[] = {
 \"#######...\",
 \"######....\",
 \"#######..#\" };")))
+ '(f90-beginning-ampersand nil)
  '(fci-rule-color "#f6f0e1")
  '(file-name-shadow-mode nil)
  '(frame-brackground-mode (quote dark))
