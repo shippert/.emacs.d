@@ -38,9 +38,8 @@
 ; either is called after text-mode-hook or prevents it from being called
 ; altogether.  I'm sure this makes sense to somebody, but not to me.
 
-
 (defface loud-face
-   '((((class color)) (:foreground "black" :background  "orange")))
+   '((((class color)) (:background  "orange")))
   "Loud, annoying face."
   :group 'faces)
 
@@ -48,7 +47,7 @@
   "Variable to access loud-face face, so the symbol table works.")
 
 (defface zoinks-face
-   '((((class color)) (:foreground "black" :background  "greenyellow")))
+   '((((class color)) (:background  "greenyellow")))
   "Easy to see face."
   :group 'faces)
 
@@ -64,7 +63,7 @@
   "Variable to access red-face face, so the symbol table works.")
 
 (defface list-face
-  '((((class color)) (:bold t :foreground "black" :background "cyan")))
+  '((((class color)) (:bold t :background "cyan")))
   "For lists and stuff"
   :group 'faces)
 
@@ -87,7 +86,7 @@
        '("^\\(_+\\)" 1 red-face)
        '("^\\(X+\\)" 1 red-face)
        ;; functions and vars
-       '("\\b[\\\\.a-zA-Z0-9_-]+([^)]*?)" . font-lock-variable-name-face)
+       '("\\b[a-zA-Z0-9_-]+([^)]*?)" . font-lock-variable-name-face)
        '("\\b$[a-zA-Z0-9_-]+\\b" . font-lock-variable-name-face)
        ;;(list "^\\(@\\) " 1 'bold-italic)
        ;;; The dates that I tag with
@@ -102,7 +101,7 @@
   (interactive "P")
   (if (and abbrev-mode
 	   (eq (char-syntax (preceding-char)) ?w))
-      (expand-abbrev)
+      (expand-abbrev))
   (let ((start-column (current-column))
 	indent)
     (save-excursion
@@ -125,32 +124,14 @@
 	      (goto-char opoint))
 	  (move-marker opoint nil))
       (tab-to-tab-stop))))
-)
 
-
-;; Emacs 23 kludge
-;; This really is stupid, but for some reason, indent-relative is what
-;; I want once I put the point on column 0 after auto-filling.  The
-;; save-excursion is for when I use it with the tab - it indents the
-;; current line but leaves the point where it was.  This allows me to
-;; format without having to jump to the front etc - mostly useful for
-;; offset text and code snippets, but whatever
-
-;; Actually, I kind of like this, and might use it as my default notes
-;; mode from now on.
-(defun stupid-indent-relative (&optional unindented-ok)
-  (interactive "P")
-  (save-excursion
-    (move-to-column 0)
-    (hanging-indent-relative)))
 
 (define-derived-mode notes-mode
   text-mode "NOTES file"
   "Major mode for NOTES files (based on text-mode). \\{notes-mode-map}"
   (turn-on-auto-fill)
   ;; this allows the hanging tags
-  ;;(setq indent-line-function 'hanging-indent-relative)
-  (setq indent-line-function 'stupid-indent-relative)   ;; for emacs-23
+  (setq indent-line-function 'hanging-indent-relative)  
   (setq fill-column 75)
   (abbrev-mode 1)
   (make-local-variable 'font-lock-defaults)
@@ -160,8 +141,7 @@
 
 (add-hook 'notes-mode-hook
 	  (function (lambda ()
-		      (electric-indent-local-mode 0)
-		      (define-key notes-mode-map "\t" 'indent-relative)
+		      (define-key notes-mode-map "\t" 'hanging-indent-relative)
 		      (define-key notes-mode-map "\e\t" 'tab-to-tab-stop))))
 
 

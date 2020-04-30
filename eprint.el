@@ -20,7 +20,6 @@
   (list "blue3" "firebrick" "dark green" "OrangeRed" "dark khaki"
 	 "dark violet" "SteelBlue4")) 
 
-
 ;; set my faces
 ;; New face here for green - so I can keep underlining.
 (make-face 'emphasize)
@@ -31,8 +30,7 @@
 	       )
 	 load-path))
 
-
-(require 'generic)
+(require 'generic )
 
 (define-generic-mode 'flat-generic-mode
   (list ?# )
@@ -75,7 +73,7 @@
 (setq default-major-mode (quote text-mode))
 
 ;; pod mode
-(require 'pod-mode)
+(require 'pod-mode )
 
 (setq auto-mode-alist
       (append '(("\\.letter$" . mail-mode))
@@ -282,11 +280,11 @@ print out buffer using vpr"
 
 
 ;;; Ess stuff
-(load "/home/shippert/emacs/ess-5.3.7/lisp/ess-site.el")
+(load "/home/shippert/emacs/ess-5.3.7/lisp/ess-site.el" t)
 
 ;;;
 ;;;(load "sendmail")
-(load "tim")
+(load "tim" t)
 
 ;
 ; Here it is - the tm stuff to read MIME with rmail.
