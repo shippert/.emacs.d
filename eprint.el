@@ -28,6 +28,7 @@
 (setq load-path
  (append (list (expand-file-name "~/emacs")
 	       (expand-file-name "/usr/local/lib/emacs/site-lisp")
+	       (expand-file-name "~/.emacs.d/emacs_local")
 	       )
 	 load-path))
 
@@ -282,7 +283,7 @@ print out buffer using vpr"
 
 
 ;;; Ess stuff
-(load "/home/shippert/emacs/ess-5.3.7/lisp/ess-site.el")
+(load "~/.emacs.d/emacs_local/ess-5.3.7/lisp/ess-site.el")
 
 ;;;
 ;;;(load "sendmail")

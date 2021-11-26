@@ -80,12 +80,14 @@
        '("^\\(@\\)\\(X\\)" 2 zoinks-face)
        '("^\\(\\?\\) " 1 red-face)
        '("^\\([0-9\\|A-z]\\) " 1 list-face)
-       ;; these are underlines, for sections; Different colors for the hell
-       ;; of it
+       ;; these are delimiter lines, for sections; Different colors
+       ;; for the hell  of it
        '("^\\(=+\\)" 1 list-face)
        '("^\\(-+\\)" 1 zoinks-face)
        '("^\\(_+\\)" 1 red-face)
-       '("^\\(X+\\)" 1 red-face)
+       ;; To cross out old or bad sections - delimit with a line of Xs 
+       '("^\\(X+\\)" 1 red-face)   ;; Xs at the start
+       '("\\(XXX+\\)" 1 red-face)  ;; 3 or more Xs anywhere
        ;; functions and vars
        '("\\b[\\\\.a-zA-Z0-9_-]+([^)]*?)" . font-lock-variable-name-face)
        '("\\b$[a-zA-Z0-9_-]+\\b" . font-lock-variable-name-face)

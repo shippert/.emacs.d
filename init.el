@@ -260,6 +260,13 @@
 ;(setq auto-mode-alist (append auto-mode-alist
 ;			      (quote (("\\.roff$" . nroff-mode)))))
 
+(add-hook 'tetris-mode-hook
+	  (function (lambda ()
+		      (local-set-key "j" 'tetris-move-left)
+		      (local-set-key "l" 'tetris-move-right)
+		      (local-set-key "k" 'tetris-rotate-next)
+		      )))
+
 (add-hook 'perl-mode 'turn-on-font-lock)
 
 (add-hook 'pod-mode-hook 'font-lock-mode)
@@ -716,6 +723,9 @@ and don't delete any header fields."
  '(custom-safe-themes
    (quote
     ("50badd2f0ca18497fb6a5a24971199f50e6bf68c728fab815f51cb92819e7920" "cbcd1b97157de3c73e3e4db61a20110e2d2f03dec6582afaefdbbb4601708521" "8094177f57315be0278de74e1cbbc0cceaa823288cd479dc7b7de11e1b5b855a" "4a3f7f40fda830409fe0fe93c3379ade3ec33b1e6fd0a607c55d34ef6cc95763" "d6eedfc0013149f2f2ad8d44192e179af41c099131b4d24d7485ad5ee64ce392" "3683af725c9a22b9ff70427dbe410e23df12be43c4622bf29be6693748877923" "e556ba5ef0496a1b601854ad88e79877a7983e0091495df68a77821267528db8" "5e3fc08bcadce4c6785fc49be686a4a82a356db569f55d411258984e952f194a" "ab04c00a7e48ad784b52f34aa6bfa1e80d0c3fcacc50e1189af3651013eb0d58" "dc16ca33b83579d105555fc31a990e4c1a4047627ec6b53da9eb78f8b9312ebf" "f82941a294a4268b66f9cf71f65934434a5f2c8db6645efc91bb62a176d5aca0" "7153b82e50b6f7452b4519097f880d968a6eaf6f6ef38cc45a144958e553fbc6" "a0feb1322de9e26a4d209d1cfa236deaf64662bb604fa513cca6a057ddf0ef64" "04dd0236a367865e591927a3810f178e8d33c372ad5bfef48b5ce90d4b476481" "7356632cebc6a11a87bc5fcffaa49bae528026a78637acd03cae57c091afd9b9" "b946bb7354f8f468fb16218fa347034998b4812b758b8494d28ea686d977f1de" "eca7176eedb7b8a5b9e2a6500c7b2bc6b1e290dc5e405bc5f38e9a0b41122692" "c335adbb7d7cb79bc34de77a16e12d28e6b927115b992bccc109fb752a365c72" "1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" "16e45b6dee0b6d1bf2d5dd8ccd1c5c69fbaa32432931ff84da6536f40eb8eac7" "20f8f3e47d55f73310e2376369e0e5ec7fd518b1a07821b97200c3833b0575d5" "c210c9e7116e4f899abd2f4409824a8ce0f9afcb284ba6c6b89a077eba1f57d6" "56ebbbe5158c1c4e2874aef0366874a4b9a28a705b52844ddd538c2a6dada9fb" "49a3c59e4b1ca3d1b2e4e19fbc41fa93e7f8613ff3d92010d90027125f1fe6da" default)))
+ '(desktop-load-locked-desktop t)
+ '(desktop-save t)
+ '(desktop-save-mode t)
  '(diary-entry-marker (quote font-lock-variable-name-face))
  '(display-time-mode t)
  '(electric-indent-mode nil)
@@ -823,7 +833,8 @@ static char *gnus-pointer[] = {
   
 (setq minibuffer-max-depth nil)
 
-(server-start)
+(if (daemonp)
+    (server-start))
 
 (if (file-exists-p "~/.emacs.d/local-init.el")
     (load-file "~/.emacs.d/local-init.el"))
