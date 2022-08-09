@@ -46,6 +46,10 @@
 
 (turn-on-auto-fill)
 
+(if (not window-system)
+    (progn
+      (xterm-mouse-mode)))
+
 ;(require 'diff-mode-.el)
 
 ; for TM

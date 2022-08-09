@@ -79,6 +79,9 @@
        '("^\\(@\\)\\(X\\)" 2 zoinks-face)
        '("^\\(\\?\\) " 1 red-face)
        '("^\\([0-9\\|A-z]\\) " 1 list-face)
+       ;; Use list-face inline to call back list numbers
+       ;; via (e.g.) [1], [A], etc.
+       '("[[:blank:]]\\(\\[\\([0-9\\|A-z]\\)\\]\\)" 1 list-face)
        ;; these are underlines, for sections; Different colors for the hell
        ;; of it
        '("^\\(=+\\)" 1 list-face)
