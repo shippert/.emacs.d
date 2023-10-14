@@ -1,4 +1,20 @@
-(set-default-font "Liberation Mono-12")
+;(set-default-font "Liberation Mono-12")
+; New 
+(set-face-attribute 'default t :font "Liberation Mono-12")
+
+; That always start with size 10, rather than 12.  This following
+; thing does not work, either.  It seems things are being overwritten
+; by ythe system font, Monospace-10.  Huh.
+(set-face-attribute 'default t :height 12)
+
+; Okay, this seems to work - apparently, you need to set the attribute
+; list default on the *frame*, so when you open a window it takes
+; Also, the cursor color gets set too dark, for whatever reason
+; This might have something to do with reading the desktop, which
+; overrides these values with faces and files and stuff that were
+; saved from last session.
+(setq default-frame-alist '((font . "Liberation Mono-12")
+			    (cursor-color . "#dddd33")))
 
 ; Set up for Sparc (now), customized for my comfort, and this is just
 (define-key global-map "\C-l" 'forward-char)
@@ -85,6 +101,7 @@
 ;; For emacs version 23+, we can use themes to change colors and stuff
 ;; Version 24 themes will skip confirmation with a following true, but
 ;; 23 does not.
+(add-to-list 'custom-theme-load-path "/home/shippert/.emacs.d/")
 (cond ((>= emacs-major-version 24) (load-theme 'gruber-darker t))
       ((= emacs-major-version 23) (load-theme 'gruber-darker))
       (t 
@@ -105,7 +122,7 @@
 	  
 	  ;; only need this here, because italic shows up bold on squid
 	  (make-face-unbold 'italic nil t)
-	  
+
 	  (setq font-lock-face-attributes  
 		(list '(font-lock-comment-face "blue3")
 		      '(font-lock-string-face "green4")
@@ -120,10 +137,12 @@
 ;    ;;
 ;    (load-library (expand-file-name "~/emacs/slime-theme.el")))
 
+
+;; Don't know why the cursor color is has changed. Life is mystery
 (global-font-lock-mode t)
 
 (setq load-path
- (append (list (expand-file-name "~/.emacs.d/emacs_local")
+ (append (list (expand-file-name "/home/shippert/.emacs.d/emacs_local")
 	       (expand-file-name "/usr/local/lib/emacs/site-lisp")
 	       )
 	 load-path))
